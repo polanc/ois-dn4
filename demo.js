@@ -8,6 +8,8 @@ var id = [0, 0, 0];
 var Array_A = ["First", "Second", "Third"];
 var Array_B = ["Patient", "Patient", "Patient"];
 var Array_C = ["1994-07-14T16:16", "1994-08-26T10:30", "1994-10-20T23:50"];
+var Array_D = ["Male", "Male", "Female"];
+
 var sessionId;
 
 function getSessionId() {
@@ -19,55 +21,59 @@ function getSessionId() {
     });
     return response.responseJSON.sessionId;
 }
- 
-function generator() {
-	sessionId = getSessionId();
-	
-	for(var i = 1; i <= 3; i++){
-		var Name    = Array_A [i];
-		var Surname = Array_B [i];
-		var Birth   = Array_C [i];
 
-		var ehrId;
-		var predloga = "<option value=\""+ Name + " "+ Surname  + " "+ Birth +"\">" + Name + " "+ Surname + "</option>";
-		$("#predlogaBolnika").html(predloga);
- 		$.ajaxSetup({
- 		    headers: {"Ehr-Session": sessionId}
- 		});
- 		$.ajax({
- 		    url: baseUrl + "/ehr",
- 		    type: 'POST',
- 		    success: function (data) {
-		        ehrId = data.ehrId;
-		        id[i] = ehrId;
- 		        var partyData = {
- 		            firstNames: Name,
- 		            lastNames: Surname,
- 		            dateOfBirth: Birth,
- 		            partyAdditionalInfo: [{key: "ehrId", value: ehrId}]
- 		        };
- 		        $.ajax({
- 		            url: baseUrl + "/demographics/party",
- 		            type: 'POST',
- 		            contentType: 'application/json',
- 		            data: JSON.stringify(partyData),
- 		            success: function (party) {
- 						if (party.action == 'CREATE') {
- 							$("#kreirajSporocilo").html("<span class='obvestilo label label-success fade-in'>Uspešno kreiran EHR '" + ehrId + "'.</span>");
- 							console.log("Uspešno kreiran EHR '" + ehrId + "'.");
- 							$("#preberiEHRid").val(ehrId);
- 						}
- 					},
- 		            error: function(err) {
- 		            	$("#kreirajSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
- 		            	console.log(JSON.parse(err.responseText).userMessage);
- 		            }
- 		        });
- 		    }
- 		});
-		dodajMeritveVitalnihZnakov(ehrId, i, sessionId);
- 	}	
- }
+function patients () {
+	generator(0);
+	generator(1);
+	generator(2);
+}
+ 
+function generator (i) {
+	sessionId = getSessionId();
+	var Name    = Array_A [i];
+	var Surname = Array_B [i];
+	var Birth   = Array_C [i];
+	var Gendre  = Array_D [i];
+
+	var ehrId;
+	var predloga = "<option value=\""+ Name + " "+ Surname  + " "+ Birth +"\">" + Name + " "+ Surname + "</option>";
+	$("#predlogaBolnika").html(predloga);
+	$.ajaxSetup({
+	    headers: {"Ehr-Session": sessionId}
+	});
+	$.ajax({
+	    url: baseUrl + "/ehr",
+	    type: 'POST',
+	    success: function (data) {
+	        ehrId = data.ehrId;
+	        id [i] = ehrId;
+			var partyData = {
+		    	firstNames: Name,
+		 	    lastNames: Surname,
+		 	    dateOfBirth: Birth,
+		 	    partyAdditionalInfo: [{key: "ehrId", value: ehrId}]
+		 	};
+		 	$.ajax({
+		 	    url: baseUrl + "/demographics/party",
+		 	    type: 'POST',
+		 	    contentType: 'application/json',
+		 		data: JSON.stringify(partyData),
+		 		success: function (party) {
+		 			if (party.action == 'CREATE') {
+		 				$("#kreirajSporocilo").html("<span class='obvestilo label label-success fade-in'>Uspešno kreiran EHR '" + ehrId + "'.</span>");
+		 				console.log("Uspešno kreiran EHR '" + ehrId + "'.");
+		 				$("#preberiEHRid").val(ehrId);
+		 			}
+		 		},
+		 		error: function(err) {
+		 			$("#kreirajSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+		 		    console.log(JSON.parse(err.responseText).userMessage);
+		 		}
+		 	});
+ 		}
+	});
+	dodajMeritveVitalnihZnakov(ehrId, i, sessionId);
+}
  
 function dodajMeritveVitalnihZnakov(ehrId, i, sessionId) {
 	$("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'> '" + ehrId + "'!");
@@ -140,7 +146,7 @@ function dodajMeritveVitalnihZnakov(ehrId, i, sessionId) {
  }
  
  $(document).ready(function() {
-	/*$('#preberiObstojeciEHR').change(function() {
+	$('#preberiObstojeciEHR').change(function() {
  		$("#preberiSporocilo").html("");
  		$("#preberiEHRid").val($(this).val());
  	});
@@ -168,5 +174,5 @@ function dodajMeritveVitalnihZnakov(ehrId, i, sessionId) {
  		$("#preberiMeritveVitalnihZnakovSporocilo").html("");
  		$("#rezultatMeritveVitalnihZnakov").html("");
  		$("#meritveVitalnihZnakovEHRid").val($(this).val());
-	});*/
+	});
  });
