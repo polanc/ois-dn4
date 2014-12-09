@@ -4,7 +4,7 @@ var queryUrl = baseUrl + '/query';
 var username = "ois.seminar";
 var password = "ois4fri";
  
-var id = {};
+var id = [0, 0, 0];
 var Array_A = ["First", "Second", "Third"];
 var Array_B = ["Patient", "Patient", "Patient"];
 var Array_C = ["1994-07-14T16:16", "1994-08-26T10:30", "1994-10-20T23:50"];
@@ -51,6 +51,13 @@ function generator() {
  		            type: 'POST',
  		            contentType: 'application/json',
  		            data: JSON.stringify(partyData),
+ 		            success: function (party) {
+ 						if (party.action == 'CREATE') {
+ 							$("#kreirajSporocilo").html("<span class='obvestilo label label-success fade-in'>Uspešno kreiran EHR '" + ehrId + "'.</span>");
+ 							console.log("Uspešno kreiran EHR '" + ehrId + "'.");
+ 							$("#preberiEHRid").val(ehrId);
+ 						}
+ 					},
  		            error: function(err) {
  		            	$("#kreirajSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
  		            	console.log(JSON.parse(err.responseText).userMessage);
@@ -58,12 +65,12 @@ function generator() {
  		        });
  		    }
  		});
-		dodajMeritveVitalnihZnakov(ehrId, i);
+		dodajMeritveVitalnihZnakov(ehrId, i, sessionId);
  	}	
  }
  
-function dodajMeritveVitalnihZnakov(ehrId, i) {
-	
+function dodajMeritveVitalnihZnakov(ehrId, i, sessionId) {
+	$("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'> '" + ehrId + "'!");
 	var BirthDate = Array_C [i];
 	BirthDate = BirthDate.split("-");
 	BirthDate = BirthDate.join("-");
@@ -71,7 +78,7 @@ function dodajMeritveVitalnihZnakov(ehrId, i) {
 	var Height = Math.floor((Math.random() * 50) + 150);
 	var Weight = Math.floor((Math.random() * 50) + 50);
 	
-	for(var j = 1; j <= 5; j++){
+	for(var j = 1; j <= 1; j++){
 		BirthDate    = BirthDate.split("-");
 		BirthDate[0] = BirthDate[0] + i;
 		BirthDate    = BirthDate.join("-");
@@ -86,7 +93,7 @@ function dodajMeritveVitalnihZnakov(ehrId, i) {
 		var SysPressure = Math.floor( 90 + (Math.random() * 50));
 		var DysPressure = Math.floor( 60 + (Math.random() * 30));
 		var Oxydation   = Math.floor(100 - (Math.random() * 10));
-		var Commitee    = "Uros Poland [63130192]";
+		var Commitee    = 'Uros Poland [63130192]';
 
 		$.ajaxSetup({
  		    headers: {"Ehr-Session": sessionId}
@@ -114,6 +121,10 @@ function dodajMeritveVitalnihZnakov(ehrId, i) {
  		    type: 'POST',
  		    contentType: 'application/json',
  		    data: JSON.stringify(podatki),
+ 		    success: function (res) {
+		    	console.log(res.meta.href);
+		        $("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-success fade-in'>" + res.meta.href + ".</span>");
+		    },
  		    error: function(err) {
  		    	$("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
  				console.log(JSON.parse(err.responseText).userMessage);
