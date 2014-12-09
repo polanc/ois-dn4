@@ -78,12 +78,18 @@ function dodajMeritveVitalnihZnakov(ehrId, i, sessionId) {
 	var Height = Math.floor((Math.random() * 50) + 150);
 	var Weight = Math.floor((Math.random() * 50) + 50);
 	
-	for(var j = 1; j <= 1; j++){
+	for(var j = 1; j <= 5; j++){
 		BirthDate    = BirthDate.split("-");
 		BirthDate[0] = BirthDate[0] + i;
 		BirthDate    = BirthDate.join("-");
-		var DateAndTime = BirthDate; 
-
+		var DateAndTime = BirthDate;
+		
+		Height = Height + (Math.floor(Math.random() * 2 ));
+		Height = Height - (Math.floor(Math.random() * 2 ));
+		
+		Weight = Weight + (Math.floor(Math.random() * 5 ));
+		Weight = Weight - (Math.floor(Math.random() * 5 ));
+		
 		var plus = Math.floor(Math.random() * 40);
 		var telesnaTemperatura;
 		if(plus > 37)	telesnaTemperatura = (37 + (Math.random() * 4)); // Max: 41
