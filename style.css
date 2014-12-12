@@ -10,3 +10,8 @@ body {
 .style_01 { 
     font-size: 20px; color: #FFFFFF; text-align: center; margin-top: -10px;
 }
+
+#background_01 {
+	height: 30px;
+	background-color: #60948F;
+}
