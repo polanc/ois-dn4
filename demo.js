@@ -75,37 +75,61 @@ function generator (i) {
 function addData(i) {
 	if (ID[i] !== 0){
 		var BirthDate = Array_C[i];
+		BirthDate = BirthDate.split("-");
+		var Year = BirthDate[0];
+		var Period = 2014 - Year;
+		BirthDate = BirthDate.join("-");
 		var Height;
 		var Weight;
 
 		if (Array_D[i] == "Female"){
-			Height = Math.floor((Math.random() * 30) + 155);
-			Weight = Math.floor((Math.random() * 40) + 50);
+			Height = Math.floor((Math.random() * 8) + 50);
+			Weight = Math.floor((Math.random() * 3) + 5);
 		}
 		else {
-			Height = Math.floor((Math.random() * 35) + 165);
-			Weight = Math.floor((Math.random() * 45) + 60);
+			Height = Math.floor((Math.random() * 9) + 60);
+			Weight = Math.floor((Math.random() * 5) + 5);
 		}
 
-		for(var j = 1; j <= 10; j++){
+		for(var j = 1; j <= Period; j++){
 			BirthDate    = BirthDate.split("-");
-			if (j == 1){
-				BirthDate[0] = BirthDate[0] + 6;
-			}
 			BirthDate[0] = BirthDate[0] + i;
 			BirthDate    = BirthDate.join("-");
 			var DateAndTime = BirthDate;
-
-			Height = Height + (Math.floor(Math.random() * 2 ));
-			Height = Height - (Math.floor(Math.random() * 2 ));
-
-			Weight = Weight + (Math.floor(Math.random() * 5 ));
-			Weight = Weight - (Math.floor(Math.random() * 5 ));
+			
+			if (j <= 10) {
+				Height = Height + (Math.floor(Math.random() * 9 ));
+				Height = Height - (Math.floor(Math.random() * 3 ));
+	
+				Weight = Weight + (Math.floor(Math.random() * 10 ));
+				Weight = Weight - (Math.floor(Math.random() * 3 ));
+			}
+			else if (j <= 15) {
+				Height = Height + (Math.floor(Math.random() * 5 ));
+				Height = Height - (Math.floor(Math.random() * 2 ));
+	
+				Weight = Weight + (Math.floor(Math.random() * 5 ));
+				Weight = Weight - (Math.floor(Math.random() * 3 ));
+			}
+			else if (j <= 20) {
+				Height = Height + (Math.floor(Math.random() * 3 ));
+				Height = Height - (Math.floor(Math.random() * 1 ));
+	
+				Weight = Weight + (Math.floor(Math.random() * 5 ));
+				Weight = Weight - (Math.floor(Math.random() * 4 ));
+			}
+			else {
+				Height = Height + (Math.floor(Math.random() * 2 ));
+				Height = Height - (Math.floor(Math.random() * 2 ));
+	
+				Weight = Weight + (Math.floor(Math.random() * 5 ));
+				Weight = Weight - (Math.floor(Math.random() * 5 ));
+			}
 
 			var Temp = Math.floor(Math.random() * 40);
-			var telesnaTemperatura;
-			if(Temp > 37)	telesnaTemperatura = (37 + (Math.random() * 4)); // Max: 41
-			else			telesnaTemperatura = (37 - (Math.random() * 3)); // Min: 34
+			var BodyTemp;
+			if(Temp > 37)	BodyTemp = (37 + (Math.random() * 4)); // Max: 41
+			else			BodyTemp = (37 - (Math.random() * 3)); // Min: 34
 
 			Temp = Math.floor(Math.random() + 1);
 			var SysPressure = Math.floor( 90 + (Math.random() * 50));
@@ -122,7 +146,7 @@ function addData(i) {
 	 		    "ctx/time": DateAndTime,
 	 		    "vital_signs/height_length/any_event/body_height_length": Height,
 	 		    "vital_signs/body_weight/any_event/body_weight": Weight,
-	 		   	"vital_signs/body_temperature/any_event/temperature|magnitude": telesnaTemperatura,
+	 		   	"vital_signs/body_temperature/any_event/temperature|magnitude": BodyTemp,
 	 		    "vital_signs/body_temperature/any_event/temperature|unit": "°C",
 	 		    "vital_signs/blood_pressure/any_event/systolic": SysPressure,
 	 		    "vital_signs/blood_pressure/any_event/diastolic": DysPressure,
