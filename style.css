@@ -18,6 +18,7 @@ progress {
 
 .border_01 {
     border-color : #000000;
+    border-width : 1px;
 }
 
 .style_01 {
