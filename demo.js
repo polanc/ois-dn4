@@ -1,9 +1,9 @@
 var baseUrl = 'https://rest.ehrscape.com/rest/v1';
 var queryUrl = baseUrl + '/query';
- 
+
 var username = "ois.seminar";
 var password = "ois4fri";
- 
+
 var id = [0, 0, 0];
 var Array_A = ["First", "Second", "Third"];
 var Array_B = ["Patient", "Patient", "Patient"];
@@ -27,7 +27,7 @@ function patients () {
 	generator(1);
 	generator(2);
 }
- 
+
 function generator (i) {
 	sessionId = getSessionId();
 	var Name    = Array_A [i];
@@ -74,7 +74,7 @@ function generator (i) {
 	});
 	dodajMeritveVitalnihZnakov(ehrId, i, sessionId);
 }
- 
+
 function dodajMeritveVitalnihZnakov(ehrId, i, sessionId) {
 	$("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'> '" + ehrId + "'!");
 	var BirthDate = Array_C [i];
@@ -83,24 +83,24 @@ function dodajMeritveVitalnihZnakov(ehrId, i, sessionId) {
 
 	var Height = Math.floor((Math.random() * 50) + 150);
 	var Weight = Math.floor((Math.random() * 50) + 50);
-	
+
 	for(var j = 1; j <= 5; j++){
 		BirthDate    = BirthDate.split("-");
 		BirthDate[0] = BirthDate[0] + i;
 		BirthDate    = BirthDate.join("-");
 		var DateAndTime = BirthDate;
-		
+
 		Height = Height + (Math.floor(Math.random() * 2 ));
 		Height = Height - (Math.floor(Math.random() * 2 ));
-		
+
 		Weight = Weight + (Math.floor(Math.random() * 5 ));
 		Weight = Weight - (Math.floor(Math.random() * 5 ));
-		
+
 		var plus = Math.floor(Math.random() * 40);
 		var telesnaTemperatura;
 		if(plus > 37)	telesnaTemperatura = (37 + (Math.random() * 4)); // Max: 41
 		else			telesnaTemperatura = (37 - (Math.random() * 3)); // Min: 34
-		
+
 		plus = Math.floor(Math.random() + 1);
 		var SysPressure = Math.floor( 90 + (Math.random() * 50));
 		var DysPressure = Math.floor( 60 + (Math.random() * 30));
@@ -142,8 +142,8 @@ function dodajMeritveVitalnihZnakov(ehrId, i, sessionId) {
  				console.log(JSON.parse(err.responseText).userMessage);
  		    }
  		});
- 	}
- }
+	}
+}
  
  $(document).ready(function() {
 	$('#preberiObstojeciEHR').change(function() {
