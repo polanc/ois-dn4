@@ -24,21 +24,21 @@
 <!-- Patient - Container - Patient Select -->
 
 			<div class="row">
-			<div class="panel panel-default">
-			<div class="panel-heading", id="background_01">
-				<div class="row">
-					<p class="style_01"> Patient Records </p>
-				</div>
-			</div>
-			<div class="panel-heading">
-				<div class="row">
-					<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="Info"><option value=""></option></select></div>
-					<div class="col-lg-2 col-md-2 col-sm-2">
-						<button type="button" class="btn btn-primary btn-block" onclick="display()"> Show Records </button><span id="patients"></span>
+				<div class="panel panel-default">
+					<div class="panel-heading", id="background_01">
+						<div class="row">
+							<p class="style_01"> Patient Records </p>
+						</div>
+					</div>
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="Info"><option value=""></option></select></div>
+							<div class="col-lg-2 col-md-2 col-sm-2">
+								<button type="button" class="btn btn-primary btn-block" onclick="display()"> Show Records </button><span id="patients"></span>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			</div>
 			</div>
 				
 <!-- Patient - Container - Info -->
@@ -89,87 +89,87 @@
 						</div>
 					</div>
 					<div class="panel-heading">
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							<div class="row" style="min-height: 67px;">
-								<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
-									<p class="style_03"> Birth: </p>
-									<div class="value patient-age-years"></div>
-								</div>
-								<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
-									<p class="style_03"> Weight: </p>
-									<div class="value">
-										<span class="weight-placeholder-value"></span> <span class="weight-placeholder-unit"></span>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="row" style="min-height: 67px;">
+									<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
+										<p class="style_03"> Birth: </p>
+										<div class="value patient-age-years"></div>
 									</div>
-								</div>
-								<div class="col-lg-4 col-md-4 col-sm-4 centered">
-									<p class="style_03"> Height: </p>
-									<div class="value patient-bmi"></div>
-								</div>							
-							</div>
-						</div>							
-					</div>
-					<hr>
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							<div class="row">
-								<div class="col-lg-4 col-md-4 col-sm-4 centered">
-									<p class="style_03"> Blood Pressure: </p>
-									<div class="value last-bp"></div>
-								</div>
-								<div class="col-lg-4 col-md-4 col-sm-4 centered">
-									<div class="Progress">
-										<progress id="progress" value="80" max="200"></progress>
+									<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
+										<p class="style_03"> Weight: </p>
+										<div class="value">
+											<span class="weight-placeholder-value"></span> <span class="weight-placeholder-unit"></span>
+										</div>
 									</div>
-									<p class="style_02"> (Systolic) </p>
+									<div class="col-lg-4 col-md-4 col-sm-4 centered">
+										<p class="style_03"> Height: </p>
+										<div class="value patient-bmi"></div>
+									</div>							
 								</div>
-								<div class="col-lg-4 col-md-4 col-sm-4 centered">
-									<div class="Progress">
-										<progress id="progress" value="160" max="200"></progress>
-									 </div>
-									<p class="style_02"> (Distolic) </p>
+							</div>							
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-4 centered">
+										<p class="style_03"> Blood Pressure: </p>
+										<div class="value last-bp"></div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 centered">
+										<div class="Progress">
+											<progress id="progress" value="80" max="200"></progress>
+										</div>
+										<p class="style_02"> (Systolic) </p>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 centered">
+										<div class="Progress">
+											<progress id="progress" value="160" max="200"></progress>
+										 </div>
+										<p class="style_02"> (Distolic) </p>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<hr>
-					<div class="row">
-						<div class="col-lg-12 col-md-12 col-sm-12">
-							<div class="row">
-								<div class="col-md-4">
-									<p class="style_03"> Oxygen Saturation: </p>
-									<div class="value last-spo2"></div>
-								</div>
-								<div class="col-md-8">
-									<div class="Progress">
-										<progress id="progress" value="190" max="200"></progress>
+						<hr>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="row">
+									<div class="col-md-4">
+										<p class="style_03"> Oxygen Saturation: </p>
+										<div class="value last-spo2"></div>
+									</div>
+									<div class="col-md-8">
+										<div class="Progress">
+											<progress id="progress" value="190" max="200"></progress>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 			</div>
 
 <!-- Patient - Container - Graphs -->
 
 			<div class="row">
-			<div class="panel panel-default">
-			<div class="panel-heading", id="background_01">
-				<div class="row">
-					<p class="style_01"> Graphs </p>
-				</div>
-			</div>
-			<div class="panel-heading">
-				<div class="row">
-					<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="graphs"><option value=""></option></select></div>
-					<div class="col-lg-2 col-md-2 col-sm-2">
-						<button type="button" class="btn btn-primary btn-block" onclick="displayGraphs()"> Show Graph </button><span id="graph-generator"></span>
+				<div class="panel panel-default">
+					<div class="panel-heading", id="background_01">
+						<div class="row">
+							<p class="style_01"> Graphs </p>
+						</div>
+					</div>
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="graphs"><option value=""></option></select></div>
+							<div class="col-lg-2 col-md-2 col-sm-2">
+								<button type="button" class="btn btn-primary btn-block" onclick="displayGraphs()"> Show Graph </button><span id="graph-generator"></span>
+							</div>
+						</div>
 					</div>
 				</div>
-			</div>
-			</div>
 			</div>
 		</div>
 	</body>
