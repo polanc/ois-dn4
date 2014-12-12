@@ -30,9 +30,9 @@ function patients() {
 function generator (i) {
 	sessionId = getSessionId();
 	var Name    = Array_A [i];
-	var Surname = Array_B [i];
-	var Birth   = Array_C [i];
-	var Gendre  = Array_D [i];
+	var Surname = Array_B[i];
+	var Birth   = Array_C[i];
+	var Gendre  = Array_D[i];
 	var ehrId;
 	
 	$.ajaxSetup({
@@ -74,7 +74,7 @@ function generator (i) {
 
 function addData(i) {
 	if (ID[i] !== 0){
-		var BirthDate = Array_C [i];
+		var BirthDate = Array_C[i];
 		var Height;
 		var Weight;
 
@@ -111,7 +111,7 @@ function addData(i) {
 			var SysPressure = Math.floor( 90 + (Math.random() * 50));
 			var DysPressure = Math.floor( 60 + (Math.random() * 30));
 			var Oxydation   = Math.floor(100 - (Math.random() * 10));
-			var Commitee    = 'Uros Poland';
+			var Commitee    = 'Uros Polanc';
 	
 			$.ajaxSetup({
 	 		    headers: {"Ehr-Session": sessionId}
