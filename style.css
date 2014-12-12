@@ -3,5 +3,6 @@ body {
     background: url(background.png);
 	background-attachment: fixed;
 	background-size: 100%;
+	background-color: #337ab7;
 	background-repeat: no-repeat;
 }
