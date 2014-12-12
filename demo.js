@@ -4,8 +4,8 @@ var username = "ois.seminar";
 var password = "ois4fri";
 
 var ID = [0, 0, 0];
-var Array_A = ["First", "Second", "Third"];
-var Array_B = ["Patient", "Patient", "Patient"];
+var Array_A = ["John", "Bash", "Sara"];
+var Array_B = ["Doe", "Queen", "Lance"];
 var Array_C = ["1994-07-14T16:16", "1994-08-26T10:30", "1994-10-20T23:50"];
 var Array_D = ["Male", "Male", "Female"];
 
@@ -74,30 +74,39 @@ function generator (i) {
 function addData(i) {
 	if (ID[i] !== 0){
 		var BirthDate = Array_C [i];
-		BirthDate = BirthDate.split("-");
-		BirthDate = BirthDate.join("-");
-	
-		var Height = Math.floor((Math.random() * 50) + 150);
-		var Weight = Math.floor((Math.random() * 50) + 50);
-	
-		for(var j = 1; j <= 5; j++){
+		var Height;
+		var Weight;
+
+		if (Array_D[i] == "Female"){
+			Height = Math.floor((Math.random() * 30) + 155);
+			Weight = Math.floor((Math.random() * 40) + 50);
+		}
+		else {
+			Height = Math.floor((Math.random() * 35) + 165);
+			Weight = Math.floor((Math.random() * 45) + 60);
+		}
+
+		for(var j = 1; j <= 10; j++){
 			BirthDate    = BirthDate.split("-");
+			if (j == 1){
+				BirthDate[0] = BirthDate[0] + 6;
+			}
 			BirthDate[0] = BirthDate[0] + i;
 			BirthDate    = BirthDate.join("-");
 			var DateAndTime = BirthDate;
-	
+
 			Height = Height + (Math.floor(Math.random() * 2 ));
 			Height = Height - (Math.floor(Math.random() * 2 ));
-	
+
 			Weight = Weight + (Math.floor(Math.random() * 5 ));
 			Weight = Weight - (Math.floor(Math.random() * 5 ));
-	
-			var plus = Math.floor(Math.random() * 40);
+
+			var Temp = Math.floor(Math.random() * 40);
 			var telesnaTemperatura;
-			if(plus > 37)	telesnaTemperatura = (37 + (Math.random() * 4)); // Max: 41
+			if(Temp > 37)	telesnaTemperatura = (37 + (Math.random() * 4)); // Max: 41
 			else			telesnaTemperatura = (37 - (Math.random() * 3)); // Min: 34
-	
-			plus = Math.floor(Math.random() + 1);
+
+			Temp = Math.floor(Math.random() + 1);
 			var SysPressure = Math.floor( 90 + (Math.random() * 50));
 			var DysPressure = Math.floor( 60 + (Math.random() * 30));
 			var Oxydation   = Math.floor(100 - (Math.random() * 10));
