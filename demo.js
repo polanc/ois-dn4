@@ -142,3 +142,39 @@ function addData(i) {
 		}
 	}
 }
+
+function displayInfo (ehrId){
+	sessionId = getSessionId();	
+	$.ajax({
+	    url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
+	    type: 'GET',
+	    headers: {
+	        "Ehr-Session": sessionId
+	    },
+	    success: function (data) {
+	        var party = data.party;
+	        
+	        var patient = "<img src=\"pics/patient.png\" id=\"patient\">";
+			$("#patient").append(patient);
+			
+			var name = "<p class=\"style_04\">" + party.firstNames + ' ' + party.lastNames + "</p>";
+			$("#data").append(name);
+			
+			var birth = party.dateOfBirth.split("T");
+			var date = birth[0];
+			var time = birth[1];
+			time = time.substring(0, 5);
+			birth = "<p class=\"style_02\"><b> Birth: </b><span class=\"style_02\">" + date + ", " + time + "</span></p>";
+			$("#data").append(birth);
+			
+			var gender = "<p class=\"style_02\"><b> Gendre: </b> <span class=\"style_02\">" + party.gender + "</span> </p>";
+			$("#data").append(gender);
+			
+			var nurse = "<img src=\"pics/nurse.png\" id=\"nurse\">";
+			$("#patient").append(nurse);
+		},
+		error: function(err) {
+			return;
+		}
+	});
+}
