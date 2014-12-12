@@ -42,6 +42,12 @@ progress {
     color : #000000;
 }
 
+.style_05 {
+	font-family : 'Cambria';
+    font-size : 14px;
+    color : #2E2E2E;
+}
+
 #background_01 {
 	height : 36px;
 	background-color : #0A9611;
