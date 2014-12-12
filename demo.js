@@ -21,7 +21,7 @@ function getSessionId() {
     return response.responseJSON.sessionId;
 }
 
-function patients () {
+function patients() {
 	generator(0);
 	generator(1);
 	generator(2);
