@@ -13,7 +13,11 @@ progress {
     width: 300px;
     height: 25px;  
     border-radius: 9px;  
-}  
+}
+
+.border {
+    border : black;
+}
 
 .style_01 {
 	font-family: 'Cambria';
