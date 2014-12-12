@@ -94,19 +94,19 @@ function addData(i) {
 			BirthDate[0] = BirthDate[0] + i;
 			BirthDate    = BirthDate.join("-");
 			var DateAndTime = BirthDate;
-			if (j <= 10) {
+			if (j < 10) {
 				Height = Height + (Math.floor(Math.random() * 9 ));
 				Height = Height - (Math.floor(Math.random() * 3 ));
 				Weight = Weight + (Math.floor(Math.random() * 10));
 				Weight = Weight - (Math.floor(Math.random() * 3 ));
 			}
-			else if (j <= 15) {
+			else if (j < 15) {
 				Height = Height + (Math.floor(Math.random() * 5 ));
 				Height = Height - (Math.floor(Math.random() * 2 ));
 				Weight = Weight + (Math.floor(Math.random() * 5 ));
 				Weight = Weight - (Math.floor(Math.random() * 3 ));
 			}
-			else if (j <= 20) {
+			else if (j < 20) {
 				Height = Height + (Math.floor(Math.random() * 3 ));
 				Height = Height - (Math.floor(Math.random() * 1 ));
 				Weight = Weight + (Math.floor(Math.random() * 5 ));
