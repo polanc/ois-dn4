@@ -7,6 +7,10 @@ body {
 	background-repeat: no-repeat;
 }
 
+style {
+	font-family: 'Cambria';
+}
+
 .style_01 { 
     font-size: 20px; color: #FFFFFF; text-align: center; margin-top: -10px;
 }

@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
- 	    <title>EHR=ID63130192</title>
+ 	    <title> EHR [63130192] </title>
  	    <link rel="Icon" href="records.ico"/>
  	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
  	    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +18,7 @@
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<center>
-					      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="patients()">Generat_ Patients</button><span id="patients"></span>
+					      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="patients()">Generate Patients</button><span id="patients"></span>
 					</center>
 				</div>
 			</div>
@@ -29,254 +29,186 @@
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<div class="panel panel-default">
 						<div class="panel-heading", id="background_01">
-							<p class="style_01">Patient_Records</p>
+							<p class="style_01">Patient Records</p>
 						</div>
 					</div>
 				</div>
 			</div>
 
-<!-- Patient Tab -->
+<!-- Patient Select -->
 
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<ul class="nav nav-tabs" id="tabs">
-								<li class="nav active"><a href="#tab-doc" data-toggle="tab">Doctors</a></li>
-						        <li class="nav"><a href="#tab-patA" data-toggle="tab">Patient_1</a></li>
-						        <li class="nav"><a href="#tab-patB" data-toggle="tab">Patient_2</a></li>
-					        	<li class="nav"><a href="#tab-patC" data-toggle="tab">Patient_3</a></li>
-					        </ul>
+							<div class="col-lg-6 col-md-6 col-sm-6"><p class="p1">Choose A Patient, To View His Healthcare Records </p></div>
+							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="patients"><option value=""></option></select></div>
+							<div class="col-lg-2 col-md-2 col-sm-2">
+								<button type="button" class="btn btn-primary btn-block" onclick="display()">Prikaži</button><span id="generator"></span>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 
-<!-- Tab Actions -->
+<!-- Display -->
 
-			<form action="">
-				<div class="tab-content">
-					<div class="col-lg-12 col-md-12 col-sm-12">
+			<div class="col-lg-12 col-md-12 col-sm-12">
 
-<!-- Patient 1 -->
+<!-- Patient -->
 
-						<div class="tab-pane fade" data-continent="" id="tab-patA">
-
-<!-- Patient 1 - Container - Info -->
-
-				            <div class="row">
-				            <div class="panel panel-default">
-							<div class="panel-heading", id="background_01">
-								<div class="row">
-									<p class="style_01">Basic_Info</p>
-								</div>
-							</div>
-							<div class="panel-heading">
-
-	<!-- Patient 1 - Patient Picture -->
-
-						        <div class="col-lg-3 col-md-3 col-sm-3" id="patient-pic"></div>
-
-	<!-- Patient 1 - Basic Info -->
-
-				                <div class="col-lg-6 col-md-6 col-sm-6" id="patient-data"></div>
-
-	<!-- Patient 1 - Nurse Picture -->
-
-				                <div class="col-lg-3 col-md-3 col-sm-3" id="nurse-pic"></div>
-							</div>
-							</div>
-							</div>
-
-<!-- Patient 1 - Container - Doctors -->
-
+		        <div class="row">
+			        <div class="panel panel-default">
+						<div class="panel-heading", id="background_01">
 							<div class="row">
-							<div class="panel panel-default">
-							<div class="panel-heading", id="background_01">
-								<div class="row">
-									<p class="style_01">Doctor</p>
-								</div>
+								<p class="style_01">Basic Info</p>
 							</div>
-							<div class="panel-heading">
-								<div class="Doctor">
-									<span>Doctor:Name</span>
-									
-								</div>
-								<div class="Doctor">
-									<span>Location:Miklosiceva,Ljubljana</span>
-									<button type="button" class="btn btn-primary btn-lg btn-block" onclick="">Show_Map</button><span id="patients"></span>
-								</div>
-							</div>
-							</div>
-							</div>
+						</div>
+						<div class="panel-heading">
 
-<!-- Patient 1 - Container - Stats -->
+	<!-- Patient - Patient Picture -->
 
-				            <div class="row">
-							<div class="panel panel-default">
-							<div class="panel-heading", id="background_01">
-								<div class="row">
-									<p class="style_01">Latest_Stats</p>
-								</div>
-							</div>
-							<div class="panel-heading">
+						<div class="col-lg-3 col-md-3 col-sm-3" id="patient-pic"></div>
 
-	<!-- Patient 1 - Top Row -->
-	
-					        	<div class="row">
-					            	<div class="col-lg-12 col-md-12 col-sm-12">
-					                	<div class="row" style="min-height: 67px;">
-		<!-- Birth -->
-					                    	<div class="col-md-4 bordered centered">
-					                        	<p>Birth:</p>
-					                            <div class="value patient-age-years"></div>
-					                        </div>
-		<!-- Weight -->
-					                        <div class="col-md-4 bordered centered">
-					                        	<p>Weight:</p>
-					                            <div class="value">
-					                            	<span class="weight-placeholder-value"></span> <span class="weight-placeholder-unit"></span>
-					                            </div>
-					                        </div>
-		<!-- Height -->
-					                        <div class="col-md-4 centered">
-					                            <p>Height:</p>
-					                            <div class="value patient-bmi"></div>
-					                        </div>							
-					                    </div>
-					            	</div>							
-								</div>
-					            <hr>
-	
-	<!-- Patient 1 - Mid Row -->
-	
-					            <div class="row">
-					            	<div class="col-lg-12 col-md-12 col-sm-12">
-					                	<div class="row">
-		<!-- Blood Pressure -->
-					                		<div class="col-md-4">
-					                     		<p>Blood_Pressure:</p>
-					                     		<div class="value last-bp"></div>
-					                     	</div>
-					                    	<div class="col-md-4 centered">
-					                        	<div class="Progress">
-							                     	<div class="progress-bar" style="width: 40%;"></div>
-							                    </div>
-							                    <p>(Systolic)</p>
-							                </div>
-							                	<div class="col-md-4 centered">
-							                    	<div class="Progress">
-							                         	<div class="progress-bar" style="width: 60%;"></div>
-							                        </div>
-							                    <p>(Diastolic)</p>
-											</div>
-							            </div>
-							        </div>
-							    </div>
-					       		<hr>
-					                    	
-	<!-- Patient 1 - Bot Row -->
-	
-							    <div class="row">
-							    	<div class="col-lg-12 col-md-12 col-sm-12">
-							        	<div class="row">
-		<!-- Oxygen Saturation -->
-								         	<div class="col-md-4">
-								            	<p>Oxygen_Saturation:</p>
-								                <div class="value last-spo2"></div>
-								            </div>
-								            <div class="col-md-8">
-								              	<div class="Progress">
-								        	    	<div class="progress-bar progress-bar-success bar-spo2"></div>
-								                </div>
-											</div>
-								        </div>
-								    </div>
-								</div>
-							</div>
-							</div>
-							</div>
+	<!-- Patient - Basic Info -->
 
-<!-- Patient 1 - Container - Graphs -->
+				        <div class="col-lg-6 col-md-6 col-sm-6" id="patient-data"></div>
 
+	<!-- Patient - Nurse Picture -->
+
+				        <div class="col-lg-3 col-md-3 col-sm-3" id="nurse-pic"></div>
+					</div>
+				</div>
+
+
+<!-- Patient - Container - Doctors -->
+
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-heading", id="background_01">
 							<div class="row">
-							<div class="panel panel-default">
-							<div class="panel-heading", id="background_01">
-								<div class="row">
-									<p class="style_01">Graphs</p>
-								</div>
+								<p class="style_01"> Doctor </p>
 							</div>
-							<div class="panel-heading">
+						</div>
+						<div class="panel-heading">
+							<div class="Doctor">
+								<span>Doctor: Name</span>
 								
-	<!-- Patient 1 - Graph Tab -->
-	
-								<div class="row">
-									<div class="col-lg-12 col-md-12 col-sm-12">
-										<ul class="nav nav-tabs" id="tabs">
-									        <li class="nav"><a href="#Height" data-toggle="tab">Height</a></li>
-									        <li class="nav"><a href="#Weight" data-toggle="tab">Weight</a></li>
-								        	<li class="nav active"><a href="#BMI" data-toggle="tab">BMI</a></li>
-								        	<li class="nav"><a href="#BloodPressure" data-toggle="tab">Blood_Pressure</a></li>
-									        <li class="nav"><a href="#OxygenSaturation" data-toggle="tab">Oxygen_Saturation</a></li>
-								        </ul>
-									</div>
-								</div>
-								
-	<!-- Patient 1 - Tab Action -->
-	
-								<form action="">
-									<div class="tab-content">
-										<div class="col-lg-12 col-md-12 col-sm-12">
-		<!-- Patient 1 - Graph Height -->
-						 					<div class="tab-pane fade" data-continent="" id="Height">
-						 				   	</div>
-		<!-- Patient 1 - Graph Weight -->
-						 				   	<div class="tab-pane fade" data-continent="" id="Weight">
-						 				   	</div>
-		<!-- Patient 1 - Graph BMI -->
-						 				   	<div class="tab-pane fade in active" data-continent="" id="BMI">
-						 				   	</div>
-		<!-- Patient 1 - Graph Pressure -->
-						 				   	<div class="tab-pane fade" data-continent="" id="BloodPressure">
-						 				   	</div>
-		<!-- Patient 1 - Graph Oxygen -->
-						 				   	<div class="tab-pane fade" data-continent="" id="OxygenSaturation">
-						 				   	</div>
-						 				</div>
-					 				</div>
-					 			</form>
-					 		</div>
 							</div>
-							</div>
-						</div>
-
-<!-- Patient 2 -->
-
-						<div class="tab-pane fade" data-continent="" id="tab-patB">
-						</div>
-
-<!-- Patient 3 -->
-
-						<div class="tab-pane fade" data-continent="" id="tab-patC">
-						</div>
-						
-<!-- Doctors -->
-	
-						<div class="tab-pane fade  in active" data-continent="" id="tab-doc">
-							<div class="row">
-								<div class="panel panel-default">
-									<div class="panel-heading", id="background_01">
-										<p class="style_01">Doctor_List</p>
-									</div>
-									<div class="panel-heading">
-										<div class="row" id="doctor-list"></div>
-									</div>
-								</div>
+							<div class="Doctor">
+								<span>Location: Miklosiceva 15, Ljubljana </span>
+								<button type="button" class="btn btn-primary btn-lg btn-block" onclick=""> Show Map </button><span id="patients"></span>
 							</div>
 						</div>
 					</div>
 				</div>
-			</form>
+
+<!-- Patient - Container - Stats -->
+
+				<div class="row">
+					<div class="panel panel-default">
+						<div class="panel-heading", id="background_01">
+							<div class="row">
+								<p class="style_01"> Latest Stats </p>
+							</div>
+						</div>
+						<div class="panel-heading">
+
+	<!-- Patient - Top Row -->
+	
+					    <div class="row">
+					    	<div class="col-lg-12 col-md-12 col-sm-12">
+					           	<div class="row" style="min-height: 67px;">
+		<!-- Birth -->
+					               	<div class="col-md-4 bordered centered">
+					                   	<p>Birth:</p>
+					                    <div class="value patient-age-years"></div>
+					                </div>
+		<!-- Weight -->
+					                <div class="col-md-4 bordered centered">
+					                 	<p>Weight:</p>
+					                    <div class="value">
+					                   	<span class="weight-placeholder-value"></span> <span class="weight-placeholder-unit"></span>
+					                </div>
+			 				   </div>
+		<!-- Height -->
+					           <div class="col-md-4 centered">
+					        	   <p>Height:</p>
+					               <div class="value patient-bmi"></div>
+					           </div>							
+							</div>
+					    </div>							
+					</div>
+					<hr>
+	
+	<!-- Patient - Mid Row -->
+	
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+					    	<div class="row">
+		<!-- Blood Pressure -->
+					        	<div class="col-md-4">
+					            	<p>Blood_Pressure:</p>
+					                <div class="value last-bp"></div>
+					            </div>
+					            <div class="col-md-4 centered">
+					                <div class="Progress">
+							    		<div class="progress-bar" style="width: 40%;"></div>
+							    	</div>
+							    	<p>(Systolic)</p>
+							    </div>
+							    <div class="col-md-4 centered">
+							    	<div class="Progress">
+							        	<div class="progress-bar" style="width: 60%;"></div>
+							        </div>
+							        <p>(Diastolic)</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<hr>
+					                    	
+	<!-- Patient - Bot Row -->
+	
+					<div class="row">
+					  	<div class="col-lg-12 col-md-12 col-sm-12">
+					       	<div class="row">
+		<!-- Oxygen Saturation -->
+					        	<div class="col-md-4">
+						           	<p>Oxygen_Saturation:</p>
+						            <div class="value last-spo2"></div>
+						        </div>
+						        <div class="col-md-8">
+						           	<div class="Progress">
+						      	    	<div class="progress-bar progress-bar-success bar-spo2"></div>
+						            </div>
+								</div>
+						    </div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!-- Patient - Container - Graphs -->
+
+			<div class="row">
+			<div class="panel panel-default">
+			<div class="panel-heading", id="background_01">
+				<div class="row">
+					<p class="style_01">Graphs</p>
+				</div>
+			</div>
+			<div class="panel-heading">
+								
+	<!-- Patient - Graph Tab -->
+	
+				<div class="row">
+					<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="graphs"><option value=""></option></select></div>
+					<div class="col-lg-2 col-md-2 col-sm-2">
+						<button type="button" class="btn btn-primary btn-block" onclick="displayGraphs()"> Show Graph </button><span id="graph-generator"></span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
