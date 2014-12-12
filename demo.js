@@ -35,7 +35,10 @@ function generator (i) {
 	var Birth   = Array_C [i];
 	var Gendre  = Array_D [i];
 	var ehrId;
-
+	
+	$.ajaxSetup({
+		    headers: {"Ehr-Session": sessionId}
+		});
 	$.ajax({
 	    url: baseUrl + "/ehr",
 	    type: 'POST',
@@ -73,73 +76,74 @@ function generator (i) {
 	dodajMeritveVitalnihZnakov(ehrId, i, sessionId);
 }
 
-function dodajMeritveVitalnihZnakov(ehrId, i, sessionId) {
-	$("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'> '" + ehrId + "'!");
-	var BirthDate = Array_C [i];
-	BirthDate = BirthDate.split("-");
-	BirthDate = BirthDate.join("-");
-
-	var Height = Math.floor((Math.random() * 50) + 150);
-	var Weight = Math.floor((Math.random() * 50) + 50);
-
-	for(var j = 1; j <= 5; j++){
-		BirthDate    = BirthDate.split("-");
-		BirthDate[0] = BirthDate[0] + i;
-		BirthDate    = BirthDate.join("-");
-		var DateAndTime = BirthDate;
-
-		Height = Height + (Math.floor(Math.random() * 2 ));
-		Height = Height - (Math.floor(Math.random() * 2 ));
-
-		Weight = Weight + (Math.floor(Math.random() * 5 ));
-		Weight = Weight - (Math.floor(Math.random() * 5 ));
-
-		var plus = Math.floor(Math.random() * 40);
-		var telesnaTemperatura;
-		if(plus > 37)	telesnaTemperatura = (37 + (Math.random() * 4)); // Max: 41
-		else			telesnaTemperatura = (37 - (Math.random() * 3)); // Min: 34
-
-		plus = Math.floor(Math.random() + 1);
-		var SysPressure = Math.floor( 90 + (Math.random() * 50));
-		var DysPressure = Math.floor( 60 + (Math.random() * 30));
-		var Oxydation   = Math.floor(100 - (Math.random() * 10));
-		var Commitee    = 'Uros Poland';
-
-		$.ajaxSetup({
- 		    headers: {"Ehr-Session": sessionId}
- 		});
- 		var podatki = {
- 		    "ctx/language": "en",
- 		    "ctx/territory": "SI",
- 		    "ctx/time": DateAndTime,
- 		    "vital_signs/height_length/any_event/body_height_length": Height,
- 		    "vital_signs/body_weight/any_event/body_weight": Weight,
- 		   	"vital_signs/body_temperature/any_event/temperature|magnitude": telesnaTemperatura,
- 		    "vital_signs/body_temperature/any_event/temperature|unit": "°C",
- 		    "vital_signs/blood_pressure/any_event/systolic": SysPressure,
- 		    "vital_signs/blood_pressure/any_event/diastolic": DysPressure,
- 		    "vital_signs/indirect_oximetry:0/spo2|numerator": Oxydation
- 		};
- 		var parametriZahteve = {
- 		    "ehrId": ehrId,
- 		    templateId: 'Vital Signs',
- 		    format: 'FLAT',
- 		    committer: Commitee
- 		};
- 		$.ajax({
- 		    url: baseUrl + "/composition?" + $.param(parametriZahteve),
- 		    type: 'POST',
- 		    contentType: 'application/json',
- 		    data: JSON.stringify(podatki),
- 		    success: function (res) {
-		    	console.log(res.meta.href);
-		        $("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-success fade-in'>" + res.meta.href + ".</span>");
-		    },
- 		    error: function(err) {
- 		    	$("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
- 				console.log(JSON.parse(err.responseText).userMessage);
- 		    }
- 		});
+function dodajMeritveVitalnihZnakov(i) {
+	if (ID[i] !== 0){
+		var BirthDate = Array_C [i];
+		BirthDate = BirthDate.split("-");
+		BirthDate = BirthDate.join("-");
+	
+		var Height = Math.floor((Math.random() * 50) + 150);
+		var Weight = Math.floor((Math.random() * 50) + 50);
+	
+		for(var j = 1; j <= 5; j++){
+			BirthDate    = BirthDate.split("-");
+			BirthDate[0] = BirthDate[0] + i;
+			BirthDate    = BirthDate.join("-");
+			var DateAndTime = BirthDate;
+	
+			Height = Height + (Math.floor(Math.random() * 2 ));
+			Height = Height - (Math.floor(Math.random() * 2 ));
+	
+			Weight = Weight + (Math.floor(Math.random() * 5 ));
+			Weight = Weight - (Math.floor(Math.random() * 5 ));
+	
+			var plus = Math.floor(Math.random() * 40);
+			var telesnaTemperatura;
+			if(plus > 37)	telesnaTemperatura = (37 + (Math.random() * 4)); // Max: 41
+			else			telesnaTemperatura = (37 - (Math.random() * 3)); // Min: 34
+	
+			plus = Math.floor(Math.random() + 1);
+			var SysPressure = Math.floor( 90 + (Math.random() * 50));
+			var DysPressure = Math.floor( 60 + (Math.random() * 30));
+			var Oxydation   = Math.floor(100 - (Math.random() * 10));
+			var Commitee    = 'Uros Poland';
+	
+			$.ajaxSetup({
+	 		    headers: {"Ehr-Session": sessionId}
+	 		});
+	 		var podatki = {
+	 		    "ctx/language": "en",
+	 		    "ctx/territory": "SI",
+	 		    "ctx/time": DateAndTime,
+	 		    "vital_signs/height_length/any_event/body_height_length": Height,
+	 		    "vital_signs/body_weight/any_event/body_weight": Weight,
+	 		   	"vital_signs/body_temperature/any_event/temperature|magnitude": telesnaTemperatura,
+	 		    "vital_signs/body_temperature/any_event/temperature|unit": "°C",
+	 		    "vital_signs/blood_pressure/any_event/systolic": SysPressure,
+	 		    "vital_signs/blood_pressure/any_event/diastolic": DysPressure,
+	 		    "vital_signs/indirect_oximetry:0/spo2|numerator": Oxydation
+	 		};
+	 		var parametriZahteve = {
+	 		    "ehrId": ID[i],
+	 		    templateId: 'Vital Signs',
+	 		    format: 'FLAT',
+	 		    committer: Commitee
+	 		};
+	 		$.ajax({
+	 		    url: baseUrl + "/composition?" + $.param(parametriZahteve),
+	 		    type: 'POST',
+	 		    contentType: 'application/json',
+	 		    data: JSON.stringify(podatki),
+	 		    success: function (res) {
+			    	console.log(res.meta.href);
+			        $("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-success fade-in'>" + res.meta.href + ".</span>");
+			    },
+	 		    error: function(err) {
+	 		    	$("#dodajMeritveVitalnihZnakovSporocilo").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+	 				console.log(JSON.parse(err.responseText).userMessage);
+	 		    }
+	 		});
+		}
 	}
 }
  
