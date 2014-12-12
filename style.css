@@ -7,12 +7,19 @@ body {
 	background-repeat: no-repeat;
 }
 
-style {
+.style_01 {
 	font-family: 'Cambria';
+    font-size: 20px; color: #FFFFFF; text-align: center; margin-top: -10px;
 }
 
-.style_01 { 
-    font-size: 20px; color: #FFFFFF; text-align: center; margin-top: -10px;
+.style_02 {
+	font-family: 'Cambria';
+    font-size: 14px; color: #000000; text-align: center; margin-top: -10px;
+}
+
+.style_03 {
+	font-family: 'Cambria';
+    font-size: 16px; color: #000000; text-align: center; margin-top: -10px;
 }
 
 #background_01 {
