@@ -11,7 +11,14 @@
  	<body>
 		<div class="container">
 			<div class="row">
-				<div class="col-lg-4 col-md-4 col-sm-4"><p class="h1"> PATIENT RECORDS </p></div>
+				<div class="col-lg-12 col-md-12 col-sm-12">
+					<center>
+					      <button type="button" class="btn btn-primary btn-lg btn-block" onclick="generator()">Generiraj bolnike</button><span id="generator"></span>
+					</center>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-lg-12 col-md-12 col-sm-12"><p class="h1"> PATIENT RECORDS </p></div>
 			</div>
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12">
@@ -20,7 +27,7 @@
 							<div class="row">
 								<div class="col-lg-4 col-md-4 col-sm-4"><p class="p1"> Select a patient, to view his personal health records </p></div>
 								<ul class="nav nav-tabs" id="tabs">
-					                <li class="nav active"><a href="#pat-A" data-toggle="tab">Patient 1</a></li>
+					                <li class="nav"><a href="#pat-A" data-toggle="tab">Patient 1</a></li>
 					                <li class="nav"><a href="#pat-B" data-toggle="tab">Patient 2</a></li>
 					                <li class="nav"><a href="#pat-C" data-toggle="tab">Patient 3</a></li>
 					            </ul>
@@ -32,106 +39,108 @@
 			</div>
 			<form action="">
 				<div class="tab-content">
-				    <div class="tab-pane fade in active" data-continent="" id="pat-A">
-				    	<div class="display" style="position: relative">
-			                <div class="row">
-			                    <div class="col-md-3">
-			                    	<div class="Patient">
-			                    		<img src="patient-pic.png" alt="Patient Pic" height="128" width="128">
-			                    	</div>
-			                    </div>
-			                    <div class="col-md-6">
-			                        <div class="Info">
-			                            <h4 id="Array_A[0]" + "Array_B[0]"></h4>
-			                            <p>Gender: <span id="Array_D[0]"></span></p>
-			                            <p>DOB: <span class="Array_C[0]"></span></p>
-			                            <p>Address: <span> Unknown </span></p>
-			                        </div>
-			                    </div>
-			                    <div class="col-md-3">
-			                        <div class="ver-spacer left">
-			                            <div class="mask"></div>
-			                        </div>
-			                        <div class="Nurse">
-			                            <p>Nurse:</p>
-			                            <img src="nurse-pic.png" alt="Nurse Pic" height="128" width="128">
-			                        </div>
-			                    </div>
-			                </div>
-			                <div class="Stats" style="position: relative">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+					    <div class="tab-pane fade" data-continent="" id="pat-A">
+					    	<div class="container">
 				                <div class="row">
-				                    <div class="col-md-8 bordered">
-				                        <div class="row" style="min-height: 67px;">
-				                            <div class="col-md-4 bordered centered">
-				                                <p>DOB:</p>
-				                                <div class="value patient-age-years"></div>
-				                            </div>
-				                            <div class="col-md-4 bordered centered">
-				                                <p>Weight:</p>
-				                                <div class="value">
-				                                    <span class="weight-placeholder-value"></span> <span class="weight-placeholder-unit"></span>
-				                                </div>
-				                            </div>
-				                            <div class="col-md-4 centered">
-				                                <p>BMI:</p>
-				                                <div class="value patient-bmi"></div>
-				                            </div>							
-				                        </div>
-				                        <hr>
-				                        <div class="row">
-				                            <div class="col-md-12">
-				                                <div class="row">
-				                                    <div class="col-md-4">
-				                                            <p>Blood Pressure:</p>
-				                                            <div class="value last-bp"></div>
-				                                    </div>
-				                                    <div class="col-md-4 centered">
-				                                        <div class="Progress">
-				                                            <div class="progress-bar" style="width: 40%;"></div>
-				                                        </div>
-				                                        <p>(Systolic)</p>
-				                                    </div>
-				                                    <div class="col-md-4 centered">
-				                                        <div class="Progress">
-				                                            <div class="progress-bar" style="width: 60%;"></div>
-				                                        </div>
-				                                        <p>(Diastolic)</p>
-				                                    </div>
-				                                </div>
-				                            </div>
-				                        </div>
-				                        <hr>
-				                        <div class="row">
-				                            <div class="col-md-12">
-				                                <div class="row">
-				                                    <div class="col-md-4">
-				                                            <p>Oxygen Saturation:</p>
-				                                            <div class="value last-spo2"></div>
-				                                    </div>
-				                                    <div class="col-md-8">
-				                                        <div class="Progress">
-				                                            <div class="progress-bar progress-bar-success bar-spo2"></div>
-				                                        </div>
-				                                    </div>
-				                                </div>
-				                            </div>
+				                    <div class="col-md-3">
+				                    	<div class="Patient">
+				                    		<img src="patient-pic.png" alt="Patient Pic" height="128" width="128">
+				                    	</div>
+				                    </div>
+				                    <div class="col-md-3">
+				                        <div class="Info">
+				                            <h4 id=Array_A[0]+Array_B[0]></h4>
+				                            <p>Gender: <span id=Array_D[0]></span></p>
+				                            <p>DOB: <span class=Array_C[0]></span></p>
+				                            <p>Address: <span> Unknown </span></p>
 				                        </div>
 				                    </div>
-				                    <div class="col-md-4">
-				                        <div class="Height">
-				                            <p>Height:</p>
-				                            <div class="value">
-				                            <span class="height-placeholder-value"></span> <span class="height-placeholder-unit"></span>
-				                         </div>
+				                    <div class="col-md-3">
+				                        <div class="ver-spacer left">
+				                            <div class="mask"></div>
+				                        </div>
+				                        <div class="Nurse">
+				                            <p>Nurse:</p>
+				                            <img src="nurse-pic.png" alt="Nurse Pic" height="128" width="128">
+				                        </div>
 				                    </div>
 				                </div>
+				                <div class="Stats">
+					                <div class="row">
+					                    <div class="col-md-8 bordered">
+					                        <div class="row" style="min-height: 67px;">
+					                            <div class="col-md-4 bordered centered">
+					                                <p>DOB:</p>
+					                                <div class="value patient-age-years"></div>
+					                            </div>
+					                            <div class="col-md-4 bordered centered">
+					                                <p>Weight:</p>
+					                                <div class="value">
+					                                    <span class="weight-placeholder-value"></span> <span class="weight-placeholder-unit"></span>
+					                                </div>
+					                            </div>
+					                            <div class="col-md-4 centered">
+					                                <p>BMI:</p>
+					                                <div class="value patient-bmi"></div>
+					                            </div>							
+					                        </div>
+					                        <hr>
+					                        <div class="row">
+					                            <div class="col-md-12">
+					                                <div class="row">
+					                                    <div class="col-md-4">
+					                                            <p>Blood Pressure:</p>
+					                                            <div class="value last-bp"></div>
+					                                    </div>
+					                                    <div class="col-md-4 centered">
+					                                        <div class="Progress">
+					                                            <div class="progress-bar" style="width: 40%;"></div>
+					                                        </div>
+					                                        <p>(Systolic)</p>
+					                                    </div>
+					                                    <div class="col-md-4 centered">
+					                                        <div class="Progress">
+					                                            <div class="progress-bar" style="width: 60%;"></div>
+					                                        </div>
+					                                        <p>(Diastolic)</p>
+					                                    </div>
+					                                </div>
+					                            </div>
+					                        </div>
+					                        <hr>
+					                        <div class="row">
+					                            <div class="col-md-12">
+					                                <div class="row">
+					                                    <div class="col-md-4">
+					                                            <p>Oxygen Saturation:</p>
+					                                            <div class="value last-spo2"></div>
+					                                    </div>
+					                                    <div class="col-md-8">
+					                                        <div class="Progress">
+					                                            <div class="progress-bar progress-bar-success bar-spo2"></div>
+					                                        </div>
+					                                    </div>
+					                                </div>
+					                            </div>
+					                        </div>
+					                    </div>
+					                    <div class="col-md-4">
+					                        <div class="Height">
+					                            <p>Height:</p>
+					                            <div class="value">
+					                            <span class="height-placeholder-value"></span> <span class="height-placeholder-unit"></span>
+					                         </div>
+					                    </div>
+					                </div>
+					            </div>
 				            </div>
-			            </div>
-				    </div>
-				    <div class="tab-pane fade" data-continent="" id="pat-B">
-				    </div>
-				    <div class="tab-pane fade" data-continent="" id="pat-C">
-				    </div>
+					    </div>
+					    <div class="tab-pane fade" data-continent="" id="pat-B">
+					    </div>
+					    <div class="tab-pane fade" data-continent="" id="pat-C">
+					    </div>
+					</div>
 				</div>
 			</form>
 		</div>
