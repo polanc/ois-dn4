@@ -6,3 +6,7 @@ body {
 	background-color: #337ab7;
 	background-repeat: no-repeat;
 }
+
+.style_01 { 
+    font-size: 20px; color: #FFFFFF; text-align: center; margin-top: -10px;
+}
