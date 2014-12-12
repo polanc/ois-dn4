@@ -15,8 +15,8 @@ progress {
     border-radius: 9px;  
 }
 
-.border {
-    border : black;
+.border_01 {
+    border-color : #000000;
 }
 
 .style_01 {
