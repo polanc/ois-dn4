@@ -6,7 +6,7 @@ var password = "ois4fri";
 var ID = [0, 0, 0];
 var Array_A = ["John", "Bash", "Sara"];
 var Array_B = ["Doe", "Queen", "Lance"];
-var Array_C = ["1994-07-14T16:16", "1994-08-26T10:30", "1994-10-20T23:50"];
+var Array_C = ["1994-07-14T16:10", "1994-08-26T10:30", "1994-10-20T23:50"];
 var Array_D = ["Male", "Male", "Female"];
 
 var sessionId;
@@ -58,9 +58,10 @@ function generator (i) {
 		        data: JSON.stringify(partyData),
 		        success: function (party) {
 		 			if (party.action == 'CREATE') {
-		                    var Patient_List = "<option class=\"Patient_List\" value=\""+ ID[i] +"\">" + Name + " " + Surname + "</option>";
-							$("#list").append(Patient_List);
-							addData(i);
+		                    var Info = "<option class=\"Info\" value=\"" + ID[i] + "\">" + Name + " " + Surname + "</option>";
+							console.log(Info);
+							$("#Info").append(Info);
+
 		                }
 		            },
 		            error: function(err) {
