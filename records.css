@@ -76,16 +76,23 @@ hr {
 
 .orange > span {
 	background-color: #f1a165;
-	background-image: -moz-linear-gradient(top, #f1a165, #f36d0a);
-	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f1a165),color-stop(1, #f36d0a));
-	background-image: -webkit-linear-gradient(#f1a165, #f36d0a); 
+	background-image: -moz-linear-gradient(top, #F1A165, #F36D0A);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f1a165),color-stop(1, #F36D0A));
+	background-image: -webkit-linear-gradient(#F1A165, #F36D0A); 
 }
 		
 .red > span {
 	background-color: #f0a3a3;
-	background-image: -moz-linear-gradient(top, #f0a3a3, #f42323);
-	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #f0a3a3),color-stop(1, #f42323));
-	background-image: -webkit-linear-gradient(#f0a3a3, #f42323);
+	background-image: -moz-linear-gradient(top, #F0A3A3, #F42323);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #F0A3A3),color-stop(1, #F42323));
+	background-image: -webkit-linear-gradient(#F0A3A3, #F42323);
+}
+
+.blue > span {
+	background-color: #7195B3;
+	background-image: -moz-linear-gradient(top, #7195B3, #4682B4);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #7195B3),color-stop(1, #4682B4));
+	background-image: -webkit-linear-gradient(#7195B3, #4682B4);
 }
 
 .style_01 {
