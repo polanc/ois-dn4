@@ -90,7 +90,15 @@ progress {
     text-decoration : none;
     font-weight : bold;
     font-size : 24px;
-    color : #004415;
+}
+
+#hmenu ul a:active{ 
+   margin: 0;
+   padding: .3em .4em .3em .4em;
+   text-decoration: none;
+   font-weight: bold;
+   font-size: 26px;
+   color: #227755;
 }
 
 #navigation ul a:hover{
