@@ -1,6 +1,6 @@
 body {
     margin : 0;
-    background : url(pics/background.png);
+    background : url(pics/welcome.jpg);
 	background-attachment : fixed;
 	background-size : 100%;
 	background-repeat : no-repeat;
@@ -36,6 +36,36 @@ body {
 	font-family : 'Cambria';
     font-size : 14px;
     color : #2E2E2E;
+}
+
+#load {
+    margin-top: 25px;
+    font-size: 21px;
+    text-align: center;
+    -webkit-animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    -o-animation: fadein 2s;
+    animation: fadein 2s;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 #navbar {
