@@ -1,0 +1,49 @@
+body {
+    margin : 0;
+    background : url(pics/background.png);
+	background-attachment : fixed;
+	background-size : 100%;
+	background-repeat : no-repeat;
+}
+
+.style_01 {
+	font-family : 'Cambria';
+    font-size : 24px;
+    color : #FFFFFF;
+    text-align : center;
+    margin-top : -10px;
+}
+
+.style_02 {
+	font-family : 'Cambria';
+    font-size : 16px;
+    color : #000000;
+}
+
+.style_03 {
+	font-family : 'Cambria';
+    font-size : 18px;
+    color : #000000;
+}
+
+.style_04 {
+	font-family : 'Cambria';
+    font-size : 20px;
+    color : #000000;
+}
+
+.style_05 {
+	font-family : 'Cambria';
+    font-size : 14px;
+    color : #2E2E2E;
+}
+
+#navbar {
+    padding-top : 10px;
+    padding-bottom : 10px;
+}
+
+#background_01 {
+	height : 36px;
+	background-color : #0A9611;
+}
