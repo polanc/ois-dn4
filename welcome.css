@@ -40,9 +40,11 @@ body {
 
 .style_06 {
 	font-family : 'Cambria';
-    font-size : 12px;
+    font-size : 14px;
+    font-weight : bold;
     color : #000000;
     text-align : center;
+    text-shadow : white;
 }
 
 #load {
@@ -127,7 +129,8 @@ body {
 
 #footer {
    position : absolute;
-   bottom : 0;
-   width : 100%;
-   height : 20px;
+   bottom : 5px;
+   right : 5px;
+   width : 100px;
+   height : 30px;
 }
