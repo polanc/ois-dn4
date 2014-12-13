@@ -4,9 +4,9 @@ var username = "ois.seminar";
 var password = "ois4fri";
 
 var ID = [0, 0, 0];
-var Array_A = ["John", "Bash", "Sara"];
-var Array_B = ["Doe", "Queen", "Lance"];
-var Array_C = ["1994-07-14T16:10", "1994-08-26T10:30", "1994-10-20T23:50"];
+var Array_A = ["Nick", "Abraham", "Thea"];
+var Array_B = ["Burkhardt", "Setrakian", "Queen"];
+var Array_C = ["1982-06-18T16:10", "1926-08-26T10:30", "1995-01-21T23:50"];
 var Array_D = ["Male", "Male", "Female"];
 
 var sessionId;
@@ -29,9 +29,9 @@ function patients () {
 function generator (i) {
 	sessionId = getSessionId();
 	var Name    = Array_A [i];
-	var Surname = Array_B[i];
-	var Birth   = Array_C[i];
-	var Gendre  = Array_D[i];
+	var Surname = Array_B [i];
+	var Birth   = Array_C [i];
+	var Gendre  = Array_D [i];
 	var ehrId;
 		
 	$.ajaxSetup({
@@ -55,14 +55,15 @@ function generator (i) {
 				type: 'POST',
 				contentType: 'application/json',
 				data: JSON.stringify(partyData),
-				success: function (party) {
+				success: function (data) {
+					var party = party.data;
 					if (party.action == 'CREATE') {
-						var Info = "<option class=\"Info\" value=\"" + ID[i] + "\">" + Name + " " + Surname + "</option>";
+						var Info = "<option class=\"Info\" value=\"" + ID [i] + "\">" + Name + " " + Surname + "</option>";
 						$("#Info").append(Info);
 					}
 				},
 				error: function(err) {
-					$("#createMessege").html("<span class='message label label-danger fade-in'>Error '" + JSON.parse(err.responseText).userMessage + "'!");
+					$("#Info").html("<span class='message label label-danger fade-in'>Error '" + JSON.parse(err.responseText).userMessage + "'!");
 				}
 			});
 		}
@@ -71,7 +72,7 @@ function generator (i) {
 
 function addData(i) {
 	if (ID[i] !== 0){
-		var BirthDate = Array_C[i];
+		var BirthDate = Array_C [i];
 		BirthDate = BirthDate.split("-");
 		var Year = BirthDate[0];
 		var Period = 2014 - Year;
@@ -89,10 +90,11 @@ function addData(i) {
 		}
 			
 		for(var j = 1; j <= Period; j++){
-			BirthDate    = BirthDate.split("-");
-			BirthDate[0] = BirthDate[0] + i;
-			BirthDate    = BirthDate.join("-");
+			BirthDate     = BirthDate.split("-");
+			BirthDate [0] = BirthDate[0] + i;
+			BirthDate     = BirthDate.join("-");
 			var DateAndTime = BirthDate;
+				
 			if (j < 10) {
 				Height = Height + (Math.floor(Math.random() * 9 ));
 				Height = Height - (Math.floor(Math.random() * 3 ));
