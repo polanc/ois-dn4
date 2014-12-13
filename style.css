@@ -59,13 +59,10 @@ hr {
 }
 
 #load {
-    margin-top: 25px;
-    font-size: 21px;
-    text-align: center;
-    -webkit-animation: fadein 2s;
-    -moz-animation: fadein 2s;
-    -o-animation: fadein 2s;
-    animation: fadein 2s;
+    -webkit-animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    -o-animation: fadein 1s;
+    animation: fadein 1s;
 }
 
 @keyframes fadein {
