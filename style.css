@@ -72,28 +72,26 @@ progress {
    background : #DDEEBB; 
    width : 100%; 
    text-align : center;
-   padding-top : 1px;
-   padding-bottom : 10px;
 } 
 
 #navigation ul { 
-   list-style: none; 
-   margin: 0; 
-   padding: 0; 
+   list-style : none; 
+   margin : 0; 
+   padding-bottom : 10px; 
 } 
 
 #navigation ul li { 
-   padding: 0; 
-   display: inline; 
+   padding : 0; 
+   display : inline; 
 } 
 
 #navigation ul a:link{ 
-   margin: 0; 
-   padding: .3em .4em .3em .4em; 
-   text-decoration: none; 
-   font-weight: bold; 
-   font-size: 20px; 
-   color: #004415; 
+   margin : 0; 
+   padding : .3em .4em .3em .4em; 
+   text-decoration : none; 
+   font-weight : bold; 
+   font-size : 20px; 
+   color : #004415; 
 } 
 
 #navigation ul a:active{ 
