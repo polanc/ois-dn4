@@ -67,25 +67,25 @@ progress {
   left: -300em; 
 } 
 
-#hmenu { 
+#navigation { 
    margin: 0; 
    background: #ddeebb; 
    width: 100%; 
    text-align: center; 
 } 
 
-#hmenu ul { 
+#navigation ul { 
    list-style: none; 
    margin: 0; 
    padding: 0; 
 } 
 
-#hmenu ul li { 
+#navigation ul li { 
    padding: 0; 
    display: inline; 
 } 
 
-#hmenu ul a:link{ 
+#navigation ul a:link{ 
    margin: 0; 
    padding: .3em .4em .3em .4em; 
    text-decoration: none; 
@@ -94,14 +94,14 @@ progress {
    color: #004415; 
 } 
 
-#hmenu ul a:visited{ 
+#navigation ul a:visited{ 
    padding: .3em .4em .3em .4em; 
    font-weight: bold; 
    font-size: 20px; 
    color: #227755; 
 } 
 
-#hmenu ul a:active{ 
+#navigation ul a:active{ 
    margin: 0; 
    padding: .3em .4em .3em .4em; 
    font-weight: bold; 
@@ -109,7 +109,7 @@ progress {
    color: #227755; 
 } 
 
-#hmenu ul a:hover{ 
+#navigation ul a:hover{ 
    margin: 0; 
    font-weight: bold; 
    font-size: 20px; 
