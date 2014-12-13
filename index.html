@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<title> EHR [63130192] </title>
+		<link rel="Icon" href="pics/records.ico"/>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<script src="demo.js"></script>
+		<link rel="StyleSheet" type="text/css" href="css/style.css" />
+	</head>
+	<body>
+
+<!-- Patient - Container - Generate -->
+
+		<div class="container">
+			<div class="row" id="navbar">
+				<div id="navigation"> 
+				<ul> 
+					<li><a href="html/welcome.html">  Welcome  </a></li>
+					<li><a href="html/index.html">  Records  </a></li> 
+					<li><a href="html/doctors.html">  Doctors  </a></li> 
+				</ul>   
+				</div>
+			</div>
+			<div class="row">
+				<center>
+					<button type="button" class="btn btn-primary btn-lg btn-block" onclick="patients()"> Generate Patients </button>
+				</center>
+			</div>
+
+<!-- Patient - Container - Patient Select -->
+
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading", id="background_01">
+						<div class="row">
+							<p class="style_01"> Patient Records </p>
+						</div>
+					</div>
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="Info"><option value=""></option></select></div>
+							<div class="col-lg-2 col-md-2 col-sm-2">
+								<button type="button" class="btn btn-primary btn-block" onclick="displayInfo()"> Show Records </button><span id="patients"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+				
+<!-- Patient - Container - Info -->
+				
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading", id="background_01">
+						<div class="row">
+							<p class="style_01"> Basic Info </p>
+						</div>
+					</div>
+					<div class="panel-heading">
+						<div class="col-lg-3 col-md-3 col-sm-3" id="patient"></div>
+						<div class="col-lg-6 col-md-6 col-sm-6" id="data"></div>
+						<div class="col-lg-3 col-md-3 col-sm-3" id="nurse"></div>
+					</div>
+				</div>
+			</div>
+
+<!-- Patient - Container - Doctors -->
+
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading", id="background_01">
+						<div class="row">
+							<p class="style_01"> Doctor </p>
+						</div>
+					</div>
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-lg-6 col-md-6 col-sm-6">
+								<p class="style_02"> Name: </p>
+								<p class="style_03" id="doc_name"></p>
+							</div>
+							<div class="col-lg-6 col-md-6 col-sm-6">
+								<p class="style_02"> Location: </p>
+								<p class="style_03" id="doc_loca"></p>
+							</div>
+						</div>
+						<div class="row">
+							<button type="button" class="btn btn-primary btn-lg btn-block" onclick=""> Show Map </button><span id="patients"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!-- Patient - Container - Stats -->
+
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading", id="background_01">
+						<div class="row">
+							<p class="style_01"> Latest Stats </p>
+						</div>
+					</div>
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="row" style="min-height: 67px;">
+									<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
+										<p class="style_03"> Birth: </p>
+										<div class="value patient-age-years"></div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
+										<p class="style_03"> Weight: </p>
+										<div class="value patient-weight"></div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 centered">
+										<p class="style_03"> Body Mass Index: </p>
+										<div class="value patient-bmi"></div>
+									</div>							
+								</div>
+							</div>							
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="row">
+									<div class="col-lg-4 col-md-4 col-sm-4 centered">
+										<p class="style_03"> Blood Pressure: </p>
+										<div class="value last-bp"></div>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 centered">
+										<div class="Progress">
+											<progress id="progress" value="80" max="200"></progress>
+										</div>
+										<p class="style_05"> (Systolic) </p>
+									</div>
+									<div class="col-lg-4 col-md-4 col-sm-4 centered">
+										<div class="Progress">
+											<progress id="progress" value="160" max="200"></progress>
+										 </div>
+										<p class="style_05"> (Distolic) </p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr>
+						<div class="row">
+							<div class="col-lg-12 col-md-12 col-sm-12">
+								<div class="row">
+									<div class="col-md-4">
+										<p class="style_03"> Oxygen Saturation: </p>
+										<div class="value last-spo2"></div>
+									</div>
+									<div class="col-md-8">
+										<div class="Progress">
+											<progress id="progress" value="190" max="200"></progress>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+<!-- Patient - Container - Graphs -->
+
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading", id="background_01">
+						<div class="row">
+							<p class="style_01"> Graphs </p>
+						</div>
+					</div>
+					<div class="panel-heading">
+						<div class="row">
+							<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="graphs"><option value=""></option></select></div>
+							<div class="col-lg-2 col-md-2 col-sm-2">
+								<button type="button" class="btn btn-primary btn-block" onclick="displayGraphs()"> Show Graph </button><span id="graph-generator"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
