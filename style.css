@@ -1,5 +1,4 @@
 body {
-    padding : 10px;
     margin : 0;
     background : url(pics/background.png);
 	background-attachment : fixed;
@@ -60,4 +59,60 @@ progress {
 #nurse {
 	padding : 0;
 	margin : 0;
+}
+
+.offscreen { 
+  position: absolute; 
+  top: -30em; 
+  left: -300em; 
+} 
+
+#hmenu { 
+   margin: 0; 
+   background: #ddeebb; 
+   width: 100%; 
+   text-align: center; 
+} 
+
+#hmenu ul { 
+   list-style: none; 
+   margin: 0; 
+   padding: 0; 
+} 
+
+#hmenu ul li { 
+   padding: 0; 
+   display: inline; 
+} 
+
+#hmenu ul a:link{ 
+   margin: 0; 
+   padding: .3em .4em .3em .4em; 
+   text-decoration: none; 
+   font-weight: bold; 
+   font-size: 20px; 
+   color: #004415; 
+} 
+
+#hmenu ul a:visited{ 
+   padding: .3em .4em .3em .4em; 
+   font-weight: bold; 
+   font-size: 20px; 
+   color: #227755; 
+} 
+
+#hmenu ul a:active{ 
+   margin: 0; 
+   padding: .3em .4em .3em .4em; 
+   font-weight: bold; 
+   font-size: 20px; 
+   color: #227755; 
+} 
+
+#hmenu ul a:hover{ 
+   margin: 0; 
+   font-weight: bold; 
+   font-size: 20px; 
+   color: #f6f0cc; 
+   background-color: #227755; 
 }
