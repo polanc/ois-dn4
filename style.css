@@ -68,10 +68,12 @@ progress {
 } 
 
 #navigation { 
-   margin: 0; 
-   background: #ddeebb; 
-   width: 100%; 
-   text-align: center; 
+   margin : 0; 
+   background : #DDEEBB; 
+   width : 100%; 
+   text-align : center;
+   padding-top : 1px;
+   padding-bottom : 10px;
 } 
 
 #navigation ul { 
@@ -94,13 +96,6 @@ progress {
    color: #004415; 
 } 
 
-#navigation ul a:visited{ 
-   padding: .3em .4em .3em .4em; 
-   font-weight: bold; 
-   font-size: 20px; 
-   color: #227755; 
-} 
-
 #navigation ul a:active{ 
    margin: 0; 
    padding: .3em .4em .3em .4em; 
@@ -113,6 +108,6 @@ progress {
    margin: 0; 
    font-weight: bold; 
    font-size: 20px; 
-   color: #f6f0cc; 
+   color: #F6F0CC; 
    background-color: #227755; 
 }
