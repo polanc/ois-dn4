@@ -103,6 +103,7 @@ hr {
 	-webkit-background-size: 50px 50px;
 	-moz-background-size: 50px 50px;
 	-webkit-animation: move 2s linear infinite;
+	-moz-animation: move 2s linear infinite;
 	-webkit-border-top-right-radius: 8px;
 	-webkit-border-bottom-right-radius: 8px;
 	-moz-border-radius-topright: 8px;
@@ -120,6 +121,11 @@ hr {
 
 .animate > span:after {
 	display: none;
+}
+
+.meter > span:after, .animate > span > span {
+    -webkit-animation: move 2s linear infinite;
+    -moz-animation: move 2s linear infinite;
 }
 
 @-webkit-keyframes move {
