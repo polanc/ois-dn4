@@ -83,11 +83,13 @@ body {
 #background_01 {
 	height : 36px;
 	background-color : #0A9611;
+	border-width : 1px;
+    border-color : #000000;
 }
 
 #navigation {
     margin : 0;
-    background : gray;
+    background : #A4A4A4;
     width : 100%;
     text-align : center;
 }
