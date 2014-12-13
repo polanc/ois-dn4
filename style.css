@@ -82,7 +82,7 @@ progress {
 
 #navigation ul li {
     padding : 0;
-    display : block;
+    display : inline-block;
 }
 
 #navigation ul a:link{
