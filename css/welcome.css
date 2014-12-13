@@ -6,44 +6,12 @@ body {
 	background-repeat : no-repeat;
 }
 
-progress {  
-    background-color : #0000FF;
-    border: 0 ;
-    width : 300px;
-    height : 25px;  
-    border-radius : 10px;  
-}
-
 .style_01 {
 	font-family : 'Cambria';
     font-size : 24px;
     color : #FFFFFF;
     text-align : center;
     margin-top : -10px;
-}
-
-.style_02 {
-	font-family : 'Cambria';
-    font-size : 16px;
-    color : #000000;
-}
-
-.style_03 {
-	font-family : 'Cambria';
-    font-size : 18px;
-    color : #000000;
-}
-
-.style_04 {
-	font-family : 'Cambria';
-    font-size : 20px;
-    color : #000000;
-}
-
-.style_05 {
-	font-family : 'Cambria';
-    font-size : 14px;
-    color : #2E2E2E;
 }
 
 #navbar {
@@ -54,16 +22,6 @@ progress {
 #background_01 {
 	height : 36px;
 	background-color : #0A9611;
-}
-
-#patient {
-	padding : 0;
-	margin : 0;
-}
-
-#nurse {
-	padding : 0;
-	margin : 0;
 }
 
 #navigation {
@@ -92,7 +50,7 @@ progress {
     font-size : 24px;
 }
 
-#hmenu ul a:active{ 
+#navigation ul a:active{ 
    margin: 0;
    padding: .3em .4em .3em .4em;
    text-decoration: none;
