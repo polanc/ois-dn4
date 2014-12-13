@@ -46,6 +46,13 @@ progress {
     color : #2E2E2E;
 }
 
+.style_06 {
+	font-family : 'Cambria';
+    font-size : 22px;
+    color : #000000;
+    text-align : center;
+}
+
 #navbar {
     padding-top : 10px;
     padding-bottom : 10px;
