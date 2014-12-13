@@ -6,14 +6,6 @@ body {
 	background-repeat : no-repeat;
 }
 
-progress {
-    background-color : #0000FF;
-    border: 0 ;
-    width : 300px;
-    height : 25px;
-    border-radius : 10px;
-}
-
 hr {
     background-color : #A4A4A4;
     border-color : #A4A4A4;
@@ -34,18 +26,18 @@ hr {
 .meter > span {
 	display: block;
 	height: 100%;
-	-webkit-border-top-right-radius     :  8px;
-	-webkit-border-bottom-right-radius  :  8px;
-	-moz-border-radius-topright         :  8px;
-	-moz-border-radius-bottomright      :  8px;
-	border-top-right-radius             :  8px;
-	border-bottom-right-radius          :  8px;
-	-webkit-border-top-left-radius      : 20px;
-	-webkit-border-bottom-left-radius   : 20px;
-	-moz-border-radius-topleft          : 20px;
-	-moz-border-radius-bottomleft       : 20px;
-	border-top-left-radius              : 20px;
-	border-bottom-left-radius           : 20px;
+	-webkit-border-top-right-radius : 8px;
+	-webkit-border-bottom-right-radius : 8px;
+	-moz-border-radius-topright : 8px;
+	-moz-border-radius-bottomright : 8px;
+	border-top-right-radius : 8px;
+	border-bottom-right-radius : 8px;
+	-webkit-border-top-left-radius : 20px;
+	-webkit-border-bottom-left-radius : 20px;
+	-moz-border-radius-topleft : 20px;
+	-moz-border-radius-bottomleft : 20px;
+	border-top-left-radius : 20px;
+	border-bottom-left-radius : 20px;
 	background-color: rgb(43,194,83);
 	background-image: -webkit-gradient(
 	  linear,
@@ -74,11 +66,11 @@ hr {
 	  rgb(43,194,83) 37%,
 	  rgb(84,240,84) 69%
 	 );
-	-webkit-box-shadow: 
-	  inset 0 2px 9px  rgba(255,255,255,0.3),
+	-webkit-box-shadow:
+	  inset 0 2px 9px rgba(255,255,255,0.3),
 	  inset 0 -2px 6px rgba(0,0,0,0.4);
-	-moz-box-shadow: 
-	  inset 0 2px 9px  rgba(255,255,255,0.3),
+	-moz-box-shadow:
+	  inset 0 2px 9px rgba(255,255,255,0.3),
 	  inset 0 -2px 6px rgba(0,0,0,0.4);
 	position: relative;
 	overflow: hidden;
@@ -160,11 +152,6 @@ hr {
     to   { opacity: 1; }
 }
 
-#navbar {
-    padding-top : 5px;
-    padding-bottom : 10px;
-}
-
 #background_01 {
 	height : 36px;
 	background-color : #0A9611;
@@ -178,6 +165,11 @@ hr {
 #nurse {
 	padding : 0;
 	margin : 0;
+}
+
+#navbar {
+    padding-top : 5px;
+    padding-bottom : 10px;
 }
 
 #navigation {
