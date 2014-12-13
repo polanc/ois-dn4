@@ -1,9 +1,22 @@
 body {
     margin : 0;
-    background : url(pics/welcome.jpg);
+    background : url(pics/background.png);
 	background-attachment : fixed;
 	background-size : 100%;
 	background-repeat : no-repeat;
+}
+
+progress {
+    background-color : #0000FF;
+    border: 0 ;
+    width : 300px;
+    height : 25px;
+    border-radius : 10px;
+}
+
+hr {
+    background-color : #A4A4A4;
+    border-color : #A4A4A4;
 }
 
 .style_01 {
@@ -40,12 +53,19 @@ body {
 
 .style_06 {
 	font-family : 'Cambria';
+    font-size : 22px;
+    color : #000000;
+    text-align : center;
+}
+
+.style_07 {
+	font-family : 'Cambria';
     font-size : 20px;
     font-weight : bold;
-    color : #FFFFFF;
+    color : #000000;
     text-align : right;
     border : 1px;
-    border-color : #000000;
+    border-color : #FFFFFF;
 }
 
 #load {
@@ -85,9 +105,19 @@ body {
 	background-color : #0A9611;
 }
 
+#patient {
+	padding : 0;
+	margin : 0;
+}
+
+#nurse {
+	padding : 0;
+	margin : 0;
+}
+
 #navigation {
     margin : 0;
-    background : gray;
+    background : #DDEEBB;
     width : 100%;
     text-align : center;
 }
