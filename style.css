@@ -68,7 +68,7 @@ progress {
 
 #navigation {
     margin : 0;
-    background : #424242;
+    background : #DDEEBB;
     width : 100%;
     text-align : center;
 }
@@ -83,7 +83,6 @@ progress {
 #navigation ul li {
     padding : 0;
     display : inline;
-    display : block;
 }
 
 #navigation ul a:link{
@@ -91,13 +90,13 @@ progress {
     text-decoration : none;
     font-weight : bold;
     font-size : 24px;
-    color : #5882FA;
+    color : #004415;
 }
 
 #navigation ul a:hover{
     margin: 0;
     font-weight: bold;
     font-size: 24px;
-    color: #5882FA;
-    background-color: #0000FF;
+    color: #F6F0CC;
+    background-color: #227755;
 }
