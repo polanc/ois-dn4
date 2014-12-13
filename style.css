@@ -88,14 +88,14 @@ progress {
    margin : 0; 
    text-decoration : none; 
    font-weight : bold; 
-   font-size : 30px; 
+   font-size : 24px; 
    color : #004415; 
 }
 
 #navigation ul a:hover{ 
    margin: 0; 
    font-weight: bold; 
-   font-size: 30px; 
+   font-size: 24px; 
    color: #F6F0CC; 
    background-color: #227755; 
 }
