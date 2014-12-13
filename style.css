@@ -58,6 +58,16 @@ hr {
     text-align : center;
 }
 
+.style_07 {
+	font-family : 'Cambria';
+    font-size : 20px;
+    font-weight : bold;
+    color : #000000;
+    text-align : right;
+    border : 1px;
+    border-color : #FFFFFF;
+}
+
 #load {
     -webkit-animation: fadein 1s;
     -moz-animation: fadein 1s;
@@ -146,4 +156,12 @@ hr {
     font-size: 24px;
     color: #F6F0CC;
     background-color: #227755;
+}
+
+#footer {
+   position : absolute;
+   bottom : 20px;
+   right : 20px;
+   width : 100%;
+   height : 20px;
 }

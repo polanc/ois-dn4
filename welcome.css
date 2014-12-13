@@ -44,6 +44,8 @@ body {
     font-weight : bold;
     color : #FFFFFF;
     text-align : right;
+    border : 1px;
+    border-color : #000000;
 }
 
 #load {
