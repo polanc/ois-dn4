@@ -98,7 +98,7 @@ body {
     list-style : none;
     margin : 0;
     padding : 0;
-    overflow: hidden;
+    overflow : hidden;
 }
 
 #navigation ul li {
@@ -111,24 +111,24 @@ body {
     text-decoration : none;
     font-weight : bold;
     font-size : 24px;
-    color: #0900FF
+    color : #0900FF;
 }
 
 #navigation ul a:active{ 
-   margin: 0;
-   padding: .3em .4em .3em .4em;
-   text-decoration: none;
-   font-weight: bold;
-   font-size: 26px;
-   color: #0900FF;
+   margin : 0;
+   padding : .3em .4em .3em .4em;
+   text-decoration : none;
+   font-weight : bold;
+   font-size : 26px;
+   color : #0900FF;
 }
 
 #navigation ul a:hover{
-    margin: 0;
-    font-weight: bold;
-    font-size: 24px;
-    color: #F6F0CC;
-    background-color: #227755;
+    margin : 0;
+    font-weight : bold;
+    font-size : 24px;
+    color : #0900FF;
+    background-color : #227755;
 }
 
 #footer {

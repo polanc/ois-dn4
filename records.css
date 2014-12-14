@@ -222,7 +222,7 @@ hr {
     text-decoration : none;
     font-weight : bold;
     font-size : 24px;
-    color: #0900FF
+    color: #0900FF;
 }
 
 #navigation ul a:active{ 
@@ -238,12 +238,12 @@ hr {
     margin: 0;
     font-weight: bold;
     font-size: 24px;
-    color: #F6F0CC;
+    color: #0900FF;
     background-color: #227755;
 }
 
 #footer {
-    position: fixed;  
+    position : fixed;
     bottom : 20px;
     right : 20px;
     width : 100%;
