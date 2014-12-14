@@ -115,11 +115,12 @@ body {
 }
 
 #navigation ul a:active{ 
-   margin : 0;
-   padding : .3em .4em .3em .4em;
-   text-decoration : none;
-   font-weight : bold;
-   font-size : 26px;
+    margin : 0;
+    padding : .3em .4em .3em .4em;
+    text-decoration : none;
+    color : #000000;
+    font-weight : bold;
+    font-size : 26px;
 }
 
 #navigation ul a:hover{
@@ -133,9 +134,9 @@ body {
 }
 
 #footer {
-   position : absolute;
-   bottom : 20px;
-   right : 20px;
-   width : 100%;
-   height : 20px;
+    position : fixed;
+    bottom : 20px;
+    right : 20px;
+    width : 100%;
+    height : 20px;
 }
