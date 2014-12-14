@@ -200,7 +200,7 @@ hr {
 
 #navigation {
     margin : 0;
-    background : #DDEEBB;
+    background : #A4A4A4;
     width : 100%;
     text-align : center;
 }
@@ -222,7 +222,7 @@ hr {
     text-decoration : none;
     font-weight : bold;
     font-size : 24px;
-    color: #0900FF;
+    color: #000080;
 }
 
 #navigation ul a:active{ 
