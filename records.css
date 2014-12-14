@@ -219,8 +219,8 @@ hr {
 
 #navigation ul a:link{
     margin : 0;
-    padding-left : 5px;
-    padding-right : 5px;
+    padding-left : 10px;
+    padding-right : 10px;
     text-decoration : none;
     font-weight : bold;
     font-size : 24px;
