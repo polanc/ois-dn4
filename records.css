@@ -236,6 +236,8 @@ hr {
 
 #navigation ul a:hover{
     margin: 0;
+    padding-bottom : 3em;
+    padding-top : 3em;
     font-weight: bold;
     font-size: 24px;
     color: #FFFFFF;
