@@ -225,15 +225,6 @@ hr {
     color : #000000;
 }
 
-#navigation ul a:active{ 
-    margin : 0;
-    padding : .3em .4em .3em .4em;
-    text-decoration : none;
-    color : #000000;
-    font-weight : bold;
-    font-size : 26px;
-}
-
 #navigation ul a:hover{
     margin : 0;
     padding-bottom : 3em;
