@@ -7,7 +7,7 @@ var ID = [0, 0, 0];
 var Array_A = ["Nick", "Abraham", "Thea"];
 var Array_B = ["Burkhardt", "Setrakian", "Queen"];
 var Array_C = ["1982-06-18T16:10", "1926-08-26T10:30", "1995-01-21T23:50"];
-var Array_D = ["Male", "Male", "Female"];
+var Array_D = ["MALE", "MALE", "FEMALE"];
 
 var sessionId;
 
