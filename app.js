@@ -55,8 +55,7 @@ function generator (i) {
 				type: 'POST',
 				contentType: 'application/json',
 				data: JSON.stringify(partyData),
-				success: function (data) {
-					var party = party.data;
+				success: function (party) {
 					if (party.action == 'CREATE') {
 						var Info = "<option class=\"Info\" value=\"" + ID [i] + "\">" + Name + " " + Surname + "</option>";
 						$("#Info").append(Info);
