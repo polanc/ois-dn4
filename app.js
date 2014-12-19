@@ -141,10 +141,10 @@ function addData(i) {
 	}
 }
 
-function displayInfo (ehrId){
-	sessionId = getSessionId();	
+function displayInfo (){
+	sessionId = getSessionId();
 	$.ajax({
-		url: baseUrl + "/demographics/ehr/" + ehrId + "/party",
+		url: baseUrl + "/demographics/ehr/" + ID[0] + "/party",
 		type: 'GET',
 		headers: {
 			"Ehr-Session": sessionId
