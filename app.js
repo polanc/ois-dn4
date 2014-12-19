@@ -82,35 +82,38 @@ function addData(i) {
 		
 		for(var j = 1; j <= Period; j++){
 			BirthDate     = BirthDate.split("-");
-			BirthDate [0] = BirthDate[0] + i;
+			BirthDate [0] = BirthDate[0] + j;
 			BirthDate     = BirthDate.join("-");
 			var DateAndTime = BirthDate;
-			var Temp = Math.floor(Math.random() * 40);
+			BirthDate     = BirthDate.split("-");
+			BirthDate [0] = BirthDate[0] - j;
+			BirthDate     = BirthDate.join("-");
+			var Temp = (Math.random() * 40);
 			var BodyTemp;
 				
 			if (i === 0) {
-				Height = (Math.floor(Math.random() * 10)) + 178.4;
-				Weight = (Math.floor(Math.random() *  5)) + 79.6;
-				Height = Height + (Math.floor(Math.random() * 3 ));
-				Height = Height - (Math.floor(Math.random() * 3 ));
-				Weight = Weight + (Math.floor(Math.random() * 4 ));
-				Weight = Weight - (Math.floor(Math.random() * 4 ));
+				Height = (Math.random() * 10) + 178.4;
+				Weight = (Math.random() *  5) + 79.6;
+				Height = Height + (Math.random() * 3 );
+				Height = Height - (Math.random() * 3 );
+				Weight = Weight + (Math.random() * 4 );
+				Weight = Weight - (Math.random() * 4 );
 			}
 			else if (i == 1) {
-				Height = (Math.floor(Math.random() * 10)) + 168.8;
-				Weight = (Math.floor(Math.random() *  5)) + 72.1;
-				Height = Height + (Math.floor(Math.random() * 1 ));
-				Height = Height - (Math.floor(Math.random() * 1 ));
-				Weight = Weight + (Math.floor(Math.random() * 2 ));
-				Weight = Weight - (Math.floor(Math.random() * 2 ));
+				Height = (Math.random() * 10) + 168.8;
+				Weight = (Math.random() *  5) + 72.1;
+				Height = Height + (Math.random() * 1 );
+				Height = Height - (Math.random() * 1 );
+				Weight = Weight + (Math.random() * 2 );
+				Weight = Weight - (Math.random() * 2 );
 			}
 			else if (i == 2) {
-				Height = (Math.floor(Math.random() * 10)) + 173.3;
-				Weight = (Math.floor(Math.random() *  5)) + 72.8;
-				Height = Height + (Math.floor(Math.random() * 2 ));
-				Height = Height - (Math.floor(Math.random() * 2 ));
-				Weight = Weight + (Math.floor(Math.random() * 3 ));
-				Weight = Weight - (Math.floor(Math.random() * 2 ));
+				Height = (Math.random() * 10) + 173.3;
+				Weight = (Math.random() *  5) + 72.8;
+				Height = Height + (Math.random() * 2 );
+				Height = Height - (Math.random() * 2 );
+				Weight = Weight + (Math.random() * 3 );
+				Weight = Weight - (Math.random() * 2 );
 			}
 			
 			if (j == Period) {
