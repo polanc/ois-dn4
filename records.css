@@ -118,7 +118,7 @@ hr {
 
 .style_03 {
 	font-family : 'Cambria';
-    font-size : 18px;
+    font-size : 26px;
     color : #000000;
 }
 
@@ -153,10 +153,16 @@ hr {
 
 .style_08 {
 	font-family : 'Cambria';
-    font-size : 40px;
+    font-size : 60px;
     font-weight : bold;
     color : #000000;
     text-align : center;
+}
+
+.style_09 {
+	font-family : 'Cambria';
+    font-size : 20px;
+    color : #000000;
 }
 
 #load {
