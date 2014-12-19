@@ -151,6 +151,14 @@ hr {
     border-color : #FFFFFF;
 }
 
+.style_08 {
+	font-family : 'Cambria';
+    font-size : 40px;
+    font-weight : bold;
+    color : #000000;
+    text-align : center;
+}
+
 #load {
     -webkit-animation: fadein 1s;
     -moz-animation: fadein 1s;
