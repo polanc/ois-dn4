@@ -21,6 +21,7 @@ function getSessionId () {
 }
 
 function patients () {
+	document.getElementById("hidden").style.display = "block";
 	generator (0);
 	generator (1);
 	generator (2);
@@ -177,8 +178,6 @@ function displayInfo (ehrId){
 }
 
 function displayGraphs () {
-
-	document.getElementById("hidden").style.display = "block";
 	
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 720 - margin.left - margin.right,
