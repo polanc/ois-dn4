@@ -193,6 +193,10 @@ hr {
 	margin : 0;
 }
 
+#graph {
+   	margin : 0; 
+}
+
 #navbar {
     padding-top : 5px;
     padding-bottom : 10px;
