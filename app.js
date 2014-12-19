@@ -4,9 +4,10 @@ var username = "ois.seminar";
 var password = "ois4fri";
 
 var ID = [0, 0, 0];
-var Array_A = ["Nick", "Abraham", "Thea"];
-var Array_B = ["Burkhardt", "Setrakian", "Queen"];
-var Array_C = ["1982-06-18T16:10", "1926-08-26T10:30", "1995-01-21T23:50"];
+var BMI = [0, 0, 0];
+var Array_A = ["Nick", "Abraham", "Maseo"];
+var Array_B = ["Burkhardt", "Setrakian", "Yamashiro"];
+var Array_C = ["1982-06-18T16:10", "1936-08-26T10:30", "1975-01-21T23:50"];
 var Array_D = ["MALE", "MALE", "FEMALE"];
 
 var sessionId;
@@ -74,40 +75,60 @@ function addData(i) {
 		var BirthDate = Array_C [i];
 		BirthDate = BirthDate.split("-");
 		var Year = BirthDate[0];
-		var Period = 2014 - Year;
+		var Period = 2014 - Year - 20;
 		BirthDate = BirthDate.join("-");
 		var Height;
 		var Weight;
-			
-		if (Array_D[i] == "Female"){
-			Height = Math.floor((Math.random() * 8) + 50);
-			Weight = Math.floor((Math.random() * 3) + 5);
-		}
-		else {
-			Height = Math.floor((Math.random() * 9) + 60);
-			Weight = Math.floor((Math.random() * 5) + 5);
-		}
-			
+		
 		for(var j = 1; j <= Period; j++){
 			BirthDate     = BirthDate.split("-");
 			BirthDate [0] = BirthDate[0] + i;
 			BirthDate     = BirthDate.join("-");
 			var DateAndTime = BirthDate;
-
-			Height = Height + (Math.floor(Math.random() * 2 ));
-			Height = Height - (Math.floor(Math.random() * 2 ));
-			Weight = Weight + (Math.floor(Math.random() * 5 ));
-			Weight = Weight - (Math.floor(Math.random() * 5 ));
-				
 			var Temp = Math.floor(Math.random() * 40);
 			var BodyTemp;
-			if(Temp > 37)	BodyTemp = (37 + (Math.random() * 4)); // Max: 41
-			else			BodyTemp = (37 - (Math.random() * 3)); // Min: 34
+				
+			if (i === 0) {
+				Height = (Math.floor(Math.random() * 10)) + 178.4;
+				Weight = (Math.floor(Math.random() *  5)) + 79.6;
+				Height = Height + (Math.floor(Math.random() * 3 ));
+				Height = Height - (Math.floor(Math.random() * 3 ));
+				Weight = Weight + (Math.floor(Math.random() * 4 ));
+				Weight = Weight - (Math.floor(Math.random() * 4 ));
+			}
+			else if (i == 1) {
+				Height = (Math.floor(Math.random() * 10)) + 168.8;
+				Weight = (Math.floor(Math.random() *  5)) + 72.1;
+				Height = Height + (Math.floor(Math.random() * 1 ));
+				Height = Height - (Math.floor(Math.random() * 1 ));
+				Weight = Weight + (Math.floor(Math.random() * 2 ));
+				Weight = Weight - (Math.floor(Math.random() * 2 ));
+			}
+			else if (i == 2) {
+				Height = (Math.floor(Math.random() * 10)) + 173.3;
+				Weight = (Math.floor(Math.random() *  5)) + 72.8;
+				Height = Height + (Math.floor(Math.random() * 2 ));
+				Height = Height - (Math.floor(Math.random() * 2 ));
+				Weight = Weight + (Math.floor(Math.random() * 3 ));
+				Weight = Weight - (Math.floor(Math.random() * 2 ));
+			}
+			
+			if (j == Period) {
+				BMI[i] = ((Weight * 10000) / (Height * Height));
+			}
+				
+			if (Temp > 37) {
+				BodyTemp = (36 + (Math.random() * 4)); // Max: 40-36
+				
+			}
+			else {
+				BodyTemp = (37 - (Math.random() * 2)); // Min: 35-37
+			}
 				
 			Temp = Math.floor(Math.random() + 1);
-			var SysPressure = Math.floor( 90 + (Math.random() * 50));
-			var DysPressure = Math.floor( 60 + (Math.random() * 30));
-			var Oxydation   = Math.floor(100 - (Math.random() * 10));
+			var SysPressure = Math.floor( 90 + (Math.random() * 30));
+			var DysPressure = Math.floor( 60 + (Math.random() * 20));
+			var Oxydation   = Math.floor(100 - (Math.random() * 8));
 			var Commitee    = 'Uros Polanc';
 				
 			$.ajaxSetup({
