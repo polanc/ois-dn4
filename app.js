@@ -21,7 +21,6 @@ function getSessionId () {
 }
 
 function patients () {
-	document.getElementById("hidden").style.display = "initial";
 	generator (0);
 	generator (1);
 	generator (2);

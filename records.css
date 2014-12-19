@@ -151,10 +151,6 @@ hr {
     border-color : #FFFFFF;
 }
 
-#hidden {
-    display : none;
-}
-
 #load {
     -webkit-animation: fadein 1s;
     -moz-animation: fadein 1s;
