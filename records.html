@@ -7,6 +7,7 @@
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
 		<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js"></script>
 		<script src="app.js"></script>
 		<link rel="StyleSheet" type="text/css" href="records.css" />
 	</head>
@@ -88,7 +89,7 @@
 							</div>
 						</div>
 						<div class="row">
-							<button type="button" class="btn btn-primary btn-lg btn-block" onclick=""> Show Map </button><span id="patients"></span>
+							<button type="button" class="btn btn-primary btn-lg btn-block" onclick=""> Show Map </button><span id="map"></span>
 						</div>
 					</div>
 				</div>
@@ -116,7 +117,7 @@
 										<div class="value patient-weight"></div>
 									</div>
 									<div class="col-lg-4 col-md-4 col-sm-4 centered">
-										<p class="style_03"> Body Mass Index: </p>
+										<p class="style_03"> BMI: </p>
 										<div class="value patient-bmi"></div>
 									</div>
 								</div>
@@ -180,6 +181,8 @@
 							<div class="col-lg-2 col-md-2 col-sm-2">
 								<button type="button" class="btn btn-primary btn-block" onclick="displayGraphs()"> Show Graph </button><span id="graph-generator"></span>
 							</div>
+						</div>
+						<div class="row-fluid">
 						</div>
 					</div>
 				</div>
