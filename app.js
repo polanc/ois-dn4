@@ -93,31 +93,11 @@ function addData(i) {
 			BirthDate [0] = BirthDate[0] + i;
 			BirthDate     = BirthDate.join("-");
 			var DateAndTime = BirthDate;
-				
-			if (j < 10) {
-				Height = Height + (Math.floor(Math.random() * 9 ));
-				Height = Height - (Math.floor(Math.random() * 3 ));
-				Weight = Weight + (Math.floor(Math.random() * 10));
-				Weight = Weight - (Math.floor(Math.random() * 3 ));
-			}
-			else if (j < 15) {
-				Height = Height + (Math.floor(Math.random() * 5 ));
-				Height = Height - (Math.floor(Math.random() * 2 ));
-				Weight = Weight + (Math.floor(Math.random() * 5 ));
-				Weight = Weight - (Math.floor(Math.random() * 3 ));
-			}
-			else if (j < 20) {
-				Height = Height + (Math.floor(Math.random() * 3 ));
-				Height = Height - (Math.floor(Math.random() * 1 ));
-				Weight = Weight + (Math.floor(Math.random() * 5 ));
-				Weight = Weight - (Math.floor(Math.random() * 4 ));
-			}
-			else {
-				Height = Height + (Math.floor(Math.random() * 2 ));
-				Height = Height - (Math.floor(Math.random() * 2 ));
-				Weight = Weight + (Math.floor(Math.random() * 5 ));
-				Weight = Weight - (Math.floor(Math.random() * 5 ));
-			}
+
+			Height = Height + (Math.floor(Math.random() * 2 ));
+			Height = Height - (Math.floor(Math.random() * 2 ));
+			Weight = Weight + (Math.floor(Math.random() * 5 ));
+			Weight = Weight - (Math.floor(Math.random() * 5 ));
 				
 			var Temp = Math.floor(Math.random() * 40);
 			var BodyTemp;
@@ -197,6 +177,9 @@ function displayInfo (ehrId){
 }
 
 function displayGraphs () {
+
+	document.getElementById("hidden").style.display = "block";
+	
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 720 - margin.left - margin.right,
 		height = 375 - margin.top - margin.bottom;
