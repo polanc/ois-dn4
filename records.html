@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="load">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<title> EHR [63130192] </title>
@@ -15,7 +15,7 @@
 
 <!-- Patient - Container - Generate -->
 
-		<div class="container" id="load">
+		<div class="container">
 			<div class="row" id="navbar">
 				<div id="navigation"> 
 				<ul> 
@@ -67,97 +67,97 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
 <!-- Patient - Container - Doctors -->
 
-			<div class="row">
-				<div class="panel panel-default">
-					<div class="panel-heading", id="background_01">
-						<div class="row">
-							<p class="style_01"> Doctor </p>
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading", id="background_01">
+					<div class="row">
+						<p class="style_01"> Doctor </p>
+					</div>
+				</div>
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<p class="style_02"> Name: </p>
+							<p class="style_03" id="doc_name"></p>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6">
+							<p class="style_02"> Location: </p>
+							<p class="style_03" id="doc_loca"></p>
 						</div>
 					</div>
-					<div class="panel-heading">
-						<div class="row">
-							<div class="col-lg-6 col-md-6 col-sm-6">
-								<p class="style_02"> Name: </p>
-								<p class="style_03" id="doc_name"></p>
-							</div>
-							<div class="col-lg-6 col-md-6 col-sm-6">
-								<p class="style_02"> Location: </p>
-								<p class="style_03" id="doc_loca"></p>
-							</div>
-						</div>
-						<div class="row">
-							<button type="button" class="btn btn-primary btn-lg btn-block" onclick=""> Show Map </button><span id="map"></span>
-						</div>
+					<div class="row">
+						<button type="button" class="btn btn-primary btn-lg btn-block" onclick=""> Show Map </button><span id="map"></span>
 					</div>
 				</div>
 			</div>
+		</div>
 
 <!-- Patient - Container - Stats -->
 
-			<div class="row">
-				<div class="panel panel-default">
-					<div class="panel-heading", id="background_01">
-						<div class="row">
-							<p class="style_01"> Latest Stats </p>
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading", id="background_01">
+					<div class="row">
+						<p class="style_01"> Latest Stats </p>
+					</div>
+				</div>
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="row" style="min-height: 67px;">
+								<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
+									<p class="style_03"> Birth: </p>
+									<div class="value patient-age-years"></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
+									<p class="style_03"> Weight: </p>
+									<div class="value patient-weight"></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 centered">
+									<p class="style_03"> BMI: </p>
+									<div class="value patient-bmi"></div>
+								</div>
+							</div>
 						</div>
 					</div>
-					<div class="panel-heading">
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12">
-								<div class="row" style="min-height: 67px;">
-									<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
-										<p class="style_03"> Birth: </p>
-										<div class="value patient-age-years"></div>
+					<hr>
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="row">
+								<div class="col-lg-4 col-md-4 col-sm-4 centered">
+									<p class="style_03"> Blood Pressure: </p>
+									<div class="value last-bp"></div>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 centered">
+									<div class="meter">
+										<span style="width: 40%"></span>
 									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 bordered centered">
-										<p class="style_03"> Weight: </p>
-										<div class="value patient-weight"></div>
+									<p class="style_05"> (Systolic) </p>
+								</div>
+								<div class="col-lg-4 col-md-4 col-sm-4 centered">
+									<div class="meter">
+										<span style="width: 80%"></span>
 									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 centered">
-										<p class="style_03"> BMI: </p>
-										<div class="value patient-bmi"></div>
-									</div>
+									<p class="style_05"> (Distolic) </p>
 								</div>
 							</div>
 						</div>
-						<hr>
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12">
-								<div class="row">
-									<div class="col-lg-4 col-md-4 col-sm-4 centered">
-										<p class="style_03"> Blood Pressure: </p>
-										<div class="value last-bp"></div>
-									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 centered">
-										<div class="meter">
-											<span style="width: 40%"></span>
-										</div>
-										<p class="style_05"> (Systolic) </p>
-									</div>
-									<div class="col-lg-4 col-md-4 col-sm-4 centered">
-										<div class="meter">
-											<span style="width: 80%"></span>
-										</div>
-										<p class="style_05"> (Distolic) </p>
-									</div>
+					</div>
+					<hr>
+					<div class="row">
+						<div class="col-lg-12 col-md-12 col-sm-12">
+							<div class="row">
+								<div class="col-md-4">
+									<p class="style_03"> Oxygen Saturation: </p>
+									<div class="value last-spo2"></div>
 								</div>
-							</div>
-						</div>
-						<hr>
-						<div class="row">
-							<div class="col-lg-12 col-md-12 col-sm-12">
-								<div class="row">
-									<div class="col-md-4">
-										<p class="style_03"> Oxygen Saturation: </p>
-										<div class="value last-spo2"></div>
-									</div>
-									<div class="col-md-8">
-										<div class="meter">
-											<span style="width: 95%"></span>
-										</div>
+								<div class="col-md-8">
+									<div class="meter">
+										<span style="width: 95%"></span>
 									</div>
 								</div>
 							</div>
@@ -165,6 +165,7 @@
 					</div>
 				</div>
 			</div>
+		</div>
 
 <!-- Patient - Container - Graphs -->
 
@@ -176,8 +177,8 @@
 						</div>
 					</div>
 					<div class="panel-heading">
-						<div class="row-fluid">
-							<div class="container-fluid">
+						<div class="container-fluid">
+							<div class="row-fluid">
 								<div class="col-lg-4 col-md-4 col-sm-4"><select class="form-control input-sm" id="graphs"><option value=""></option></select></div>
 								<div class="col-lg-2 col-md-2 col-sm-2">
 									<button type="button" class="btn btn-primary btn-block" onclick="displayGraphs()"> Show Graph </button><span id="graph-generator"></span>
