@@ -408,6 +408,8 @@ function displayGraphs () {
 				headers: {"Ehr-Session": sessionId},
 				success: function (res) {
 				if (res) {
+					console.log("Res: " + res);
+					console.log("AQL: " + AQL);
 	                  x.domain(res.map(function(d) { return d.cas; }));
 		              y.domain([0, d3.max(res, function(d) { return d.temperatura_vrednost; })]);
 
