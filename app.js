@@ -192,16 +192,19 @@ function displayLocation (Address) {
 function displayInfo () {
 	var FID = document.getElementById("Info");
 	var SID = FID.options[FID.selectedIndex].value;
-	var IND = 0;
+	var IND;
 	sessionId = getSessionId();
 		
 	for (var n = 0; n <= 2; n++) {
 		if (SID == Patient_ID[n]) {
 			IND = n;
 		}
+		else {
+			IND = 0;
+		}
 	}
 		
-	console.log("SID : " + SID);
+	console.log("SID : " + SID + " || " + IND);
 	$.ajax({
 		url: baseUrl + "/demographics/ehr/" + SID + "/party",
 		type: 'GET',
