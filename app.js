@@ -30,6 +30,8 @@ function getSessionId () {
 }
 
 function patients () {
+	element = document.getElementById("Info");
+	element.innerHTML = '';
 	graph_list ();
 	generator (0);
 	generator (1);
@@ -77,10 +79,6 @@ function generator (i) {
 				data: JSON.stringify(partyData),
 				success: function (party) {
 					if (party.action == 'CREATE') {
-						if (i === 0) {
-							element = document.getElementById("Info");
-							element.innerHTML = '';
-						}
 						var Info = "<option class=\"Info\" value=\"" + Patient_ID [i] + "\">" + Name + " " + Surname + "</option>";
 						$("#Info").append(Info);
 						addData(i);
@@ -295,7 +293,6 @@ function displayInfo () {
 	});
 	var body = Math.round(Patient_BMI[IND] * 10) / 10;
 	var BMI = "<p class=\"style_08\">" + body + "</p>";
-	checkBMI (body);
 	$("#bmi").append(BMI);
 	$.ajax({
 		url: baseUrl + "/view/" + SID + "/blood_pressure",
@@ -323,12 +320,6 @@ function displayInfo () {
 			}
 		}
 	});
-}
-
-function checkBMI (body) {
-	if (body > 25) {
-		$("#bmi").css("color", "red");
-	}
 }
 
 function clean_info () {
