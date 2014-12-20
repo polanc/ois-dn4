@@ -295,6 +295,7 @@ function displayInfo () {
 	});
 	var body = Math.round(Patient_BMI[IND] * 10) / 10;
 	var BMI = "<p class=\"style_08\">" + body + "</p>";
+	checkBMI (body);
 	$("#bmi").append(BMI);
 	$.ajax({
 		url: baseUrl + "/view/" + SID + "/blood_pressure",
@@ -304,7 +305,7 @@ function displayInfo () {
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
-				var Pressure = "<p class=\"style_09\">" + res[x].diastolic + "||" + res[x].systolic + "</p>";
+				var Pressure = "<p class=\"style_09\">" + res[x].diastolic + " || " + res[x].systolic + "</p>";
 				$("#pressure").append(Pressure);
 			}
 		}
@@ -322,6 +323,12 @@ function displayInfo () {
 			}
 		}
 	});
+}
+
+function checkBMI (body) {
+	if (body > 25) {
+		$("#bmi").css("color", "red");
+	}
 }
 
 function clean_info () {
