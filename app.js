@@ -7,11 +7,16 @@ var element;
 
 var Patient_ID  = [0, 0, 0];
 var Patient_BMI = [0, 0, 0];
+var Patient_DR  = [0, 0, 0];
+
+var Doctor_Name = ["Grant", "Kathleen", "Kevin", "Kenneth", "Janice"];
+var Doctor_Surn = ["Anderson", "Jones", "Reynolds", "Ross", "Brown"];
+var Doctor_Loca = ["Zaloska Cesta 2 Ljubljana", "Krziceva 10 Ljubljana", "Zaloska Cesta 2 Ljubljana", "Krziceva 10 Ljubljana", "Krziceva 10 Ljubljana"];
 
 var Array_A = ["Nick", "Abraham", "Maseo"];
 var Array_B = ["Burkhardt", "Setrakian", "Yamashiro"];
 var Array_C = ["1982-06-18T16:10", "1936-08-26T10:30", "1975-01-21T23:50"];
-var Array_D = ["MALE", "MALE", "FEMALE"];
+var Array_D = ["MALE", "MALE", "MALE"];
 
 var sessionId;
 
@@ -80,6 +85,8 @@ function addData(i) {
 		var Year = BirthDate[0];
 		var Period = 2014 - Year - 20;
 		BirthDate = BirthDate.join("-");
+		var Doc_Num = Math.floor(Math.random() * 5);
+		Patient_DR [i] = Doc_Num;
 		var Height;
 		var Weight;
 		
@@ -93,7 +100,9 @@ function addData(i) {
 			BirthDate     = BirthDate.join("-");
 			var Temp = (Math.random() * 40);
 			var BodyTemp;
-				
+			
+			var Commitee = ("Dr. " + Doctor_Name [Patient_DR[i]] + " " + Doctor_Surn[Patient_DR[i]]);
+
 			if (i === 0) {
 				Height = (Math.random() * 10) + 178.4;
 				Weight = (Math.random() *  5) + 79.6;
@@ -135,7 +144,6 @@ function addData(i) {
 			var SysPressure = Math.floor( 90 + (Math.random() * 30));
 			var DysPressure = Math.floor( 60 + (Math.random() * 20));
 			var Oxydation   = Math.floor(100 - (Math.random() * 8));
-			var Commitee    = 'Uros Polanc';
 				
 			$.ajaxSetup({
 				headers: {"Ehr-Session": sessionId}
@@ -169,13 +177,21 @@ function addData(i) {
 }
 
 function displayLocation () {
+	var FID = document.getElementById("Info");
+	var SID = FID.options[FID.selectedIndex].value;
+	var IND = 0;
+	for (var n = 0; n <= 2; n++) {
+		if (SID == Patient_ID[n]) {
+			IND = n;
+		}
+	}
 	var mapOptions = {
 		zoom: 8,
 		center: new google.maps.LatLng(46.086283, 14.511189),
 		mapTypeId: google.maps.MapTypeId.ROADMAP };
 		var map = new google.maps.Map($("#map-container").get(0),mapOptions);
 		var geocoder = new google.maps.Geocoder();
-		var address ="Kržičeva 10 Ljubljana";
+		var address = Doctor_Loca[Patient_DR[IND]];
 		geocoder.geocode({address:address},function(results) {
 		new google.maps.Marker({position:results[0].geometry.location,map:map});
 	});
@@ -184,7 +200,15 @@ function displayLocation () {
 function displayInfo () {
 	var FID = document.getElementById("Info");
 	var SID = FID.options[FID.selectedIndex].value;
+	var IND = 0;
 	sessionId = getSessionId();
+		
+	for (var n = 0; n <= 2; n++) {
+		if (SID == Patient_ID[n]) {
+			IND = n;
+		}
+	}
+		
 	console.log("SID : " + SID);
 	$.ajax({
 		url: baseUrl + "/demographics/ehr/" + SID + "/party",
@@ -193,12 +217,9 @@ function displayInfo () {
 			"Ehr-Session": sessionId
 		},
 		success: function (data) {
-			console.log("Success");
 			var party = data.party;
-				
 			clean_info();
-				
-			console.log("Data: " + data + " ## " + party);
+			
 			var patient = "<img src=\"pics/patient.png\" id=\"patient\">";
 			$("#patient-pic").append(patient);
 				
@@ -208,6 +229,7 @@ function displayInfo () {
 			var birth = party.dateOfBirth.split("T");
 			var date = birth[0];
 			var time = birth[1];
+			time =  time.substring(0, 5);
 			birth = "<p class=\"style_02\"><b> Birth: </b><span class=\"style_02\">" + date + " at " + time + "</span></p>";
 			$("#data").append(birth);
 				
@@ -217,34 +239,86 @@ function displayInfo () {
 			var nurse = "<img src=\"pics/nurse.png\" id=\"nurse\">";
 			$("#nurse-pic").append(nurse);
 			
-			var doctor = "<span class=\"style_04\">" + "Some Doctor" + "</span> </p>";
+			var doc = ("Dr. " + Doctor_Name [Patient_DR[IND]] + " " + Doctor_Surn[Patient_DR[IND]]);
+			var doctor = "<span class=\"style_04\">" + doc + "</span> </p>";
 			$("#doc-name").append(doctor);
 			
-			var location = "<span class=\"style_04\">" + "Kriziceva 10 Ljubljana" + "</span> </p>";
+			var loc = (Doctor_Loca[Patient_DR[IND]]);
+			var location = "<span class=\"style_04\">" + loc + "</span> </p>";
 			$("#doc-loca").append(location);
-				
-			var Height = "<span class=\"style_08\">" + 190.6 + "</span> </p>";
-			$("#height").append(Height);
-			
-			var Weight = "<span class=\"style_08\">" + 90.6 + "</span> </p>";
-			$("#weight").append(Weight);
-			
-			var BMI = "<span class=\"style_08\">" + 24.9 + "</span> </p>";
-			$("#bmi").append(BMI);
-			
-			var Pressure = "<span class=\"style_09\">" + 68  + " || " + 98 + "</span> </p>";
-			$("#pressure").append(Pressure);
-			
-			var Oxydation = "<span class=\"style_09\">" + 95 + "</span> </p>";
-			$("#oxydation").append(Oxydation);
-			
-			displayLocation ();
-			displayGraphs ();
 		},
 		error: function(err) {
 			return;
 		}
 	});
+	$.ajax({
+		url: baseUrl + "/view/" + SID + "/height",
+		type: 'GET',
+		headers: {
+			"Ehr-Session": sessionId
+		},
+		success: function (res) {
+			for (var x = 0; x < 1; x++) {
+				var Height = "<p span class=\"style_08\">" + res[x].height + " " + res[x].unit + "</span> </p>";
+				$("#height").append(Height);
+			}
+		},
+		error: function(err) {
+			return;
+		}
+	});
+	$.ajax({
+		url: baseUrl + "/view/" + SID + "/weight",
+		type: 'GET',
+		headers: {
+			"Ehr-Session": sessionId
+		},
+		success: function (res) {
+			for (var x = 0; x < 1; x++) {
+				var Height = "<p span class=\"style_08\">" + res[x].weight + " " + res[x].unit + "</span> </p>";
+				$("#height").append(Height);
+			}
+		},
+		error: function(err) {
+			return;
+		}
+	});
+	var BMI = "<span class=\"style_08\">" + BMI[IND] + "</span> </p>";
+	$("#bmi").append(BMI);
+	$.ajax({
+		url: baseUrl + "/view/" + SID + "/blood_pressure",
+		type: 'GET',
+		headers: {
+			"Ehr-Session": sessionId
+		},
+		success: function (res) {
+			for (var x = 0; x < 1; x++) {
+				var Pressure = "<span class=\"style_09\">" + res[x].systolic + " || " + res[x].diastolic + "</span> </p>";
+				$("#pressure").append(Pressure);
+			}
+		},
+		error: function(err) {
+			return;
+		}
+	});
+	$.ajax({
+		url: baseUrl + "/view/" + SID + "/spO2",
+		type: 'GET',
+		headers: {
+		"Ehr-Session": sessionId
+		},
+		success: function (res) {
+			for (var x = 0; x < 1; x++) {
+				var Oxydation = "<span class=\"style_09\">" + res[x].spO2 + "</span> </p>";
+				$("#oxydation").append(Oxydation);
+			}
+		},
+		error: function(err) {
+			return;
+		}
+	});
+	displayLocation ();
+	displayGraphs ();
 }
 
 function clean_info () {
