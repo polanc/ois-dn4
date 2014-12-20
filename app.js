@@ -358,66 +358,96 @@ function clean_graph () {
 	element.innerHTML = '';
 }
 
+function clean_graph () {
+	element = document.getElementById("graph");
+	element.innerHTML = '';
+}
+
 function displayGraphs () {
 	clean_graph();
-		
+
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 960 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
-		
+
 	var x = d3.scale.ordinal()
 		.rangeRoundBands([0, width], .1);
-		
+
 	var y = d3.scale.linear()
 		.range([height, 0]);
-		
+
 	var xAxis = d3.svg.axis()
 		.scale(x)
 		.orient("bottom");
-		
+
 	var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient("left")
 		.ticks(10, "%");
-		
+
 	var svg = d3.select("#graph").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-		
-	d3.tsv("data.tsv", type, function(error, data) {
-		x.domain(data.map(function(d) { return d.letter; }));
-		y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-		
-	svg.append("g")
-		.attr("class", "x axis")
-		.attr("transform", "translate(0," + height + ")")
-		.call(xAxis);
-		
-	svg.append("g")
-		.attr("class", "y axis")
-		.call(yAxis)
-		.append("text")
-		.attr("transform", "rotate(-90)")
-		.attr("y", 6)
-		.attr("dy", ".71em")
-		.style("text-anchor", "end")
-		.text("Frequency");
-		
-	svg.selectAll(".bar")
-		.data(data)
-		.enter().append("rect")
-		.attr("class", "bar")
-		.attr("x", function(d) { return x(d.letter); })
-		.attr("width", x.rangeBand())
-		.attr("y", function(d) { return y(d.frequency); })
-		.attr("height", function(d) { return height - y(d.frequency); });
+
+
+    var AQL =
+		"select " +
+    			"t/data[at0002]/events[at0003]/time/value as cas, " +
+    			"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperatura_vrednost, " +
+    			"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as temperatura_enota " +
+				"from EHR e[e/ehr_id/value='" + Patient_ID[0] + "'] " +
+				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
+				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude<40 " +
+				"order by t/data[at0002]/events[at0003]/time/value desc " +
+				"limit 10";
+	$.ajax({
+				url: baseUrl + "/query?" + $.param({"aql": AQL}),
+				type: 'GET',
+				headers: {"Ehr-Session": sessionId},
+				success: function (res) {
+				if (res) {
+	                  x.domain(res.map(function(d) { return d.cas; }));
+		              y.domain([0, d3.max(res, function(d) { return d.temperatura_vrednost; })]);
+
+	                  svg.append("g")
+		             .attr("class", "x axis")
+		             .attr("transform", "translate(0," + height + ")")
+		             .call(xAxis);
+
+	                  svg.append("g")
+		             .attr("class", "y axis")
+		             .call(yAxis)
+		             .append("text")
+		             .attr("transform", "rotate(-90)")
+		             .attr("y", 6)
+		             .attr("dy", ".71em")
+		             .style("text-anchor", "end")
+		             .text("Temperature");
+
+	                 svg.selectAll(".bar")
+		             .data(res)
+		             .enter().append("rect")
+		             .attr("class", "bar")
+		             .attr("x", function(d) { return x(d.cas); })
+		             .attr("width", x.rangeBand())
+		             .attr("y", function(d) { return y(d.temperatura_vrednost); })
+		             .attr("height", function(d) { return height - y(d.temperatura_vrednost); });
+				}
+			    else {
+					$("#graphs").html("<span class='obvestilo label label-warning fade-in'>Ni podatkov!</span>");
+				  }
+			    },
+				error: function() {
+				  	$("#graphs").html("<span class='obvestilo label label-danger fade-in'>Napaka '" + JSON.parse(err.responseText).userMessage + "'!");
+				     console.log(JSON.parse(err.responseText).userMessage);
+				}
 	});
 }
 
 function type (d) {
-	d.frequency = +d.frequency;
+	d.temperatura_vrednost = +d.temperatura_vrednost;
 	return d;
 }
 
