@@ -182,10 +182,12 @@ function displayLocation () {
 }
 
 function displayInfo () {
+	var FID = document.getElementById("predlogaBolnika");
+	var SID = FID.options[FID.selectedIndex].value;
 	sessionId = getSessionId();
-	console.log("ID: " + Patient_ID[0]);
+	console.log("SID : " + SID);
 	$.ajax({
-		url: baseUrl + "/demographics/ehr/" + Patient_ID[0] + "/party",
+		url: baseUrl + "/demographics/ehr/" + SID + "/party",
 		type: 'GET',
 		headers: {
 			"Ehr-Session": sessionId
