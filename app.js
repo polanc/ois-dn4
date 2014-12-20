@@ -236,11 +236,11 @@ function displayInfo () {
 			var nurse = "<img src=\"pics/nurse.png\" id=\"nurse\">";
 			$("#nurse-pic").append(nurse);
 			
-			var doc = ("Dr. Who");
+			var doc = "Dr. Who";
 			var doctor = "<p class=\"style_04\">" + doc + "</p>";
 			$("#doc-name").append(doctor);
 			
-			var loc = ("Krziceva 10 Ljubljana");
+			var loc = "Krziceva 10 Ljubljana";
 			var location = "<p class=\"style_04\">" + loc + "</p>";
 			$("#doc-loca").append(location);
 			console.log("Ajax 1A OK");
