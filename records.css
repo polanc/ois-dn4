@@ -277,7 +277,19 @@ hr {
     background-color : #000000;
 }
 
-#hidden {
+#hidden_1 {
+    visibility : hidden;
+}
+
+#hidden_2 {
+    visibility : hidden;
+}
+
+#hidden_3 {
+    visibility : hidden;
+}
+
+#hidden_4 {
     visibility : hidden;
 }
 

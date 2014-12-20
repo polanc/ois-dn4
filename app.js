@@ -324,9 +324,10 @@ function displayInfo () {
 }
 
 function reload () {
-	$("#hidden").each(function(){
-		$("#hidden").css("visibility", "visible");
-	});
+	$("#hidden_1").css("visibility", "visible");
+	$("#hidden_2").css("visibility", "visible");
+	$("#hidden_3").css("visibility", "visible");
+	$("#hidden_4").css("visibility", "visible");
 }
 
 function clean_info () {
