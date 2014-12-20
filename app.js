@@ -241,9 +241,10 @@ function displayInfo () {
 			var loc = (Doctor_Loca[Patient_DR[IND]]);
 			var location = "<p class=\"style_04\">" + loc + "</p>";
 			$("#doc-loca").append(location);
-			console.log("Ajax 1 OK");
+			console.log("Ajax 1A OK");
 			displayLocation (loc);
 			displayGraphs ();
+			console.log("Ajax 1B OK");
 		}
 	});
 	$.ajax({
