@@ -246,6 +246,9 @@ function displayInfo () {
 			displayLocation (loc);
 			displayGraphs ();
 			console.log("Ajax 1B OK");
+		},
+		error: function(err) {
+			return;
 		}
 	});
 	$.ajax({
