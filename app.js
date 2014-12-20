@@ -261,7 +261,7 @@ function displayInfo () {
 			console.log("RES : " + res);
 			for (var x = 0; x < 1; x++) {
 				console.log("X : " + x);
-				var Height = "<div class=\"style_08\">" + res[x].height + " " + res[x].unit + "</div>";
+				var Height = "<div class=\"style_08\">" + res[x].body_height_length + " " + res[x].unit + "</div>";
 				console.log("Height : " + res[x].height + " " + res[x].uni);
 				$("#height").append(Height);
 			}
