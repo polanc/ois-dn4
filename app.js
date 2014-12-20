@@ -177,14 +177,6 @@ function addData(i) {
 }
 
 function displayLocation (Address) {
-	var FID = document.getElementById("Info");
-	var SID = FID.options[FID.selectedIndex].value;
-	var IND = 0;
-	for (var n = 0; n <= 2; n++) {
-		if (SID == Patient_ID[n]) {
-			IND = n;
-		}
-	}
 	var mapOptions = {
 		zoom: 8,
 		center: new google.maps.LatLng(46.086283, 14.511189),
@@ -249,9 +241,6 @@ function displayInfo () {
 			
 			displayLocation (loc);
 			displayGraphs ();
-		},
-		error: function(err) {
-			return;
 		}
 	});
 	$.ajax({
@@ -265,9 +254,6 @@ function displayInfo () {
 				var Height = "<p span class=\"style_08\">" + res[x].height + " " + res[x].unit + "</span> </p>";
 				$("#height").append(Height);
 			}
-		},
-		error: function(err) {
-			return;
 		}
 	});
 	$.ajax({
@@ -281,9 +267,6 @@ function displayInfo () {
 				var Height = "<p class=\"style_08\">" + res[x].weight + " " + res[x].unit + "</p>";
 				$("#height").append(Height);
 			}
-		},
-		error: function(err) {
-			return;
 		}
 	});
 	var BMI = "<span class=\"style_08\">" + BMI[IND] + "</span> </p>";
@@ -299,25 +282,19 @@ function displayInfo () {
 				var Pressure = "<p class=\"style_09\">" + res[x].systolic + " || " + res[x].diastolic + "</p>";
 				$("#pressure").append(Pressure);
 			}
-		},
-		error: function(err) {
-			return;
 		}
 	});
 	$.ajax({
 		url: baseUrl + "/view/" + SID + "/spO2",
 		type: 'GET',
 		headers: {
-		"Ehr-Session": sessionId
+			"Ehr-Session": sessionId
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
 				var Oxydation = "<span class=\"style_09\">" + res[x].spO2 + "</span> </p>";
 				$("#oxydation").append(Oxydation);
 			}
-		},
-		error: function(err) {
-			return;
 		}
 	});
 }
