@@ -202,6 +202,10 @@ function displayInfo () {
 	}
 		
 	console.log("SID : " + SID + " || " + IND);
+	if( SID.length < 1){
+		return;
+	}
+
 	$.ajax({
 		url: baseUrl + "/demographics/ehr/" + SID + "/party",
 		type: 'GET',
