@@ -241,7 +241,7 @@ function displayInfo () {
 			var loc = (Doctor_Loca[Patient_DR[IND]]);
 			var location = "<p class=\"style_04\">" + loc + "</p>";
 			$("#doc-loca").append(location);
-			
+			console.log("Ajax 1 OK");
 			displayLocation (loc);
 			displayGraphs ();
 		}
@@ -257,6 +257,7 @@ function displayInfo () {
 				var Height = "<p span class=\"style_08\">" + res[x].height + " " + res[x].unit + "</span> </p>";
 				$("#height").append(Height);
 			}
+			console.log("Ajax 2 OK");
 		}
 	});
 	$.ajax({
@@ -270,6 +271,7 @@ function displayInfo () {
 				var Height = "<p class=\"style_08\">" + res[x].weight + " " + res[x].unit + "</p>";
 				$("#height").append(Height);
 			}
+			console.log("Ajax 3 OK");
 		}
 	});
 	var BMI = "<span class=\"style_08\">" + BMI[IND] + "</span> </p>";
