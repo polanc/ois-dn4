@@ -416,7 +416,6 @@ function displayGraphs () {
 						        }
 						        results += "</table>";
 						        $("#rezultatMeritveVitalnihZnakov").append(results);
-					    	}
 					    	console.log("HTML: " + results);
 					console.log("Res: " + res);
 					console.log("AQL: " + AQL);
