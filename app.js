@@ -399,7 +399,7 @@ function displayGraphs () {
     			"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as temperatura_enota " +
 				"from EHR e[e/ehr_id/value='" + Patient_ID[0] + "'] " +
 				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
-				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude<40 " +
+				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude<39 " +
 				"order by t/data[at0002]/events[at0003]/time/value desc " +
 				"limit 10";
 	$.ajax({
@@ -407,7 +407,17 @@ function displayGraphs () {
 				type: 'GET',
 				headers: {"Ehr-Session": sessionId},
 				success: function (res) {
-				if (res) {
+					var results = "<table class='table table-striped table-hover'><tr><th>Time</th><th class='text-right'>Value</th></tr>";
+					    	if (res) {
+					    		var rows = res.resultSet;
+					    		console.log("Row: " + rows);
+						        for (var i in rows) {
+						            results += "<tr><td>" + rows[i].cas + "</td><td class='text-right'>" + rows[i].temperatura_vrednost + " " 	+ rows[i].temperatura_enota + "</td>";
+						        }
+						        results += "</table>";
+						        $("#rezultatMeritveVitalnihZnakov").append(results);
+					    	}
+					    	console.log("HTML: " + results);
 					console.log("Res: " + res);
 					console.log("AQL: " + AQL);
 	                  x.domain(res.map(function(d) { return d.cas; }));
