@@ -373,7 +373,7 @@ function displayGraphs (SID) {
 	        "Ehr-Session": sessionId
 	    },
 	    success: function (lineData) {
-	    			console.log(lineData);
+	    			console.log("lineData success" + lineData);
 	    		 	var vis = d3.select("#graph"),
 					WIDTH = $("#graph").width(),
 					HEIGHT = 270,
@@ -393,7 +393,7 @@ function displayGraphs (SID) {
 					  })
 					]),
 
-					yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function (d) {
+					 yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function (d) {
 					    return (d.weight - 2);
 					  }),
 					  d3.max(lineData, function (d) {
@@ -440,11 +440,6 @@ function displayGraphs (SID) {
 					.attr("fill", "none");
 		}
 	});
-}
-
-function type (d) {
-	d.temperatura_vrednost = +d.temperatura_vrednost;
-	return d;
 }
 
 function channelVideo () {
