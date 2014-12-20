@@ -165,7 +165,8 @@ hr {
     color : #000000;
 }
 
-.hidden {
+#map-container {
+    height : 300px;
     display: none;
 }
 

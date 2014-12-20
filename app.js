@@ -169,8 +169,7 @@ function addData(i) {
 }
 
 function displayLocation () {
-	clean_location ();
-	document.getElementById("hidden").style.display="inline";
+	document.getElementById("#map-container").style.display="inline";
 	var mapOptions = {
 		zoom: 8,
 		center: new google.maps.LatLng(46.086283, 14.511189),
@@ -235,11 +234,6 @@ function displayInfo () {
 			return;
 		}
 	});
-}
-
-function clean_location () {
-	element = document.getElementById("map-container");
-	element.innerHTML = '';
 }
 
 function clean_info () {
