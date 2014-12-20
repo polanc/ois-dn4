@@ -176,7 +176,7 @@ function addData(i) {
 	}
 }
 
-function displayLocation () {
+function displayLocation (Address) {
 	var FID = document.getElementById("Info");
 	var SID = FID.options[FID.selectedIndex].value;
 	var IND = 0;
@@ -191,7 +191,7 @@ function displayLocation () {
 		mapTypeId: google.maps.MapTypeId.ROADMAP };
 		var map = new google.maps.Map($("#map-container").get(0),mapOptions);
 		var geocoder = new google.maps.Geocoder();
-		var address = Doctor_Loca[Patient_DR[IND]];
+		var address = Address;
 		geocoder.geocode({address:address},function(results) {
 		new google.maps.Marker({position:results[0].geometry.location,map:map});
 	});
@@ -240,12 +240,15 @@ function displayInfo () {
 			$("#nurse-pic").append(nurse);
 			
 			var doc = ("Dr. " + Doctor_Name [Patient_DR[IND]] + " " + Doctor_Surn[Patient_DR[IND]]);
-			var doctor = "<span class=\"style_04\">" + doc + "</span> </p>";
+			var doctor = "<p class=\"style_04\">" + doc + "</p>";
 			$("#doc-name").append(doctor);
 			
 			var loc = (Doctor_Loca[Patient_DR[IND]]);
-			var location = "<span class=\"style_04\">" + loc + "</span> </p>";
+			var location = "<p class=\"style_04\">" + loc + "</p>";
 			$("#doc-loca").append(location);
+			
+			displayLocation (loc);
+			displayGraphs ();
 		},
 		error: function(err) {
 			return;
@@ -275,7 +278,7 @@ function displayInfo () {
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
-				var Height = "<p span class=\"style_08\">" + res[x].weight + " " + res[x].unit + "</span> </p>";
+				var Height = "<p class=\"style_08\">" + res[x].weight + " " + res[x].unit + "</p>";
 				$("#height").append(Height);
 			}
 		},
@@ -293,7 +296,7 @@ function displayInfo () {
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
-				var Pressure = "<span class=\"style_09\">" + res[x].systolic + " || " + res[x].diastolic + "</span> </p>";
+				var Pressure = "<p class=\"style_09\">" + res[x].systolic + " || " + res[x].diastolic + "</p>";
 				$("#pressure").append(Pressure);
 			}
 		},
@@ -317,8 +320,6 @@ function displayInfo () {
 			return;
 		}
 	});
-	displayLocation ();
-	displayGraphs ();
 }
 
 function clean_info () {
