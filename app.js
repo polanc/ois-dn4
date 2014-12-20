@@ -395,3 +395,37 @@ function type (d) {
 	d.frequency = +d.frequency;
 	return d;
 }
+
+function channelVideo () {
+
+	$.support.cors=true;
+	$("#video").html("");
+	$("#options").html("");
+
+	var channel="";
+	if (!$("#schannel").val() === "") {
+		channel=$("#schannel").val();
+	}
+	else {
+		channel="WHO";
+	}
+	var url = "http://gdata.youtube.com/feeds/api/users/"+ channel + "/uploads?&max-results=5&alt=json";
+
+	$.getJSON(url,function(data) {
+	$.each(data.feed.entry,function(i,item) {
+		var url=item.media$group.media$content[0].url;
+		var title=item.title.$t;
+		var datepublished=item.published.$t.substring(0,10);
+		var author=item.author[0].name.$t;
+		var text="<h3><a href='#' title='" + url + "'>" + title + "</a></h3>" + "<p>Published On " + datepublished + "By " + author + "</p><br>";
+		$("#video").append(text);
+	});
+
+	$("a").click(function() {
+		$("#video").html("");
+		var url =$(this).attr("title");
+		var text = "<object width='425' height='344'>" + "<param name='movie' value='" + url + "'></param>" + "<param name='allowFullScreen' value='true'></param>" + "<embed src='" + url + "' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='344'></embed>" + "</object>";
+		$("#options").append(text);
+		});
+	});
+}
