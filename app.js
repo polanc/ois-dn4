@@ -61,7 +61,6 @@ function generator (i) {
 				data: JSON.stringify(partyData),
 				success: function (party) {
 					if (party.action == 'CREATE') {
-						$("#Info").innerHTML='';
 						var Info = "<option class=\"Info\" value=\"" + Patient_ID [i] + "\">" + Name + " " + Surname + "</option>";
 						$("#Info").append(Info);
 					}
