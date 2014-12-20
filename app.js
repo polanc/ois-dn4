@@ -316,6 +316,10 @@ function clean_info () {
 	element.innerHTML = '';
 	element = document.getElementById("nurse-pic");
 	element.innerHTML = '';
+	element = document.getElementById("doc_name");
+	element.innerHTML = '';
+	element = document.getElementById("doc_loca");
+	element.innerHTML = '';
 	element = document.getElementById("height");
 	element.innerHTML = '';
 	element = document.getElementById("weight");
