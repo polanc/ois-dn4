@@ -199,12 +199,10 @@ function displayInfo (){
 		}
 	});
 }
+var count = 0;
 
 function displayGraphs () {
-	var graph = document.getElementById("graph");
-	var svg = document.getElementById("svg");
-	graph.removeChild(svg);
-	
+	count = count + 1;
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 960 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
@@ -223,6 +221,11 @@ function displayGraphs () {
 		.scale(y)
 		.orient("left")
 		.ticks(10, "%");
+		
+	if (count > 1) {
+		var elem = document.getElementById("graph");
+		elem.remove(svg);
+	}
 
 	var svg = d3.select("#graph").append("svg")
 		.attr("width", width + margin.left + margin.right)
