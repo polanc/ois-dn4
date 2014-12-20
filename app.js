@@ -294,7 +294,7 @@ function displayInfo () {
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
-				var Pressure = "<p class=\"style_09\">" + res[x].systolic + " || " + res[x].diastolic + "</p>";
+				var Pressure = "<p class=\"style_09\">" + res[x].diastolic + "||" + res[x].systolic + "</p>";
 				$("#pressure").append(Pressure);
 			}
 		}
