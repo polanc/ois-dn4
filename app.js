@@ -195,7 +195,7 @@ function displayInfo () {
 			clean_info();
 				
 			var patient = "<img src=\"pics/patient.png\" id=\"patient\">";
-			$("#patient").append(patient);
+			$("#patient-pic").append(patient);
 				
 			var name = "<p class=\"style_04\">" + party.firstNames + ' ' + party.lastNames + "</p>";
 			$("#data").append(name);
@@ -210,7 +210,7 @@ function displayInfo () {
 			$("#data").append(gender);
 				
 			var nurse = "<img src=\"pics/nurse.png\" id=\"nurse\">";
-			$("#nurse").append(nurse);
+			$("#nurse-pic").append(nurse);
 				
 			var Height = "";
 			$("#height").append(Height);
