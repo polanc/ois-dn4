@@ -257,14 +257,14 @@ function displayInfo () {
 		headers: {
 			"Ehr-Session": sessionId
 		},
-		success: function (res) {
-			console.log("RES : " + res);
+		success: function (data) {
+			console.log("RES : " + data);
 			for (var x = 0; x < 1; x++) {
 				console.log("X : " + x);
-				console.log("RESX : " + res[x]);
-				console.log("RESXHeight : " + res[x].height);
-				var Height = "<div class=\"style_08\">" + res[x].height + " " + res[x].unit + "</div>";
-				console.log("Height : " + res[x].height + " " + res[x].uni);
+				console.log("RESX : " + data[x]);
+				console.log("RESXHeight : " + data[x].height);
+				var Height = "<div class=\"style_08\">" + data[x].height + " " + data[x].unit + "</div>";
+				console.log("Height : " + data[x].height + " " + data[x].uni);
 				$("#height").append(Height);
 			}
 			console.log("Ajax 2 OK");
