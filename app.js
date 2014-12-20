@@ -251,6 +251,7 @@ function displayInfo () {
 			"Ehr-Session": sessionId
 		},
 		success: function (res) {
+			console.log("RES : " + res);
 			for (var x = 0; x < 1; x++) {
 				var Height = "<p class=\"style_08\">" + res[x].height + " " + res[x].unit + "</p>";
 				$("#height").append(Height);
