@@ -193,9 +193,10 @@ function displayInfo () {
 			var party = data.party;
 				
 			clean_info();
-				
+			
+			var element = document.getElementById("patient-pic");
 			var patient = "<img src=\"pics/patient.png\" id=\"patient\">";
-			$("#patient-pic").append(patient);
+			element.append(patient);
 				
 			var name = "<p class=\"style_04\">" + party.firstNames + ' ' + party.lastNames + "</p>";
 			$("#data").append(name);
@@ -236,11 +237,11 @@ function displayInfo () {
 }
 
 function clean_info () {
-	element = document.getElementById("patient");
+	element = document.getElementById("patient-pic");
 	element.innerHTML = '';
 	element = document.getElementById("data");
 	element.innerHTML = '';
-	element = document.getElementById("nurse");
+	element = document.getElementById("nurse-pic");
 	element.innerHTML = '';
 	element = document.getElementById("height");
 	element.innerHTML = '';
