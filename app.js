@@ -320,7 +320,13 @@ function displayInfo () {
 			}
 		}
 	});
-	$("#hidden").css("visibility", "visible");
+	reload();
+}
+
+function reload () {
+	$("#hidden").each(function(){
+		$("#hidden").css("visibility", "visible");
+	});
 }
 
 function clean_info () {
