@@ -207,10 +207,7 @@ function displayInfo () {
 			var birth = party.dateOfBirth.split("T");
 			var date = birth[0];
 			var time = birth[1];
-			var temp = time.split(":");
-			var minu = temp [1];
-			var hour = temp [0]
-			birth = "<p class=\"style_02\"><b> Birth: </b><span class=\"style_02\">" + date + " at " + hour + ":" + minu "</span></p>";
+			birth = "<p class=\"style_02\"><b> Birth: </b><span class=\"style_02\">" + date + " at " + time + "</span></p>";
 			$("#data").append(birth);
 				
 			var gender = "<p class=\"style_02\"><b> Gendre: </b> <span class=\"style_02\">" + party.gender + "</span> </p>";
