@@ -403,7 +403,7 @@ function channelVideo () {
 	$("#options").html("");
 
 	var channel="";
-	if (!$("#schannel").val() === "") {
+	if ($("#schannel").val() !== "") {
 		channel=$("#schannel").val();
 	}
 	else {
@@ -422,7 +422,6 @@ function channelVideo () {
 	});
 
 	$("a").click(function() {
-		$("#video").html("");
 		var url =$(this).attr("title");
 		var text = "<object width='425' height='344'>" + "<param name='movie' value='" + url + "'></param>" + "<param name='allowFullScreen' value='true'></param>" + "<embed src='" + url + "' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='344'></embed>" + "</object>";
 		$("#options").append(text);
