@@ -9,8 +9,8 @@ var Patient_ID  = [0, 0, 0];
 var Patient_BMI = [0, 0, 0];
 var Patient_DR  = [0, 0, 0];
 
-var Doctor_Name = ["Grant", "Kathleen", "Kevin", "Kenneth", "Janice"];
-var Doctor_Surn = ["Anderson", "Jones", "Reynolds", "Ross", "Brown"];
+var Doctor_Name = ['Grant', 'Kathleen', 'Kevin', 'Kenneth', 'Janice'];
+var Doctor_Surn = ['Anderson', 'Jones', 'Reynolds', 'Ross', 'Brown'];
 var Doctor_Loca = ["Zaloska Cesta 2 Ljubljana", "Krziceva 10 Ljubljana", "Zaloska Cesta 2 Ljubljana", "Krziceva 10 Ljubljana", "Krziceva 10 Ljubljana"];
 
 var Array_A = ["Nick", "Abraham", "Maseo"];
@@ -102,7 +102,7 @@ function addData(i) {
 			var Temp = (Math.random() * 40);
 			var BodyTemp;
 			
-			var Commitee = ("Dr. " + Doctor_Name [Patient_DR[i]] + " " + Doctor_Surn[Patient_DR[i]]);
+			var Commitee = ('Dr. ' + Doctor_Name [Patient_DR[i]] + ' ' + Doctor_Surn[Patient_DR[i]]);
 
 			if (i === 0) {
 				Height = (Math.random() * 10) + 178.4;
