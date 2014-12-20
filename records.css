@@ -167,7 +167,7 @@ hr {
 
 .map-container {
     height : 300px;
-    display : hidden;
+    display : none;
 }
 
 #load {
