@@ -93,7 +93,8 @@ function addData(i) {
 		
 		for(var j = 1; j <= Period; j++){
 			BirthDate     = BirthDate.split("-");
-			BirthDate [0] = BirthDate[0] + j;
+			var DateOfYear = parseInt(BirthDate[0]);
+			BirthDate[0] = (DateOfYear + j).toString();
 			BirthDate     = BirthDate.join("-");
 			var DateAndTime = BirthDate;
 			BirthDate     = BirthDate.split("-");
@@ -166,7 +167,6 @@ function addData(i) {
 				"ehrId": Patient_ID[i],
 				templateId: 'Vital Signs',
 				format: 'FLAT',
-				committer: Commitee
 			};
 			$.ajax({
 				url: baseUrl + "/composition?" + $.param(requestParameters),
