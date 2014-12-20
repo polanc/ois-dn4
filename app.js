@@ -169,7 +169,6 @@ function addData(i) {
 }
 
 function displayLocation () {
-	document.getElementById("#map-container").style.display="inline";
 	var mapOptions = {
 		zoom: 8,
 		center: new google.maps.LatLng(46.086283, 14.511189),
