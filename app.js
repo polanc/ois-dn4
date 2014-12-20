@@ -102,7 +102,7 @@ function addData(i) {
 			var Temp = (Math.random() * 40);
 			var BodyTemp;
 			
-			var Commitee = ('Dr. ' + Doctor_Name [Patient_DR[i]] + ' ' + Doctor_Surn[Patient_DR[i]]);
+			var Commitee = 'Uros Polanc';
 
 			if (i === 0) {
 				Height = (Math.random() * 10) + 178.4;
