@@ -192,15 +192,12 @@ function displayLocation (Address) {
 function displayInfo () {
 	var FID = document.getElementById("Info");
 	var SID = FID.options[FID.selectedIndex].value;
-	var IND;
+	var IND = 0;
 	sessionId = getSessionId();
 		
 	for (var n = 0; n <= 2; n++) {
 		if (SID == Patient_ID[n]) {
 			IND = n;
-		}
-		else {
-			IND = 0;
 		}
 	}
 		
@@ -255,7 +252,7 @@ function displayInfo () {
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
-				var Height = "<p span class=\"style_08\">" + res[x].height + " " + res[x].unit + "</span> </p>";
+				var Height = "<p class=\"style_08\">" + res[x].height + " " + res[x].unit + "</p>";
 				$("#height").append(Height);
 			}
 			console.log("Ajax 2 OK");
@@ -269,8 +266,8 @@ function displayInfo () {
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
-				var Height = "<p class=\"style_08\">" + res[x].weight + " " + res[x].unit + "</p>";
-				$("#height").append(Height);
+				var Weight = "<p class=\"style_08\">" + res[x].weight + " " + res[x].unit + "</p>";
+				$("#weight").append(Weight);
 			}
 			console.log("Ajax 3 OK");
 		}
