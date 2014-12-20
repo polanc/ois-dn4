@@ -202,7 +202,8 @@ function displayInfo (){
 
 function displayGraphs () {
 	var graph = document.getElementById("graph");
-	document.removeChild(graph);
+	var svg = document.getElementById("svg");
+	graph.removeChild(svg);
 	
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 960 - margin.left - margin.right,
