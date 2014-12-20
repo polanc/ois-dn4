@@ -232,7 +232,7 @@ function displayInfo () {
 			var nurse = "<img src=\"pics/nurse.png\" id=\"nurse\">";
 			$("#nurse-pic").append(nurse);
 			
-			var doctor = "<p class=\"style_04\">" + "Dr. " +  Doctor_Name[0] + Doctor_Surn[0] + "</p>";
+			var doctor = "<p class=\"style_04\">" + "Dr. " +  Doctor_Name[0] + " " + Doctor_Surn[0] + "</p>";
 			console.log(doctor);
 			$("#doc_name").append(doctor);
 			
@@ -410,22 +410,28 @@ function channelVideo () {
 		channel="WHO";
 	}
 	var url = "http://gdata.youtube.com/feeds/api/users/"+ channel + "/uploads?&max-results=5&alt=json";
+	var check = 0;
 
 	$.getJSON(url,function(data) {
-	$.each(data.feed.entry,function(i,item) {
-		var url=item.media$group.media$content[0].url;
-		var title=item.title.$t;
-		var datepublished=item.published.$t.substring(0,10);
-		var author=item.author[0].name.$t;
-		var text="<style_10><a href='#' title='" + url + "'>" + title + "</a></style_10><br>" + "<style_00>Published: " + datepublished + " By " + author + "</style_00>";
-		$("#options").append(text);
-		$("#options").append("<hr>");
-	});
-
-	$("a").click(function() {
-		var url = $(this).attr("title");
-		var text = "<object width='425' height='344'>" + "<param name='movie' value='" + url + "'></param>" + "<param name='allowFullScreen' value='true'></param>" + "<embed src='" + url + "' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='344'></embed>" + "</object>";
-		$("#video").append(text);
+		$.each(data.feed.entry,function(i,item) {
+			check = 1;
+			var url=item.media$group.media$content[0].url;
+			var title=item.title.$t;
+			var datepublished=item.published.$t.substring(0,10);
+			var author=item.author[0].name.$t;
+			var text="<style_10><a href='#' title='" + url + "'>" + title + "</a></style_10><br>" + "<style_00>Published: " + datepublished + " By " + author + "</style_00>";
+			$("#options").append(text);
+			$("#options").append("<hr>");
+		});
+		
+		$("a").click(function() {
+			var url = $(this).attr("title");
+			var text = "<object width='425' height='344'>" + "<param name='movie' value='" + url + "'></param>" + "<param name='allowFullScreen' value='true'></param>" + "<embed src='" + url + "' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='344'></embed>" + "</object>";
+			$("#video").append(text);
 		});
 	});
+	if (check === 0) {
+		var note = "<style_10>No Videos Found With This Searchword. </style_10>";
+		$("#options").append(note);
+	}
 }
