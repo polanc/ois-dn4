@@ -165,6 +165,13 @@ hr {
     color : #000000;
 }
 
+#graph {
+    -webkit-animation: fadein 1s;
+    -moz-animation: fadein 1s;
+    -o-animation: fadein 1s;
+    animation: fadein 1s;
+}
+
 #load {
     -webkit-animation: fadein 1s;
     -moz-animation: fadein 1s;
