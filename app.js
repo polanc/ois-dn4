@@ -417,17 +417,15 @@ function channelVideo () {
 		var title=item.title.$t;
 		var datepublished=item.published.$t.substring(0,10);
 		var author=item.author[0].name.$t;
-		var text="<style_10><a href='#' title='" + url + "'>" + title + "</a></style_10>";
-		$("#video").append(text);
-		text = "<style_00>Published: " + datepublished + " By " + author + "</style_00>";
-		$("#video").append(text);
-		$("#video").append("<hr>");
+		var text="<style_10><a href='#' title='" + url + "'>" + title + "</a></style_10><br>" + "<style_00>Published: " + datepublished + " By " + author + "</style_00>";
+		$("#options").append(text);
+		$("#options").append("<hr>");
 	});
 
 	$("a").click(function() {
 		var url = $(this).attr("title");
 		var text = "<object width='425' height='344'>" + "<param name='movie' value='" + url + "'></param>" + "<param name='allowFullScreen' value='true'></param>" + "<embed src='" + url + "' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='344'></embed>" + "</object>";
-		$("#options").append(text);
+		$("#video").append(text);
 		});
 	});
 }
