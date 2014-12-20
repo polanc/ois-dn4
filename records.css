@@ -105,6 +105,7 @@ hr {
 .style_00 {
     font-family : 'Cambria';
     font-size : 10px;
+    display : block;
     color : #000000;
 }
 

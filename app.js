@@ -419,7 +419,7 @@ function channelVideo () {
 		var author=item.author[0].name.$t;
 		var text="<style_10><a href='#' title='" + url + "'>" + title + "</a></style_10>";
 		$("#video").append(text);
-		text = "<style_00>Published: " + datepublished + " By " + author + "</style_00><br>";
+		text = "<style_00>Published: " + datepublished + " By " + author + "</style_00>";
 		$("#video").append(text);
 		$("#video").append("<hr>");
 	});
