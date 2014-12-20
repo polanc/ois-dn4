@@ -277,6 +277,10 @@ hr {
     background-color : #000000;
 }
 
+#hidden {
+    visibility : hidden;
+}
+
 #footer {
     position : fixed;
     bottom : 20px;
