@@ -61,6 +61,7 @@ function generator (i) {
 				data: JSON.stringify(partyData),
 				success: function (party) {
 					if (party.action == 'CREATE') {
+						$("#Info").innerHTML='';
 						var Info = "<option class=\"Info\" value=\"" + Patient_ID [i] + "\">" + Name + " " + Surname + "</option>";
 						$("#Info").append(Info);
 					}
@@ -183,6 +184,7 @@ function displayLocation () {
 
 function displayInfo () {
 	sessionId = getSessionId();
+	console.log("ID: " + Patient_ID[0]);
 	$.ajax({
 		url: baseUrl + "/demographics/ehr/" + Patient_ID[0] + "/party",
 		type: 'GET',
@@ -190,10 +192,11 @@ function displayInfo () {
 			"Ehr-Session": sessionId
 		},
 		success: function (data) {
+			console.log("Success");
 			var party = data.party;
 				
 			clean_info();
-			
+				
 			var element = document.getElementById("patient-pic");
 			var patient = "<img src=\"pics/patient.png\" id=\"patient\">";
 			element.append(patient);
