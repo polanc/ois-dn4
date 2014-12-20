@@ -165,7 +165,7 @@ hr {
     color : #000000;
 }
 
-#graph {
+.graph {
     -webkit-animation: fadein 1s;
     -moz-animation: fadein 1s;
     -o-animation: fadein 1s;
