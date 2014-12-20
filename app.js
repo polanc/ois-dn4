@@ -176,14 +176,14 @@ function addData(i) {
 	}
 }
 
-function displayLocation (Address) {
+function displayLocation () {
 	var mapOptions = {
 		zoom: 8,
 		center: new google.maps.LatLng(46.086283, 14.511189),
 		mapTypeId: google.maps.MapTypeId.ROADMAP };
 		var map = new google.maps.Map($("#map-container").get(0),mapOptions);
 		var geocoder = new google.maps.Geocoder();
-		var address = Address;
+		var address = "Kriziceva 10 Ljubljana";
 		geocoder.geocode({address:address},function(results) {
 		new google.maps.Marker({position:results[0].geometry.location,map:map});
 	});
@@ -239,11 +239,11 @@ function displayInfo () {
 			var doctor = "<p class=\"style_04\">" + doc + "</p>";
 			$("#doc-name").append(doctor);
 			
-			var loc = (Doctor_Loca[IND]);
+			var loc = (" Kriziceva 10 Ljubljana");
 			var location = "<p class=\"style_04\">" + loc + "</p>";
 			$("#doc-loca").append(location);
 			console.log("Ajax 1A OK");
-			displayLocation (loc);
+			displayLocation ();
 			displayGraphs ();
 			console.log("Ajax 1B OK");
 		},
@@ -260,7 +260,7 @@ function displayInfo () {
 		success: function (res) {
 			console.log("RES : " + res);
 			for (var x = 0; x < 1; x++) {
-				var Height = "<p class=\"style_08\">" + res[x].height + " " + res[x].unit + "</p>";
+				var Height = "<div class=\"style_08\">" + res[x].height + " " + res[x].unit + "</div>";
 				$("#height").append(Height);
 			}
 			console.log("Ajax 2 OK");
