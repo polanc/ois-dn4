@@ -182,7 +182,7 @@ function displayLocation () {
 }
 
 function displayInfo () {
-	var FID = document.getElementById("predlogaBolnika");
+	var FID = document.getElementById("Info");
 	var SID = FID.options[FID.selectedIndex].value;
 	sessionId = getSessionId();
 	console.log("SID : " + SID);
