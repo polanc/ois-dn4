@@ -198,6 +198,7 @@ function displayInfo () {
 			clean_info();
 				
 			var element = document.getElementById("patient-pic");
+			console.log("Data: " + data + " ## " + party);
 			var patient = "<img src=\"pics/patient.png\" id=\"patient\">";
 			element.append(patient);
 				
