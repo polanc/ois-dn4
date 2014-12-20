@@ -68,6 +68,7 @@ function generator (i) {
 					if (party.action == 'CREATE') {
 						var Info = "<option class=\"Info\" value=\"" + Patient_ID [i] + "\">" + Name + " " + Surname + "</option>";
 						$("#Info").append(Info);
+						addData(i);
 					}
 				},
 				error: function(err) {
@@ -148,7 +149,7 @@ function addData(i) {
 			$.ajaxSetup({
 				headers: {"Ehr-Session": sessionId}
 			});
-			var datas = {
+			var data = {
 				"ctx/language": "en",
 				"ctx/territory": "SI",
 				"ctx/time": DateAndTime,
@@ -160,7 +161,7 @@ function addData(i) {
 				"vital_signs/blood_pressure/any_event/diastolic": DysPressure,
 				"vital_signs/indirect_oximetry:0/spo2|numerator": Oxydation
 			};
-			console.log(datas);
+			console.log(data);
 			var requestParameters = {
 				"ehrId": Patient_ID[i],
 				templateId: 'Vital Signs',
@@ -171,7 +172,7 @@ function addData(i) {
 				url: baseUrl + "/composition?" + $.param(requestParameters),
 				type: 'POST',
 				contentType: 'application/json',
-				data: JSON.stringify(datas),
+				data: JSON.stringify(data),
 			});
 		}
 	}
