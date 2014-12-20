@@ -233,10 +233,13 @@ function displayInfo () {
 			$("#nurse-pic").append(nurse);
 			
 			var doctor = "<p class=\"style_04\">" + "Dr. " +  Doctor_Name[0] + Doctor_Surn[0] + "</p>";
-			$("#doc-name").append(doctor);
+			console.log(doctor);
+			$("#doc_name").append(doctor);
 			
 			var location = "<p class=\"style_04\">" + Doctor_Loca[0] + "</p>";
-			$("#doc-loca").append(location);
+			console.log(location);
+			$("#doc_loca").append(location);
+
 			displayLocation ();
 			displayGraphs ();
 		},
