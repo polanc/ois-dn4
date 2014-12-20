@@ -171,18 +171,16 @@ function addData(i) {
 function displayLocation () {
 	clean_location ();
 	document.getElementById("hidden").style.display="inline";
-	element = document.getElementById("map");
 	var mapOptions = {
 		zoom: 8,
 		center: new google.maps.LatLng(46.086283, 14.511189),
 		mapTypeId: google.maps.MapTypeId.ROADMAP };
-		var map=new google.maps.Map($("#map-container").get(0),mapOptions);
-		var geocoder=new google.maps.Geocoder();
+		var map = new google.maps.Map($("#map-container").get(0),mapOptions);
+		var geocoder = new google.maps.Geocoder();
 		var address ="Kržičeva 10 Ljubljana";
 		geocoder.geocode({address:address},function(results) {
 		new google.maps.Marker({position:results[0].geometry.location,map:map});
 	});
-	element.appendChild(mapOptions);
 }
 
 function displayInfo () {
@@ -240,7 +238,7 @@ function displayInfo () {
 }
 
 function clean_location () {
-	element = document.getElementById("map");
+	element = document.getElementById("map-container");
 	element.innerHTML = '';
 }
 
