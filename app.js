@@ -3,8 +3,11 @@ var baseUrl = 'https://rest.ehrscape.com/rest/v1';
 var username = "ois.seminar";
 var password = "ois4fri";
 
-var ID = [0, 0, 0];
-var BMI = [0, 0, 0];
+var element;
+
+var Patient_ID  = [0, 0, 0];
+var Patient_BMI = [0, 0, 0];
+
 var Array_A = ["Nick", "Abraham", "Maseo"];
 var Array_B = ["Burkhardt", "Setrakian", "Yamashiro"];
 var Array_C = ["1982-06-18T16:10", "1936-08-26T10:30", "1975-01-21T23:50"];
@@ -43,7 +46,7 @@ function generator (i) {
 		type: 'POST',
 		success: function (data) {
 		ehrId = data.ehrId;
-		ID [i] = ehrId;
+		Patient_ID [i] = ehrId;
 			var partyData = {
 				firstNames: Name,
 				lastNames: Surname,
@@ -58,7 +61,7 @@ function generator (i) {
 				data: JSON.stringify(partyData),
 				success: function (party) {
 					if (party.action == 'CREATE') {
-						var Info = "<option class=\"Info\" value=\"" + ID [i] + "\">" + Name + " " + Surname + "</option>";
+						var Info = "<option class=\"Info\" value=\"" + Patient_ID [i] + "\">" + Name + " " + Surname + "</option>";
 						$("#Info").append(Info);
 					}
 				},
@@ -71,7 +74,7 @@ function generator (i) {
 }
 
 function addData(i) {
-	if (ID[i] !== 0){
+	if (Patient_ID[i] !== 0){
 		var BirthDate = Array_C [i];
 		BirthDate = BirthDate.split("-");
 		var Year = BirthDate[0];
@@ -117,7 +120,7 @@ function addData(i) {
 			}
 			
 			if (j == Period) {
-				BMI[i] = ((Weight * 10000) / (Height * Height));
+				Patient_BMI[i] = ((Weight * 10000) / (Height * Height));
 			}
 				
 			if (Temp > 37) {
@@ -150,7 +153,7 @@ function addData(i) {
 				"vital_signs/indirect_oximetry:0/spo2|numerator": Oxydation
 			};
 			var requestParameters = {
-				"ehrId": ID[i],
+				"ehrId": Patient_ID[i],
 				templateId: 'Vital Signs',
 				format: 'FLAT',
 				committer: Commitee
@@ -165,16 +168,35 @@ function addData(i) {
 	}
 }
 
-function displayInfo (){
+function displayLocation () {
+	clean_location ();
+	document.getElementById("hidden").style.display="inline";
+	element = document.getElementById("map");
+	var mapOptions = {
+		zoom: 8,
+		center: new google.maps.LatLng(46.086283, 14.511189),
+		mapTypeId: google.maps.MapTypeId.ROADMAP };
+		var map=new google.maps.Map($("#map-container").get(0),mapOptions);
+		var geocoder=new google.maps.Geocoder();
+		var address ="Kržičeva 10 Ljubljana";
+		geocoder.geocode({address:address},function(results) {
+		new google.maps.Marker({position:results[0].geometry.location,map:map});
+	});
+	element.appendChild(mapOptions);
+}
+
+function displayInfo () {
 	sessionId = getSessionId();
 	$.ajax({
-		url: baseUrl + "/demographics/ehr/" + ID[0] + "/party",
+		url: baseUrl + "/demographics/ehr/" + Patient_ID[0] + "/party",
 		type: 'GET',
 		headers: {
 			"Ehr-Session": sessionId
 		},
 		success: function (data) {
 			var party = data.party;
+				
+			clean_info();
 				
 			var patient = "<img src=\"pics/patient.png\" id=\"patient\">";
 			$("#patient").append(patient);
@@ -193,55 +215,94 @@ function displayInfo (){
 				
 			var nurse = "<img src=\"pics/nurse.png\" id=\"nurse\">";
 			$("#nurse").append(nurse);
+				
+			var Height = "";
+			$("#height").append(Height);
+			
+			var Weight = "";
+			$("#weight").append(Weight);
+			
+			var BMI = "";
+			$("#bmi").append(BMI);
+			
+			var Pressure = "";
+			$("#pressure").append(Pressure);
+			
+			var Oxydation = "";
+			$("#oxydation").append(Oxydation);
+			
+			displayGraphs ();
 		},
 		error: function(err) {
 			return;
 		}
 	});
 }
-var count = 0;
+
+function clean_location () {
+	element = document.getElementById("map");
+	element.innerHTML = '';
+}
+
+function clean_info () {
+	element = document.getElementById("patient");
+	element.innerHTML = '';
+	element = document.getElementById("data");
+	element.innerHTML = '';
+	element = document.getElementById("nurse");
+	element.innerHTML = '';
+	element = document.getElementById("height");
+	element.innerHTML = '';
+	element = document.getElementById("weight");
+	element.innerHTML = '';
+	element = document.getElementById("pressure");
+	element.innerHTML = '';
+	element = document.getElementById("oxydation");
+	element.innerHTML = '';
+}
+
+function clean_graph () {
+	element = document.getElementById("graph");
+	element.innerHTML = '';
+}
 
 function displayGraphs () {
-	count = count + 1;
+	clean_graph();
+		
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 960 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
-
+		
 	var x = d3.scale.ordinal()
 		.rangeRoundBands([0, width], .1);
-
+		
 	var y = d3.scale.linear()
 		.range([height, 0]);
-
+		
 	var xAxis = d3.svg.axis()
 		.scale(x)
 		.orient("bottom");
-
+		
 	var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient("left")
 		.ticks(10, "%");
 		
-	if (count > 1) {
-		var elem = document.getElementById("graph");
-		elem.innerHTML = '';
-	}
-
 	var svg = d3.select("#graph").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+		
 	d3.tsv("data.tsv", type, function(error, data) {
 		x.domain(data.map(function(d) { return d.letter; }));
 		y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-
+		
 	svg.append("g")
 		.attr("class", "x axis")
 		.attr("transform", "translate(0," + height + ")")
 		.call(xAxis);
-
+		
 	svg.append("g")
 		.attr("class", "y axis")
 		.call(yAxis)
@@ -251,7 +312,7 @@ function displayGraphs () {
 		.attr("dy", ".71em")
 		.style("text-anchor", "end")
 		.text("Frequency");
-
+		
 	svg.selectAll(".bar")
 		.data(data)
 		.enter().append("rect")
