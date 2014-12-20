@@ -256,6 +256,8 @@ function clean_info () {
 	element.innerHTML = '';
 	element = document.getElementById("weight");
 	element.innerHTML = '';
+	element = document.getElementById("bmi");
+	element.innerHTML = '';
 	element = document.getElementById("pressure");
 	element.innerHTML = '';
 	element = document.getElementById("oxydation");
