@@ -192,6 +192,7 @@ function displayLocation () {
 }
 
 function displayInfo () {
+	clean_info();
 	var FID = document.getElementById("Info");
 	var SID = FID.options[FID.selectedIndex].value;
 	var IND = 0;
@@ -215,7 +216,6 @@ function displayInfo () {
 		},
 		success: function (data) {
 			var party = data.party;
-			clean_info();
 			
 			var patient = "<img src=\"pics/patient.png\" id=\"patient\">";
 			$("#patient-pic").append(patient);
