@@ -410,11 +410,9 @@ function channelVideo () {
 		channel="WHO";
 	}
 	var url = "http://gdata.youtube.com/feeds/api/users/"+ channel + "/uploads?&max-results=5&alt=json";
-	var check = 0;
 
 	$.getJSON(url,function(data) {
 		$.each(data.feed.entry,function(i,item) {
-			check = 1;
 			var url=item.media$group.media$content[0].url;
 			var title=item.title.$t;
 			var datepublished=item.published.$t.substring(0,10);
@@ -426,12 +424,8 @@ function channelVideo () {
 		
 		$("a").click(function() {
 			var url = $(this).attr("title");
-			var text = "<object width='425' height='344'>" + "<param name='movie' value='" + url + "'></param>" + "<param name='allowFullScreen' value='true'></param>" + "<embed src='" + url + "' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='344'></embed>" + "</object>";
+			var text = "<object width='100%' height='100%'>" + "<param name='movie' value='" + url + "'></param>" + "<param name='allowFullScreen' value='true'></param>" + "<embed src='" + url + "' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='344'></embed>" + "</object>";
 			$("#video").append(text);
 		});
 	});
-	if (check === 0) {
-		var note = "<style_10>No Videos Found With This Searchword. </style_10>";
-		$("#options").append(note);
-	}
 }
