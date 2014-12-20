@@ -201,7 +201,7 @@ function displayInfo () {
 		}
 	}
 		
-	console.log("SID : " + SID + " || " + IND);
+	console.log("SID : " + SID + " || " + Patient_DR[IND]);
 	if( SID.length < 1){
 		return;
 	}
