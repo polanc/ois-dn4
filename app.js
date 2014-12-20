@@ -320,7 +320,7 @@ function displayInfo () {
 			}
 		}
 	});
-	document.getElementById("hidden").style.visibility = 'visible';
+	$("#hidden").css("visibility", "visible");
 }
 
 function clean_info () {
