@@ -180,6 +180,10 @@ hr {
     display : block;
 }
 
+.video {
+    position : relative;
+}
+
 #map-container {
     height : 300px;
 }
