@@ -3,7 +3,6 @@ body {
     background : url(pics/welcome.jpg);
 	background-attachment : fixed;
 	background-size : 100%;
-	background-repeat : no-repeat;
 }
 
 .style_01 {

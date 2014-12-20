@@ -3,7 +3,6 @@ body {
     background : url(pics/background.png);
 	background-attachment : fixed;
 	background-size : 100%;
-	background-repeat : no-repeat;
 }
 
 hr {
@@ -175,7 +174,7 @@ hr {
 .style_10 {
 	font-family : 'Cambria';
 	font-weight : bold;
-    font-size : 14px;
+    font-size : 20px;
     color : #000000;
     display : block;
 }
