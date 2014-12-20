@@ -286,7 +286,7 @@ function displayInfo () {
 			console.log("Ajax 3 OK");
 		}
 	});
-	var body = BMI[IND];
+	var body = Patient_BMI[IND];
 	var BMI = "<p class=\"style_08\">" + body + "</p>";
 	$("#bmi").append(BMI);
 	$.ajax({
