@@ -197,10 +197,9 @@ function displayInfo () {
 				
 			clean_info();
 				
-			var element = document.getElementById("patient-pic");
 			console.log("Data: " + data + " ## " + party);
 			var patient = "<img src=\"pics/patient.png\" id=\"patient\">";
-			element.append(patient);
+			$("#patient-pic").append(patient);
 				
 			var name = "<p class=\"style_04\">" + party.firstNames + ' ' + party.lastNames + "</p>";
 			$("#data").append(name);
