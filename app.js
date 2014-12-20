@@ -148,7 +148,7 @@ function addData(i) {
 			$.ajaxSetup({
 				headers: {"Ehr-Session": sessionId}
 			});
-			var data = {
+			var datas = {
 				"ctx/language": "en",
 				"ctx/territory": "SI",
 				"ctx/time": DateAndTime,
@@ -160,7 +160,7 @@ function addData(i) {
 				"vital_signs/blood_pressure/any_event/diastolic": DysPressure,
 				"vital_signs/indirect_oximetry:0/spo2|numerator": Oxydation
 			};
-			console.log(data);
+			console.log(datas);
 			var requestParameters = {
 				"ehrId": Patient_ID[i],
 				templateId: 'Vital Signs',
@@ -171,7 +171,7 @@ function addData(i) {
 				url: baseUrl + "/composition?" + $.param(requestParameters),
 				type: 'POST',
 				contentType: 'application/json',
-				data: JSON.stringify(data),
+				data: JSON.stringify(datas),
 			});
 		}
 	}
