@@ -236,6 +236,7 @@ function displayInfo () {
 			var Oxydation = "<span class=\"style_09\">" + 95 + "</span> </p>";
 			$("#oxydation").append(Oxydation);
 			
+			displayLocation ();
 			displayGraphs ();
 		},
 		error: function(err) {
