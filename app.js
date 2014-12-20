@@ -31,8 +31,6 @@ function getSessionId () {
 
 function patients () {
 	graph_list ();
-	element = document.getElementById("Info");
-	element.innerHTML = '';
 	generator (0);
 	generator (1);
 	generator (2);
@@ -79,6 +77,10 @@ function generator (i) {
 				data: JSON.stringify(partyData),
 				success: function (party) {
 					if (party.action == 'CREATE') {
+						if (i === 0) {
+							element = document.getElementById("Info");
+							element.innerHTML = '';
+						}
 						var Info = "<option class=\"Info\" value=\"" + Patient_ID [i] + "\">" + Name + " " + Surname + "</option>";
 						$("#Info").append(Info);
 						addData(i);
