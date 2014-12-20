@@ -160,6 +160,7 @@ function addData(i) {
 				"vital_signs/blood_pressure/any_event/diastolic": DysPressure,
 				"vital_signs/indirect_oximetry:0/spo2|numerator": Oxydation
 			};
+			console.log(data);
 			var requestParameters = {
 				"ehrId": Patient_ID[i],
 				templateId: 'Vital Signs',
@@ -257,14 +258,14 @@ function displayInfo () {
 		headers: {
 			"Ehr-Session": sessionId
 		},
-		success: function (data) {
-			console.log("RES : " + data);
+		success: function (res) {
+			console.log("RES : " + res);
 			for (var x = 0; x < 1; x++) {
 				console.log("X : " + x);
-				console.log("RESX : " + data[x]);
-				console.log("RESXHeight : " + data[x].height);
-				var Height = "<div class=\"style_08\">" + data[x].height + " " + data[x].unit + "</div>";
-				console.log("Height : " + data[x].height + " " + data[x].uni);
+				console.log("RESX : " + res[x]);
+				console.log("RESXHeight : " + res[x].height);
+				var Height = "<div class=\"style_08\">" + res[x].height + " " + res[x].unit + "</div>";
+				console.log("Height : " + res[x].height + " " + res[x].uni);
 				$("#height").append(Height);
 			}
 			console.log("Ajax 2 OK");
