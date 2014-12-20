@@ -171,6 +171,13 @@ hr {
     color : #000000;
 }
 
+.style_10 {
+	font-family : 'Cambria';
+	font-weight : bold;
+    font-size : 14px;
+    color : #000000;
+}
+
 #map-container {
     height : 300px;
 }
