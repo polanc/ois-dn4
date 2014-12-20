@@ -216,12 +216,10 @@ function displayInfo () {
 			var nurse = "<img src=\"pics/nurse.png\" id=\"nurse\">";
 			$("#nurse-pic").append(nurse);
 			
-			var doc = "Some Doctor";
-			var doctor = "<span class=\"style_08\">" + doc + "</span> </p>";
+			var doctor = "<span class=\"style_04\">" + "Some Doctor" + "</span> </p>";
 			$("#doc-name").append(doctor);
 			
-			var loc = "Kriziceva 10 Ljubljana";
-			var location = "<span class=\"style_08\">" + loc + "</span> </p>";
+			var location = "<span class=\"style_04\">" + "Kriziceva 10 Ljubljana" + "</span> </p>";
 			$("#doc-loca").append(location);
 				
 			var Height = "<span class=\"style_08\">" + 190.6 + "</span> </p>";
@@ -233,7 +231,7 @@ function displayInfo () {
 			var BMI = "<span class=\"style_08\">" + 24.9 + "</span> </p>";
 			$("#bmi").append(BMI);
 			
-			var Pressure = "<span class=\"style_09\">" + 68  + "||" + 98 + "</span> </p>";
+			var Pressure = "<span class=\"style_09\">" + 68  + " || " + 98 + "</span> </p>";
 			$("#pressure").append(Pressure);
 			
 			var Oxydation = "<span class=\"style_09\">" + 95 + "</span> </p>";
