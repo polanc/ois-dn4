@@ -30,9 +30,20 @@ function getSessionId () {
 }
 
 function patients () {
+	graph_list ();
 	generator (0);
 	generator (1);
 	generator (2);
+}
+
+function graph_list () {
+	element = document.getElementById("graphicals");
+	element.innerHTML = '';
+	var graph_opt;
+	graph_opt = "<option class=\"Info\" value=\"" + "weight" + "\">" + "Weight"  + "</option>";
+	$("#graphicals").append(graph_opt);
+	graph_opt = "<option class=\"Info\" value=\"" + "height" + "\">" + "Height"  + "</option>";
+	$("#graphicals").append(graph_opt);
 }
 
 function generator (i) {
