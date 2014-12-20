@@ -86,8 +86,6 @@ function addData(i) {
 		var Year = BirthDate[0];
 		var Period = 2014 - Year - 20;
 		BirthDate = BirthDate.join("-");
-		var Doc_Num = Math.floor(Math.random() * 5);
-		Patient_DR [i] = Doc_Num;
 		var Height;
 		var Weight;
 		
@@ -102,8 +100,6 @@ function addData(i) {
 			BirthDate     = BirthDate.join("-");
 			var Temp = (Math.random() * 40);
 			var BodyTemp;
-			
-			var Commitee = 'Uros Polanc';
 
 			if (i === 0) {
 				Height = (Math.random() * 10) + 178.4;
@@ -236,17 +232,13 @@ function displayInfo () {
 			var nurse = "<img src=\"pics/nurse.png\" id=\"nurse\">";
 			$("#nurse-pic").append(nurse);
 			
-			var doc = "Dr. Who";
-			var doctor = "<p class=\"style_04\">" + doc + "</p>";
+			var doctor = "<p class=\"style_04\">" + "Dr. " +  Doctor_Name[0] + Doctor_Surn[0] + "</p>";
 			$("#doc-name").append(doctor);
 			
-			var loc = "Krziceva 10 Ljubljana";
-			var location = "<p class=\"style_04\">" + loc + "</p>";
+			var location = "<p class=\"style_04\">" + Doctor_Loca[0] + "</p>";
 			$("#doc-loca").append(location);
-			console.log("Ajax 1A OK");
 			displayLocation ();
 			displayGraphs ();
-			console.log("Ajax 1B OK");
 		},
 		error: function(err) {
 			return;
