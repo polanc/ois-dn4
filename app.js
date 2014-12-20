@@ -207,7 +207,10 @@ function displayInfo () {
 			var birth = party.dateOfBirth.split("T");
 			var date = birth[0];
 			var time = birth[1];
-			birth = "<p class=\"style_02\"><b> Birth: </b><span class=\"style_02\">" + date + " at " + time + "</span></p>";
+			var temp = time.split(":");
+			var minu = temp [1];
+			var hour = temp [0]
+			birth = "<p class=\"style_02\"><b> Birth: </b><span class=\"style_02\">" + date + " at " + hour + ":" + minu "</span></p>";
 			$("#data").append(birth);
 				
 			var gender = "<p class=\"style_02\"><b> Gendre: </b> <span class=\"style_02\">" + party.gender + "</span> </p>";
@@ -215,6 +218,12 @@ function displayInfo () {
 				
 			var nurse = "<img src=\"pics/nurse.png\" id=\"nurse\">";
 			$("#nurse-pic").append(nurse);
+			
+			var doctor = "";
+			$("#doc-name").append(doctor);
+			
+			var location = "";
+			$("#doc-loca").append(location);
 				
 			var Height = "";
 			$("#height").append(Height);
