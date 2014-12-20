@@ -424,7 +424,7 @@ function channelVideo () {
 		
 		$("a").click(function() {
 			var url = $(this).attr("title");
-			var text = "<object width='100%' height='100%'>" + "<param name='movie' value='" + url + "'></param>" + "<param name='allowFullScreen' value='true'></param>" + "<embed src='" + url + "' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='344'></embed>" + "</object>";
+			var text = "<object width='450' height='350'>" + "<param name='movie' value='" + url + "'></param>" + "<param name='allowFullScreen' value='true'></param>" + "<embed src='" + url + "' type='application/x-shockwave-flash' allowfullscreen='true' width='425' height='344'></embed>" + "</object>";
 			$("#video").append(text);
 		});
 	});
