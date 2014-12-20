@@ -183,7 +183,7 @@ function displayLocation () {
 		mapTypeId: google.maps.MapTypeId.ROADMAP };
 		var map = new google.maps.Map($("#map-container").get(0),mapOptions);
 		var geocoder = new google.maps.Geocoder();
-		var address = "Kriziceva 10 Ljubljana";
+		var address = "Krziceva 10 Ljubljana";
 		geocoder.geocode({address:address},function(results) {
 		new google.maps.Marker({position:results[0].geometry.location,map:map});
 	});
@@ -239,7 +239,7 @@ function displayInfo () {
 			var doctor = "<p class=\"style_04\">" + doc + "</p>";
 			$("#doc-name").append(doctor);
 			
-			var loc = (" Kriziceva 10 Ljubljana");
+			var loc = ("Krziceva 10 Ljubljana");
 			var location = "<p class=\"style_04\">" + loc + "</p>";
 			$("#doc-loca").append(location);
 			console.log("Ajax 1A OK");
@@ -260,10 +260,16 @@ function displayInfo () {
 		success: function (res) {
 			console.log("RES : " + res);
 			for (var x = 0; x < 1; x++) {
+				console.log("X : " + x);
 				var Height = "<div class=\"style_08\">" + res[x].height + " " + res[x].unit + "</div>";
+				console.log("Height : " + res[x].height + " " + res[x].uni);
 				$("#height").append(Height);
 			}
 			console.log("Ajax 2 OK");
+		},
+		error: function(err) {
+			console.log("Ajax 2 PROBLEM");
+			return;
 		}
 	});
 	$.ajax({
