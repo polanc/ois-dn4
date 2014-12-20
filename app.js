@@ -224,7 +224,7 @@ function displayGraphs () {
 		
 	if (count > 1) {
 		var elem = document.getElementById("graph");
-		elem.remove(svg);
+		elem.innerHTML = '';
 	}
 
 	var svg = d3.select("#graph").append("svg")
