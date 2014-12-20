@@ -31,6 +31,8 @@ function getSessionId () {
 
 function patients () {
 	graph_list ();
+	element = document.getElementById("Info");
+	element.innerHTML = '';
 	generator (0);
 	generator (1);
 	generator (2);
