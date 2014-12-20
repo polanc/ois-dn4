@@ -203,7 +203,6 @@ function displayInfo () {
 		}
 	}
 		
-	console.log("SID : " + SID + " || " + Patient_DR[IND]);
 	if( SID.length < 1){
 		return;
 	}
@@ -260,19 +259,13 @@ function displayInfo () {
 			"Ehr-Session": sessionId
 		},
 		success: function (res) {
-			console.log("RES : " + res);
 			for (var x = 0; x < 1; x++) {
-				console.log("X : " + x);
-				console.log("RESX : " + res[x]);
-				console.log("RESXHeight : " + res[x].height);
-				var Height = "<div class=\"style_08\">" + res[x].height + " " + res[x].unit + "</div>";
-				console.log("Height : " + res[x].height + " " + res[x].uni);
+				var value = Math.round(res[x].height * 10) / 10;
+				var Height = "<div class=\"style_08\">" + value + " " + res[x].unit + "</div>";
 				$("#height").append(Height);
 			}
-			console.log("Ajax 2 OK");
 		},
 		error: function(err) {
-			console.log("Ajax 2 PROBLEM");
 			return;
 		}
 	});
@@ -284,13 +277,13 @@ function displayInfo () {
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
-				var Weight = "<p class=\"style_08\">" + res[x].weight + " " + res[x].unit + "</p>";
+				var value = Math.round(res[x].weight * 10) / 10;
+				var Weight = "<p class=\"style_08\">" + value + " " + res[x].unit + "</p>";
 				$("#weight").append(Weight);
 			}
-			console.log("Ajax 3 OK");
 		}
 	});
-	var body = Patient_BMI[IND];
+	var body = Math.round(Patient_BMI[IND] * 10) / 10;
 	var BMI = "<p class=\"style_08\">" + body + "</p>";
 	$("#bmi").append(BMI);
 	$.ajax({
