@@ -93,97 +93,95 @@ function generator (i) {
 }
 
 function addData(i) {
-	if (Patient_ID[i] !== 0){
-		var BirthDate = Array_C [i];
-		BirthDate = BirthDate.split("-");
-		var Year = BirthDate[0];
-		var Period = 2014 - Year - 20;
-		BirthDate = BirthDate.join("-");
-		var Height;
-		var Weight;
+	var BirthDate = Array_C [i];
+	BirthDate = BirthDate.split("-");
+	var Year = BirthDate[0];
+	var Period = 2014 - Year - 20;
+	BirthDate = BirthDate.join("-");
+	var Height;
+	var Weight;
+	
+	for(var j = 1; j <= Period; j++){
+		BirthDate     = BirthDate.split("-");
+		var DateOfYear = parseInt(BirthDate[0]);
+		BirthDate[0] = (DateOfYear + j + 20).toString();
+		BirthDate     = BirthDate.join("-");
+		var DateAndTime = BirthDate;
+		BirthDate     = BirthDate.split("-");
+		BirthDate [0] = BirthDate[0] - j - 20;
+		BirthDate     = BirthDate.join("-");
+		var Temp = (Math.random() * 40);
+		var BodyTemp;
 		
-		for(var j = 1; j <= Period; j++){
-			BirthDate     = BirthDate.split("-");
-			var DateOfYear = parseInt(BirthDate[0]);
-			BirthDate[0] = (DateOfYear + j + 20).toString();
-			BirthDate     = BirthDate.join("-");
-			var DateAndTime = BirthDate;
-			BirthDate     = BirthDate.split("-");
-			BirthDate [0] = BirthDate[0] - j - 20;
-			BirthDate     = BirthDate.join("-");
-			var Temp = (Math.random() * 40);
-			var BodyTemp;
-
-			if (i === 0) {
-				Height = (Math.random() * 10) + 178.4;
-				Weight = (Math.random() *  5) + 79.6;
-				Height = Height + (Math.random() * 3 );
-				Height = Height - (Math.random() * 3 );
-				Weight = Weight + (Math.random() * 4 );
-				Weight = Weight - (Math.random() * 4 );
-			}
-			else if (i == 1) {
-				Height = (Math.random() * 10) + 168.8;
-				Weight = (Math.random() *  5) + 72.1;
-				Height = Height + (Math.random() * 1 );
-				Height = Height - (Math.random() * 1 );
-				Weight = Weight + (Math.random() * 2 );
-				Weight = Weight - (Math.random() * 2 );
-			}
-			else if (i == 2) {
-				Height = (Math.random() * 10) + 173.3;
-				Weight = (Math.random() *  5) + 72.8;
-				Height = Height + (Math.random() * 2 );
-				Height = Height - (Math.random() * 2 );
-				Weight = Weight + (Math.random() * 3 );
-				Weight = Weight - (Math.random() * 2 );
-			}
-			
-			if (j == Period) {
-				Patient_BMI[i] = ((Weight * 10000) / (Height * Height));
-			}
-				
-			if (Temp > 37) {
-				BodyTemp = (36 + (Math.random() * 4)); // Max: 40-36
-				
-			}
-			else {
-				BodyTemp = (37 - (Math.random() * 2)); // Min: 35-37
-			}
-				
-			Temp = Math.floor(Math.random() + 1);
-			var SysPressure = Math.floor( 90 + (Math.random() * 30));
-			var DysPressure = Math.floor( 60 + (Math.random() * 20));
-			var Oxydation   = Math.floor(100 - (Math.random() * 8));
-				
-			$.ajaxSetup({
-				headers: {"Ehr-Session": sessionId}
-			});
-			var data = {
-				"ctx/language": "en",
-				"ctx/territory": "SI",
-				"ctx/time": DateAndTime,
-				"vital_signs/height_length/any_event/body_height_length": Height,
-				"vital_signs/body_weight/any_event/body_weight": Weight,
-				"vital_signs/body_temperature/any_event/temperature|magnitude": BodyTemp,
-				"vital_signs/body_temperature/any_event/temperature|unit": "°C",
-				"vital_signs/blood_pressure/any_event/systolic": SysPressure,
-				"vital_signs/blood_pressure/any_event/diastolic": DysPressure,
-				"vital_signs/indirect_oximetry:0/spo2|numerator": Oxydation
-			};
-			console.log(data);
-			var requestParameters = {
-				"ehrId": Patient_ID[i],
-				templateId: 'Vital Signs',
-				format: 'FLAT',
-			};
-			$.ajax({
-				url: baseUrl + "/composition?" + $.param(requestParameters),
-				type: 'POST',
-				contentType: 'application/json',
-				data: JSON.stringify(data),
-			});
+		if (i === 0) {
+			Height = (Math.random() * 10) + 178.4;
+			Weight = (Math.random() *  5) + 79.6;
+			Height = Height + (Math.random() * 3 );
+			Height = Height - (Math.random() * 3 );
+			Weight = Weight + (Math.random() * 4 );
+			Weight = Weight - (Math.random() * 4 );
 		}
+		else if (i == 1) {
+			Height = (Math.random() * 10) + 168.8;
+			Weight = (Math.random() *  5) + 72.1;
+			Height = Height + (Math.random() * 1 );
+			Height = Height - (Math.random() * 1 );
+			Weight = Weight + (Math.random() * 2 );
+			Weight = Weight - (Math.random() * 2 );
+		}
+		else if (i == 2) {
+			Height = (Math.random() * 10) + 173.3;
+			Weight = (Math.random() *  5) + 72.8;
+			Height = Height + (Math.random() * 2 );
+			Height = Height - (Math.random() * 2 );
+			Weight = Weight + (Math.random() * 3 );
+			Weight = Weight - (Math.random() * 2 );
+		}
+			
+		if (j == Period) {
+			Patient_BMI[i] = ((Weight * 10000) / (Height * Height));
+		}
+			
+		if (Temp > 37) {
+			BodyTemp = (36 + (Math.random() * 4)); // Max: 40-36
+			
+		}
+		else {
+			BodyTemp = (37 - (Math.random() * 2)); // Min: 35-37
+		}
+				
+		Temp = Math.floor(Math.random() + 1);
+		var SysPressure = Math.floor( 90 + (Math.random() * 30));
+		var DysPressure = Math.floor( 60 + (Math.random() * 20));
+		var Oxydation   = Math.floor(100 - (Math.random() * 8));
+			
+		$.ajaxSetup({
+			headers: {"Ehr-Session": sessionId}
+		});
+		var data = {
+			"ctx/language": "en",
+			"ctx/territory": "SI",
+			"ctx/time": DateAndTime,
+			"vital_signs/height_length/any_event/body_height_length": Height,
+			"vital_signs/body_weight/any_event/body_weight": Weight,
+			"vital_signs/body_temperature/any_event/temperature|magnitude": BodyTemp,
+			"vital_signs/body_temperature/any_event/temperature|unit": "°C",
+			"vital_signs/blood_pressure/any_event/systolic": SysPressure,
+			"vital_signs/blood_pressure/any_event/diastolic": DysPressure,
+			"vital_signs/indirect_oximetry:0/spo2|numerator": Oxydation
+		};
+		console.log(data);
+		var requestParameters = {
+			"ehrId": Patient_ID[i],
+			templateId: 'Vital Signs',
+			format: 'FLAT',
+		};
+		$.ajax({
+			url: baseUrl + "/composition?" + $.param(requestParameters),
+			type: 'POST',
+			contentType: 'application/json',
+			data: JSON.stringify(data),
+		});
 	}
 }
 
