@@ -48,6 +48,7 @@ function graph_list () {
 	var graph_opt;
 	graph_opt = "<option class=\"Info\" value=\"" + "/body_temperature" + "\">" + "Temperature"  + "</option>";
 	$("#graphicals").append(graph_opt);
+
 /*
 	graph_opt = "<option class=\"Info\" value=\"" + "bmi-eu" + "\">" + "BMI EU"  + "</option>";
 	$("#graphicals").append(graph_opt);
@@ -58,6 +59,7 @@ function graph_list () {
 	graph_opt = "<option class=\"Info\" value=\"" + "/height" + "\">" + "Height"  + "</option>";
 	$("#graphicals").append(graph_opt);
 */
+
 }
 
 function generator (i) {
@@ -225,6 +227,8 @@ function displayLocation () {
 		new google.maps.Marker({position:results[0].geometry.location,map:map});
 	});
 }
+
+/*
 var lon;
 var lat;
 
@@ -261,6 +265,7 @@ function showMaps () {
 		new google.maps.Marker({position:results[0].geometry.location,map:map});
     });
 }
+*/
 
 function displayInfo () {
 	clean_info();
