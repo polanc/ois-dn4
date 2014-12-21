@@ -18,9 +18,9 @@ var Array_B = ["Burkhardt", "Setrakian", "Yamashiro"];
 var Array_C = ["1982-06-18T16:10", "1936-08-26T10:30", "1975-01-21T23:50"];
 var Array_D = ["MALE", "MALE", "MALE"];
 
-// Nick Burkhardt --> Condition: Good
-// Abraham Setrakian --> Condition: Good
-// Maseo Yamashiro --> Condition: Gaining Weight [Severe Problem]
+// Nick Burkhardt    --> Condition: OK
+// Abraham Setrakian --> Condition: Severe [Weight - Lose]
+// Maseo Yamashiro   --> Condition: Severe [Weight - Gain]
 
 
 var sessionId;
@@ -114,6 +114,11 @@ function addData(i) {
 	var Height;
 	var Weight;
 	
+	if (i == 1) {
+		Height = (Math.random() * 10) + 168.8;
+		Weight = (Math.random() *  5) + 72.1;
+	}
+	
 	if (i == 2) {
 		Height = (Math.random() * 10) + 173.3;
 		Weight = (Math.random() *  5) + 82.8;
@@ -140,17 +145,14 @@ function addData(i) {
 			Weight = Weight - (Math.random() * 4 );
 		}
 		else if (i == 1) {
-			Height = (Math.random() * 10) + 168.8;
-			Weight = (Math.random() *  5) + 72.1;
 			Height = Height + (Math.random() * 1 );
 			Height = Height - (Math.random() * 1 );
-			Weight = Weight + (Math.random() * 2 );
-			Weight = Weight - (Math.random() * 2 );
+			Weight = Weight - (Math.random() * (j / 30));
 		}
 		else if (i == 2) {
 			Height = Height + (Math.random() * 2 );
 			Height = Height - (Math.random() * 2 );
-			Weight = Weight + (Math.random() * (j / 2));
+			Weight = Weight + (Math.random() * (j / 3));
 		}
 			
 		if (j == Period) {
