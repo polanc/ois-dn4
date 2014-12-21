@@ -47,7 +47,7 @@ function graph_list () {
 	element = document.getElementById("graphicals");
 	element.innerHTML = '';
 	var graph_opt;
-	graph_opt = "<option class=\"Info\" value=\"" + "temperature" + "\">" + "Temperature"  + "</option>";
+	graph_opt = "<option class=\"Info\" value=\"" + "/body_temperature" + "\">" + "Temperature"  + "</option>";
 	$("#graphicals").append(graph_opt);
 /*
 	graph_opt = "<option class=\"Info\" value=\"" + "bmi-eu" + "\">" + "BMI EU"  + "</option>";
@@ -429,42 +429,52 @@ function displayGraphs (SID) {
 			success: function (res) {
 				var jsonData = JSON.stringify(res);
 				var resultSet = res.resultSet;
-				if( resultSet.length > 0){
-		    		var fever = "<p class=\"style_02\">Fever count: " + "<b>" + resultSet.length + "</b>" + "</p>" ;
+				if( resultSet.length >= 0){
+		    		var fever = "<p class=\"style_02\">Fever count: " + resultSet.length + "</p>" ;
 		    		$("#analithics").append(fever);
-				}
-				if (res) {
-					console.log("JSONData: " + jsonData);
-					x.domain(resultSet.map(function(d) { return d.cas; }));
-					y.domain([0, d3.max(resultSet, function(d) { return d.temperatura_vrednost; })]);
-						
-					svg.append("g")
-					.attr("class", "x axis")
-					.attr("transform", "translate(0," + height + ")")
-					.call(xAxis);
-						
-					svg.append("g")
-					.attr("class", "y axis")
-					.call(yAxis)
-					.append("text")
-					.attr("transform", "rotate(-90)")
-					.attr("y", 6)
-					.attr("dy", ".71em")
-					.style("text-anchor", "end")
-					.text("Temperature");
-						
-					svg.selectAll(".bar")
-					.data(resultSet)
-					.enter().append("rect")
-					.attr("class", "bar")
-					.attr("x", function(d) { return x(d.cas); })
-					.attr("width", x.rangeBand())
-					.attr("y", function(d) { return y(d.temperatura_vrednost); })
-					.attr("height", function(d) { return height - y(d.temperatura_vrednost); });
 				}
 			}
 		});
 	}
+
+	$.ajax({
+		url: baseUrl + "/view/" + SID + GID,
+		type: 'GET',
+		headers: {"Ehr-Session": sessionId},
+		success: function (res) {
+			if (res) {
+				var jsonData = JSON.stringify(res);
+				var resultSet = res.resultSet;
+				console.log("JSONData: " + jsonData);
+				x.domain(resultSet.map(function(d) { return d.cas; }));
+				y.domain([0, d3.max(resultSet, function(d) { return d.temperatura_vrednost; })]);
+					
+				svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis);
+					
+				svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis)
+				.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 6)
+				.attr("dy", ".71em")
+				.style("text-anchor", "end")
+				.text("Temperature");
+						
+				svg.selectAll(".bar")
+				.data(resultSet)
+				.enter().append("rect")
+				.attr("class", "bar")
+				.attr("x", function(d) { return x(d.cas); })
+				.attr("width", x.rangeBand())
+				.attr("y", function(d) { return y(d.temperatura_vrednost); })
+				.attr("height", function(d) { return height - y(d.temperatura_vrednost); });
+			}
+		}
+	});
 }
 
 function type (d) {
