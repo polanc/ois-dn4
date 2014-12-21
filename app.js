@@ -429,7 +429,8 @@ function displayGraphs (SID) {
 			success: function (res) {
 				var resultSet = res.resultSet;
 				if( resultSet.length >= 0){
-		    		var fever = "<p class=\"style_02\">Fever count: " + resultSet.length + "</p>" ;
+					$("#analithics").innerHTML = '';
+		    		var fever = "<p class=\"style_02\">Fever count: " + resultSet.length + " [37.0+]" + "</p>" ;
 		    		$("#analithics").append(fever);
 				}
 			}
@@ -450,9 +451,9 @@ function displayGraphs (SID) {
 				var resultSet = res.resultSet;
 				if (res) {
 					console.log("JSONData: " + jsonData);
-					x.domain(resultSet.map(function(d) { return d.time; }));
+					x.domain(resultSet.map(function(d) { var date = d.time.split("-"); return d.time(parseInt(date[0])); }));
 					y.domain([0, d3.max(resultSet, function(d) { return d.temperature; })]);
-						
+	
 					svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
@@ -465,8 +466,7 @@ function displayGraphs (SID) {
 					.attr("transform", "rotate(-90)")
 					.attr("y", 6)
 					.attr("dy", ".71em")
-					.style("text-anchor", "end")
-					.text("Temperature");
+					.style("text-anchor", "end");
 							
 					svg.selectAll(".bar")
 					.data(resultSet)
