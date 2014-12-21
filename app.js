@@ -167,7 +167,7 @@ function addData(i) {
 			
 		}
 		else {
-			BodyTemp = (37 - (Math.random() * 2)); // Min: 35-37
+			BodyTemp = (37 - (Math.random() * 3)); // Min: 35-37
 		}
 				
 		Temp = Math.floor(Math.random() + 1);
