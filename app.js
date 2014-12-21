@@ -489,9 +489,3 @@ function channelVideo () {
 		});
 	});
 }
-
-function reload () {
-	$(document).ready(function(){
-		$(this).scrollTop(0);
-	});
-}
