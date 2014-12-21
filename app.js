@@ -364,7 +364,7 @@ function clean_graph () {
 	element = document.getElementById("graph");
 	element.innerHTML = '';
 }
-
+/*
 function displayGraphs () {
 	clean_graph();
 			
@@ -447,7 +447,7 @@ function type (d) {
 	d.temperatura_vrednost = +d.temperatura_vrednost;
 	return d;
 }
-
+*/
 function channelVideo () {
 
 	$.support.cors= true;
