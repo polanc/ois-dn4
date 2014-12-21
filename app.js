@@ -412,7 +412,7 @@ function displayGraphs () {
 	var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient("left")
-		.ticks(10, "%");
+//		.ticks(10, "%");
 			
 	var svg = d3.select("#graph").append("svg")
 		.attr("width", width + margin.left + margin.right)
@@ -475,17 +475,17 @@ function displayGraphs () {
 			success: function (res) {
 				var resultSetC = res.resultSet;
 				if (res) {
-					x.domain(resultSetC.map(function(d) {  return d.time; }));
-					y.domain([0, d3.max(resultSetC, function(d) { return d.temperature; })]);
+//					x.domain(resultSetC.map(function(d) {  return d.time; }));
+//					y.domain([0, d3.max(resultSetC, function(d) { return d.temperature; })]);
 						
 					svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
-//					.call(xAxis);
+					.call(xAxis);
 						
 					svg.append("g")
 					.attr("class", "y axis")
-//					.call(yAxis)
+					.call(yAxis)
 					.append("text")
 					.attr("transform", "rotate(-90)")
 					.attr("y", 6)
