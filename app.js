@@ -142,19 +142,19 @@ function addData(i) {
 		var BodyTemp;
 		
 		if (i === 0) {
-			Height = Height + (Math.random() * 2 );
+			Height = Height + (Math.random() * 2.01 );
 			Height = Height - (Math.random() * 2 );
-			Weight = Weight + (Math.random() * 3 );
-			Weight = Weight - (Math.random() * 3 );
+			Weight = Weight + (Math.random() * 2 );
+			Weight = Weight - (Math.random() * 2.5 );
 		}
 		else if (i == 1) {
-			Height = Height + (Math.random() * 1 );
+			Height = Height + (Math.random() * 1.01 );
 			Height = Height - (Math.random() * 1 );
 			Weight = Weight - (Math.random() * (j / 30));
 		}
 		else if (i == 2) {
 			Height = Height + (Math.random() * 2 );
-			Height = Height - (Math.random() * 2 );
+			Height = Height - (Math.random() * 2.01 );
 			Weight = Weight + (Math.random() * (j / 3));
 		}
 			
