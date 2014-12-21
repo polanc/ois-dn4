@@ -383,9 +383,11 @@ function clean_anali () {
 	element.innerHTML = '';
 }
 
-function displayGraphs (SID) {
+function displayGraphs () {
 	clean_graph();
 	clean_anali();
+	var FID = document.getElementById("Info");
+	var SID = FID.options[FID.selectedIndex].value;
 	var LID = document.getElementById("graphicals");
 	var GID = LID.options[LID.selectedIndex].value;
 			
