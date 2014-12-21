@@ -42,6 +42,8 @@ function graph_list () {
 	element = document.getElementById("graphicals");
 	element.innerHTML = '';
 	var graph_opt;
+	graph_opt = "<option class=\"Info\" value=\"" + "bmi-worldwide" + "\">" + "BMI - WorldWide"  + "</option>";
+	$("#graphicals").append(graph_opt);
 	graph_opt = "<option class=\"Info\" value=\"" + "weight" + "\">" + "Weight"  + "</option>";
 	$("#graphicals").append(graph_opt);
 	graph_opt = "<option class=\"Info\" value=\"" + "height" + "\">" + "Height"  + "</option>";
