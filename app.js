@@ -394,32 +394,34 @@ function displayGraphs () {
 	var SID = FID.options[FID.selectedIndex].value;
 	var LID = document.getElementById("graphicals");
 	var GID = LID.options[LID.selectedIndex].value;
-			
+		
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 960 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
-			
+		
 	var x = d3.scale.ordinal()
 		.rangeRoundBands([0, width], .1);
 			
 	var y = d3.scale.linear()
 		.range([height, 0]);
-			
+		
+/*
 	var xAxis = d3.svg.axis()
 		.scale(x)
 		.orient("bottom");
-			
+		
 	var yAxis = d3.svg.axis()
 		.scale(y)
 		.orient("left")
 		.ticks(10, "%");
-			
+*/		
+		
 	var svg = d3.select("#graph").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
+		
 	if (GID == "/body_temperature") {
 		var AQL = "select " +
 				"t/data[at0002]/events[at0003]/time/value as time, " +
@@ -436,8 +438,8 @@ function displayGraphs () {
 			success: function (res) {
 				var resultSetA = res.resultSet;
 				if( resultSetA.length >= 0){
-		    		var fever = "<p class=\"style_04\">Fever Count = " + resultSetA.length + " [37.0+]" + "</p>" ;
-		    		$("#analithics").append(fever);
+				var fever = "<p class=\"style_04\">Fever Count = " + resultSetA.length + " [37.0+]" + "</p>" ;
+					$("#analithics").append(fever);
 				}
 			}
 		});
@@ -456,8 +458,8 @@ function displayGraphs () {
 			success: function (res) {
 				var resultSetB = res.resultSet;
 				if( resultSetB.length >= 0){
-		    		var hypo = "<p class=\"style_04\">Hypothermia Count = " + resultSetB.length + " [35.0-]" + "</p>" ;
-		    		$("#analithics").append(hypo);
+					var hypo = "<p class=\"style_04\">Hypothermia Count = " + resultSetB.length + " [35.0-]" + "</p>" ;
+					$("#analithics").append(hypo);
 				}
 			}
 		});
