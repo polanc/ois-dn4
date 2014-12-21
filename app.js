@@ -42,7 +42,9 @@ function graph_list () {
 	element = document.getElementById("graphicals");
 	element.innerHTML = '';
 	var graph_opt;
-	graph_opt = "<option class=\"Info\" value=\"" + "bmi-worldwide" + "\">" + "BMI - WorldWide"  + "</option>";
+	graph_opt = "<option class=\"Info\" value=\"" + "bmi-eu" + "\">" + "BMI EU"  + "</option>";
+	$("#graphicals").append(graph_opt);
+	graph_opt = "<option class=\"Info\" value=\"" + "bmi-slo" + "\">" + "BMI SLO"  + "</option>";
 	$("#graphicals").append(graph_opt);
 	graph_opt = "<option class=\"Info\" value=\"" + "weight" + "\">" + "Weight"  + "</option>";
 	$("#graphicals").append(graph_opt);
