@@ -294,7 +294,7 @@ function displayInfo () {
 		}
 	});
 	var body = Math.round(Patient_BMI[IND] * 10) / 10;
-	var BMI = "<p class=\"style_08\">" + body + "</p>";
+	var BMI = "<p class=\"style_08\">" + body + " kg/m2" + "</p>";
 	$("#bmi").append(BMI);
 	$.ajax({
 		url: baseUrl + "/view/" + SID + "/blood_pressure",
