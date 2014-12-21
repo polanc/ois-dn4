@@ -405,17 +405,6 @@ function displayGraphs () {
 	var y = d3.scale.linear()
 		.range([height, 0]);
 		
-/*
-	var xAxis = d3.svg.axis()
-		.scale(x)
-		.orient("bottom");
-		
-	var yAxis = d3.svg.axis()
-		.scale(y)
-		.orient("left")
-		.ticks(10, "%");
-*/		
-		
 	var svg = d3.select("#graph").append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
@@ -437,14 +426,9 @@ function displayGraphs () {
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
 				var resultSetA = res.resultSet;
-				var zero = 0;
 				if( resultSetA.length > 0){
 				var fever = "<p class=\"style_04\">Fever Count = " + resultSetA.length + " [37.0+]" + "</p>" ;
 					$("#analithics").append(fever);
-				}
-				else {
-					var no = "<p class=\"style_04\">Fever Count = " + zero + " [37.0+]" + "</p>" ;
-					$("#analithics").append(no);
 				}
 			}
 		});
@@ -462,14 +446,9 @@ function displayGraphs () {
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
 				var resultSetB = res.resultSet;
-				var zero = 0;
 				if( resultSetB.length > 0){
 					var hypo = "<p class=\"style_04\">Hypothermia Count = " + resultSetB.length + " [35.0-]" + "</p>" ;
 					$("#analithics").append(hypo);
-				}
-				else {
-					var no = "<p class=\"style_04\">Hypothermia Count = " + zero + " [37.0+]" + "</p>" ;
-					$("#analithics").append(no);
 				}
 			}
 		});
@@ -492,12 +471,10 @@ function displayGraphs () {
 						
 					svg.append("g")
 					.attr("class", "x axis")
-					.attr("transform", "translate(0," + height + ")")
-//					.call(xAxis);
+					.attr("transform", "translate(0," + height + ")");
 						
 					svg.append("g")
 					.attr("class", "y axis")
-//					.call(yAxis)
 					.append("text")
 					.attr("transform", "rotate(-90)")
 					.attr("y", 6)
