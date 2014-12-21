@@ -226,6 +226,45 @@ function displayLocation () {
 	});
 }
 
+function displayLocations () {
+	var directionsService = new google.maps.DirectionsService();
+
+	var mapOptions = {
+		zoom: 8,
+		center: new google.maps.LatLng(46.086283, 14.511189),
+		mapTypeId: google.maps.MapTypeId.ROADMAP
+	};
+	var map = new google.maps.Map($("#map-container").get(0),mapOptions);
+	var geocoder = new google.maps.Geocoder();
+    var lat;
+    var lng;
+	geocoder.geocode({address:address},function(results) {
+		lat = results[0].geometry.location.lat;
+		lng = results[0].geometry.location.lng;
+		new google.maps.Marker({position:results[0].geometry.location,map:map});
+	});
+
+	var marker1 = new  google.maps.Marker({position: new google.maps.LatLng(lat,lng),map:map});
+	var address = Doctor_Loca[0];
+	geocoder.geocode({address:address},function(results) {
+		lat = results[0].geometry.location.lat;
+		lng = results[0].geometry.location.lng;
+	    new google.maps.Marker({position:results[0].geometry.location,map:map});
+    });
+
+    var marker2 = new google.maps.Marker({position: new google.maps.LatLng(lat,lng),map:map});
+
+    var directionsRenderer = new google.maps.DirectionsRenderer();
+	directionsRenderer.setMap(map);
+	directionsRenderer.setPanel($("#map-directions").get(0));
+	var request = { origin: marker1.getPosition(), destination: marker2.getPosition(), travelMode: google.maps.TravelMode.DRIVING};
+	directionsService.route(request,function(result,status) {
+		if (status == google.maps.DirectionsStatus.OK ) {
+			directionsRenderer.setDirections(result);
+		 }
+	});
+}
+
 function displayInfo () {
 	clean_info();
 	var FID = document.getElementById("Info");
