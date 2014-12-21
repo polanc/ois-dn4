@@ -382,11 +382,6 @@ function clean_graph () {
 	element.innerHTML = '';
 }
 
-function clean_graph () {
-	element = document.getElementById("graph");
-	element.innerHTML = '';
-}
-
 function clean_anali () {
 	element = document.getElementById("analithics");
 	element.innerHTML = '';
