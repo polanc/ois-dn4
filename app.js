@@ -18,9 +18,9 @@ var Array_B = ["Burkhardt", "Setrakian", "Yamashiro"];
 var Array_C = ["1982-06-18T16:10", "1936-08-26T10:30", "1975-01-21T23:50"];
 var Array_D = ["MALE", "MALE", "MALE"];
 
-// Nick Burkhardt    --> Condition: OK
-// Abraham Setrakian --> Condition: Severe [Weight - Lose]
-// Maseo Yamashiro   --> Condition: Severe [Weight - Gain]
+// Nick Burkhardt    --> Condition: OK                     --> BMI Last Range: 
+// Abraham Setrakian --> Condition: Severe [Weight - Lose] --> BMI Last Range: 13-15
+// Maseo Yamashiro   --> Condition: Severe [Weight - Gain] --> BMI Last Range: 30-40
 
 
 var sessionId;
@@ -114,6 +114,11 @@ function addData(i) {
 	var Height;
 	var Weight;
 	
+	if (i === 0) {
+		Height = (Math.random() * 10) + 178.4;
+		Weight = (Math.random() *  5) + 79.6;
+	}
+	
 	if (i == 1) {
 		Height = (Math.random() * 10) + 168.8;
 		Weight = (Math.random() *  5) + 72.1;
@@ -137,12 +142,10 @@ function addData(i) {
 		var BodyTemp;
 		
 		if (i === 0) {
-			Height = (Math.random() * 10) + 178.4;
-			Weight = (Math.random() *  5) + 79.6;
-			Height = Height + (Math.random() * 3 );
-			Height = Height - (Math.random() * 3 );
-			Weight = Weight + (Math.random() * 4 );
-			Weight = Weight - (Math.random() * 4 );
+			Height = Height + (Math.random() * 2 );
+			Height = Height - (Math.random() * 2 );
+			Weight = Weight + (Math.random() * 3 );
+			Weight = Weight - (Math.random() * 3 );
 		}
 		else if (i == 1) {
 			Height = Height + (Math.random() * 1 );
