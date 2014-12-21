@@ -444,10 +444,9 @@ function displayGraphs (SID) {
 		success: function (res) {
 			if (res) {
 				var jsonData = JSON.stringify(res);
-				var resultSet = res.resultSet;
 				console.log("JSONData: " + jsonData);
-				x.domain(resultSet.map(function(d) { return d.cas; }));
-				y.domain([0, d3.max(resultSet, function(d) { return d.temperatura_vrednost; })]);
+				x.domain(jsonData.map(function(d) { return d.time; }));
+				y.domain([0, d3.max(jsonData, function(d) { return d.temperature; })]);
 					
 				svg.append("g")
 				.attr("class", "x axis")
@@ -465,23 +464,17 @@ function displayGraphs (SID) {
 				.text("Temperature");
 						
 				svg.selectAll(".bar")
-				.data(resultSet)
+				.data(jsonData)
 				.enter().append("rect")
 				.attr("class", "bar")
-				.attr("x", function(d) { return x(d.cas); })
+				.attr("x", function(d) { return x(d.time); })
 				.attr("width", x.rangeBand())
-				.attr("y", function(d) { return y(d.temperatura_vrednost); })
-				.attr("height", function(d) { return height - y(d.temperatura_vrednost); });
+				.attr("y", function(d) { return y(d.temperature); })
+				.attr("height", function(d) { return height - y(d.temperature); });
 			}
 		}
 	});
 }
-
-function type (d) {
-	d.temperatura_vrednost = +d.temperatura_vrednost;
-	return d;
-}
-
 
 function channelVideo () {
 
