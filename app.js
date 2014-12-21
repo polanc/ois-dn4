@@ -488,6 +488,6 @@ function channelVideo () {
 	});
 }
 
-function load () {
+function loading () {
 	channelVideo ();
 }
