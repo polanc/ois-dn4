@@ -263,7 +263,6 @@ function displayInfo () {
 			$("#nurse-pic").append(nurse);
 			
 			var doctor = "<p class=\"style_04\">" + "Dr. " +  Doctor_Name[0] + " " + Doctor_Surn[0] + "</p>";
-			console.log(doctor);
 			$("#doc_name").append(doctor);
 			
 			var location = "<p class=\"style_04\">" + Doctor_Loca[0] + "</p>";
@@ -379,10 +378,14 @@ function clean_graph () {
 	element.innerHTML = '';
 }
 
+function clean_anali () {
+	element = document.getElementById("analithics");
+	element.innerHTML = '';
+}
 
 function displayGraphs (SID) {
 	clean_graph();
-	$("#analithics").innerHTML = '';
+	clean_anali();
 	var LID = document.getElementById("graphicals");
 	var GID = LID.options[LID.selectedIndex].value;
 			
@@ -420,15 +423,14 @@ function displayGraphs (SID) {
 				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
 				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude>37 " +
 				"order by t/data[at0002]/events[at0003]/time/value desc " +
-				"limit 15";
 		$.ajax({
 			url: baseUrl + "/query?" + $.param({"aql": AQL}),
 			type: 'GET',
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
-				var resultSet = res.resultSet;
-				if( resultSet.length >= 0){
-		    		var fever = "<p class=\"style_04\">Fever Count = " + resultSet.length + " [37.0+]" + "</p>" ;
+				var resultSetA = res.resultSet;
+				if( resultSetA.length >= 0){
+		    		var fever = "<p class=\"style_04\">Fever Count = " + resultSetA.length + " [37.0+]" + "</p>" ;
 		    		$("#analithics").append(fever);
 				}
 			}
@@ -441,15 +443,14 @@ function displayGraphs (SID) {
 				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
 				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude<35 " +
 				"order by t/data[at0002]/events[at0003]/time/value desc " +
-				"limit 15";
 		$.ajax({
 			url: baseUrl + "/query?" + $.param({"aql": UND}),
 			type: 'GET',
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
-				var resultSet = res.resultSet;
-				if( resultSet.length >= 0){
-		    		var hypo = "<p class=\"style_04\">Hypothermia Count = " + resultSet.length + " [35.0-]" + "</p>" ;
+				var resultSetB = res.resultSet;
+				if( resultSetB.length >= 0){
+		    		var hypo = "<p class=\"style_04\">Hypothermia Count = " + resultSetB.length + " [35.0-]" + "</p>" ;
 		    		$("#analithics").append(hypo);
 				}
 			}
@@ -466,10 +467,10 @@ function displayGraphs (SID) {
 			type: 'GET',
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
-				var resultSet = res.resultSet;
+				var resultSetC = res.resultSet;
 				if (res) {
-					x.domain(resultSet.map(function(d) {  return d.time; }));
-					y.domain([0, d3.max(resultSet, function(d) { return d.temperature; })]);
+					x.domain(resultSetC.map(function(d) {  return d.time; }));
+					y.domain([0, d3.max(resultSetC, function(d) { return d.temperature; })]);
 	
 					svg.append("g")
 					.attr("class", "x axis")
@@ -486,7 +487,7 @@ function displayGraphs (SID) {
 					.style("text-anchor", "end");
 							
 					svg.selectAll(".bar")
-					.data(resultSet)
+					.data(resultSetC)
 					.enter().append("rect")
 					.attr("class", "bar")
 					.attr("x", function(d) { return x(d.time); })
