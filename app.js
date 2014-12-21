@@ -15,7 +15,7 @@ var Doctor_Loca = ["Zaloska Cesta 2 Ljubljana", "Krziceva 10 Ljubljana", "Zalosk
 
 var Array_A = ["Nick", "Abraham", "Maseo"];
 var Array_B = ["Burkhardt", "Setrakian", "Yamashiro"];
-var Array_C = ["1982-06-18T16:10", "1936-08-26T10:30", "1975-01-21T23:50"];
+var Array_C = ["1978-06-18T16:10", "1936-08-26T10:30", "1975-01-21T23:50"];
 var Array_D = ["MALE", "MALE", "MALE"];
 
 // Nick Burkhardt    --> Condition: OK                     --> BMI Last Range: 21-26
@@ -163,7 +163,7 @@ function addData(i) {
 		}
 		if (j < 3) {
 			if (Temp > 37) {
-				BodyTemp = (36 + (Math.random() * 4)); // Max: 40-36
+				BodyTemp = (37 + (Math.random() * 2)); // Max: 40-36
 				
 			}
 			else {
@@ -172,14 +172,14 @@ function addData(i) {
 		}
 		else {
 			if (Temp > 37) {
-				BodyTemp = (36 + (Math.random() * 4)); // Max: 40-36
+				BodyTemp = (37 + (Math.random() * 1)); // Max: 40-36
 				
 			}
 			else {
 				BodyTemp = (37 - (Math.random() * 2)); // Min: 35-37
 			}
 		}
-				
+			
 		Temp = Math.floor(Math.random() + 1);
 		var SysPressure = Math.floor(105 + (Math.random() * 30));
 		var DysPressure = Math.floor( 75 + (Math.random() * 20));
