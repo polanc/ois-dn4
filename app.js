@@ -252,7 +252,7 @@ function displayInfo () {
 			$("#doc_loca").append(location);
 
 			displayLocation ();
-			displayGraphs (SID);
+			displayGraphs ();
 		},
 		error: function(err) {
 			return;
@@ -361,7 +361,7 @@ function clean_graph () {
 	element.innerHTML = '';
 }
 
-function displayGraphs (SID) {
+function displayGraphs () {
 	clean_graph();
 			
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
@@ -393,7 +393,7 @@ function displayGraphs (SID) {
 			"t/data[at0002]/events[at0003]/time/value as cas, " +
 			"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperatura_vrednost, " +
 			"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as temperatura_enota " +
-			"from EHR e[e/ehr_id/value='" + SID + "'] " +
+			"from EHR e[e/ehr_id/value='" + Patient_ID[0] + "'] " +
 			"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
 			"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude<40 " +
 			"order by t/data[at0002]/events[at0003]/time/value desc " +
