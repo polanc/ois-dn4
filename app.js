@@ -196,7 +196,7 @@ function displayLocation () {
 		mapTypeId: google.maps.MapTypeId.ROADMAP };
 		var map = new google.maps.Map($("#map-container").get(0),mapOptions);
 		var geocoder = new google.maps.Geocoder();
-		var address = "Krziceva 10 Ljubljana";
+		var address = "Zaloska Cesta 2 Ljubljana";
 		geocoder.geocode({address:address},function(results) {
 		new google.maps.Marker({position:results[0].geometry.location,map:map});
 	});
