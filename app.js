@@ -145,7 +145,7 @@ function addData(i) {
 			Height = Height + (Math.random() * 2 );
 			Height = Height - (Math.random() * 2 );
 			Weight = Weight + (Math.random() * 2 );
-			Weight = Weight - (Math.random() * (260 / 10));
+			Weight = Weight - (Math.random() * 2 );
 		}
 		else if (i == 1) {
 			Height = Height + (Math.random() * 1 );
@@ -171,9 +171,9 @@ function addData(i) {
 		}
 				
 		Temp = Math.floor(Math.random() + 1);
-		var SysPressure = Math.floor( 90 + (Math.random() * 30));
-		var DysPressure = Math.floor( 60 + (Math.random() * 20));
-		var Oxydation   = Math.floor(100 - (Math.random() * 8));
+		var SysPressure = Math.floor(105 + (Math.random() * 30));
+		var DysPressure = Math.floor( 75 + (Math.random() * 20));
+		var Oxydation   = Math.floor(100 - (Math.random() * 7));
 			
 		$.ajaxSetup({
 			headers: {"Ehr-Session": sessionId}
