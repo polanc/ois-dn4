@@ -115,8 +115,8 @@ function addData(i) {
 	var Weight;
 	
 	if (i === 0) {
-		Height = (Math.random() * 10) + 178.4;
-		Weight = (Math.random() *  5) + 79.6;
+		Height = (Math.random() * 10) + 178.9;
+		Weight = (Math.random() *  3) + 78.6;
 	}
 	
 	if (i == 1) {
