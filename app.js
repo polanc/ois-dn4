@@ -437,9 +437,14 @@ function displayGraphs () {
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
 				var resultSetA = res.resultSet;
+				var zero = 0;
 				if( resultSetA.length >= 0){
 				var fever = "<p class=\"style_04\">Fever Count = " + resultSetA.length + " [37.0+]" + "</p>" ;
 					$("#analithics").append(fever);
+				}
+				else {
+					var no = "<p class=\"style_04\">Fever Count = " + zero + " [37.0+]" + "</p>" ;
+					$("#analithics").append(no);
 				}
 			}
 		});
@@ -457,9 +462,14 @@ function displayGraphs () {
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
 				var resultSetB = res.resultSet;
+				var zero = 0;
 				if( resultSetB.length >= 0){
 					var hypo = "<p class=\"style_04\">Hypothermia Count = " + resultSetB.length + " [35.0-]" + "</p>" ;
 					$("#analithics").append(hypo);
+				}
+				else {
+					var no = "<p class=\"style_04\">Hypothermia Count = " + zero + " [37.0+]" + "</p>" ;
+					$("#analithics").append(no);
 				}
 			}
 		});
