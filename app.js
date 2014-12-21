@@ -481,12 +481,12 @@ function displayGraphs () {
 					svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
-					.call(xAxis);
+//					.call(xAxis);
 						
 					svg.append("g")
 					.attr("class", "y axis")
-					.call(yAxis)
-//					.append("text")
+//					.call(yAxis)
+					.append("text")
 					.attr("transform", "rotate(-90)")
 					.attr("y", 6)
 					.attr("dy", ".71em")
