@@ -190,7 +190,6 @@ function addData(i) {
 			"vital_signs/blood_pressure/any_event/diastolic": DysPressure,
 			"vital_signs/indirect_oximetry:0/spo2|numerator": Oxydation
 		};
-		console.log(data);
 		var requestParameters = {
 			"ehrId": Patient_ID[i],
 			templateId: 'Vital Signs',
@@ -268,7 +267,6 @@ function displayInfo () {
 			$("#doc_name").append(doctor);
 			
 			var location = "<p class=\"style_04\">" + Doctor_Loca[0] + "</p>";
-			console.log(location);
 			$("#doc_loca").append(location);
 
 			displayLocation ();
