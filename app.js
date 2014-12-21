@@ -412,7 +412,7 @@ function displayGraphs (SID) {
 		.append("g")
 		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-	if (GID == 'body_temperature') {
+	if (GID == "/body_temperature") {
 		var AQL = "select " +
 				"t/data[at0002]/events[at0003]/time/value as time, " +
 				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperature, " +
