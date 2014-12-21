@@ -477,7 +477,7 @@ function displayGraphs () {
 				if (res) {
 					x.domain(resultSetC.map(function(d) {  return d.time; }));
 					y.domain([0, d3.max(resultSetC, function(d) { return d.temperature; })]);
-	
+						
 					svg.append("g")
 					.attr("class", "x axis")
 					.attr("transform", "translate(0," + height + ")")
@@ -486,12 +486,12 @@ function displayGraphs () {
 					svg.append("g")
 					.attr("class", "y axis")
 					.call(yAxis)
-					.append("text")
+//					.append("text")
 					.attr("transform", "rotate(-90)")
 					.attr("y", 6)
 					.attr("dy", ".71em")
 					.style("text-anchor", "end");
-							
+						
 					svg.selectAll(".bar")
 					.data(resultSetC)
 					.enter().append("rect")
