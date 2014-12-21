@@ -414,9 +414,9 @@ function displayGraphs (SID) {
 
 	if (GID == 'temperature') {
 		var AQL = "select " +
-				"t/data[at0002]/events[at0003]/time/value as cas, " +
-				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperatura_vrednost, " +
-				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as temperatura_enota " +
+				"t/data[at0002]/events[at0003]/time/value as time, " +
+				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperature, " +
+				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as unit " +
 				"from EHR e[e/ehr_id/value='" + SID + "'] " +
 				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
 				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude>37 " +
@@ -427,7 +427,6 @@ function displayGraphs (SID) {
 			type: 'GET',
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
-				var jsonData = JSON.stringify(res);
 				var resultSet = res.resultSet;
 				if( resultSet.length >= 0){
 		    		var fever = "<p class=\"style_02\">Fever count: " + resultSet.length + "</p>" ;
@@ -435,45 +434,52 @@ function displayGraphs (SID) {
 				}
 			}
 		});
-	}
-
-	$.ajax({
-		url: baseUrl + "/view/" + SID + GID,
-		type: 'GET',
-		headers: {"Ehr-Session": sessionId},
-		success: function (res) {
-			if (res) {
+		var ALL = "select " +
+				"t/data[at0002]/events[at0003]/time/value as time, " +
+				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperatura_vrednost, " +
+				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as temperatura_enota " +
+				"from EHR e[e/ehr_id/value='" + SID + "'] " +
+				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
+				"order by t/data[at0002]/events[at0003]/time/value desc ";
+		$.ajax({
+			url: baseUrl + "/query?" + $.param({"aql": ALL}),
+			type: 'GET',
+			headers: {"Ehr-Session": sessionId},
+			success: function (res) {
 				var jsonData = JSON.stringify(res);
-				console.log("JSONData: " + jsonData);
-				x.domain(jsonData.map(function(d) { return d.time; }));
-				y.domain([0, d3.max(jsonData, function(d) { return d.temperature; })]);
-					
-				svg.append("g")
-				.attr("class", "x axis")
-				.attr("transform", "translate(0," + height + ")")
-				.call(xAxis);
-					
-				svg.append("g")
-				.attr("class", "y axis")
-				.call(yAxis)
-				.append("text")
-				.attr("transform", "rotate(-90)")
-				.attr("y", 6)
-				.attr("dy", ".71em")
-				.style("text-anchor", "end")
-				.text("Temperature");
+				var resultSet = res.resultSet;
+				if (res) {
+					console.log("JSONData: " + jsonData);
+					x.domain(resultSet.map(function(d) { return d.time; }));
+					y.domain([0, d3.max(resultSet, function(d) { return d.temperature; })]);
 						
-				svg.selectAll(".bar")
-				.data(jsonData)
-				.enter().append("rect")
-				.attr("class", "bar")
-				.attr("x", function(d) { return x(d.time); })
-				.attr("width", x.rangeBand())
-				.attr("y", function(d) { return y(d.temperature); })
-				.attr("height", function(d) { return height - y(d.temperature); });
+					svg.append("g")
+					.attr("class", "x axis")
+					.attr("transform", "translate(0," + height + ")")
+					.call(xAxis);
+						
+					svg.append("g")
+					.attr("class", "y axis")
+					.call(yAxis)
+					.append("text")
+					.attr("transform", "rotate(-90)")
+					.attr("y", 6)
+					.attr("dy", ".71em")
+					.style("text-anchor", "end")
+					.text("Temperature");
+							
+					svg.selectAll(".bar")
+					.data(resultSet)
+					.enter().append("rect")
+					.attr("class", "bar")
+					.attr("x", function(d) { return x(d.time); })
+					.attr("width", x.rangeBand())
+					.attr("y", function(d) { return y(d.temperature); })
+					.attr("height", function(d) { return height - y(d.temperature); });
+				}
 			}
-		}
-	});
+		});
+	}
 }
 
 function channelVideo () {
