@@ -406,7 +406,7 @@ function displayGraphs (SID) {
 		headers: {"Ehr-Session": sessionId},
 		success: function (res) {
 			if (res) {
-				var jsonData = $.parseJSON(res);
+				var jsonData = JSON.stringify(res);
 				console.log("Res: " + res);
 				console.log("JSONData: " + jsonData);
 				console.log("AQL: " + AQL);
