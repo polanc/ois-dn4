@@ -406,10 +406,12 @@ function displayGraphs () {
 		headers: {"Ehr-Session": sessionId},
 		success: function (res) {
 			if (res) {
+				var jsonData = $.parseJSON(res);
 				console.log("Res: " + res);
+				console.log("JSONData: " + jsonData);
 				console.log("AQL: " + AQL);
-				x.domain(res.map(function(d) { return d.cas; }));
-				y.domain([0, d3.max(res, function(d) { return d.temperatura_vrednost; })]);
+				x.domain(jsonData.map(function(d) { return d.cas; }));
+				y.domain([0, d3.max(jsonData, function(d) { return d.temperatura_vrednost; })]);
 					
 				svg.append("g")
 				.attr("class", "x axis")
