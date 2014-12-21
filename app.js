@@ -162,7 +162,13 @@ function addData(i) {
 			Patient_BMI[i] = ((Weight * 10000) / (Height * Height));
 		}
 		if (j < 3) {
-			BodyTemp = (37 - (Math.random() * 3)); // Min: 34-37
+			if (Temp > 37) {
+				BodyTemp = (36 + (Math.random() * 4)); // Max: 40-36
+				
+			}
+			else {
+				BodyTemp = (37 - (Math.random() * 3)); // Min: 35-37
+			}
 		}
 		else {
 			if (Temp > 37) {
