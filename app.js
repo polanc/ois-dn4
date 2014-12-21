@@ -372,6 +372,8 @@ function clean_graph () {
 /*
 function displayGraphs () {
 	clean_graph();
+	var LID = document.getElementById("graphicals");
+	var GID = FID.options[LID.selectedIndex].value;
 			
 	var margin = {top: 20, right: 20, bottom: 30, left: 40},
 		width = 960 - margin.left - margin.right,
