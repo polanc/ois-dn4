@@ -34,6 +34,7 @@ function getSessionId () {
 }
 
 function patients () {
+	geload();
 	element = document.getElementById("Info");
 	element.innerHTML = '';
 	graph_list ();
@@ -393,6 +394,13 @@ function reload () {
 	$("#hidden_2").css("visibility", "visible");
 	$("#hidden_3").css("visibility", "visible");
 	$("#hidden_4").css("visibility", "visible");
+}
+
+function geload () {
+	$("#hidden_1").css("visibility", "hidden");
+	$("#hidden_2").css("visibility", "hidden");
+	$("#hidden_3").css("visibility", "hidden");
+	$("#hidden_4").css("visibility", "hidden");
 }
 
 function clean_info () {
