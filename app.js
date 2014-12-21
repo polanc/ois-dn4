@@ -42,6 +42,9 @@ function graph_list () {
 	element = document.getElementById("graphicals");
 	element.innerHTML = '';
 	var graph_opt;
+	graph_opt = "<option class=\"Info\" value=\"" + "none" + "\">" + "Not Yet Working"  + "</option>";
+	$("#graphicals").append(graph_opt);
+/*
 	graph_opt = "<option class=\"Info\" value=\"" + "bmi-eu" + "\">" + "BMI EU"  + "</option>";
 	$("#graphicals").append(graph_opt);
 	graph_opt = "<option class=\"Info\" value=\"" + "bmi-slo" + "\">" + "BMI SLO"  + "</option>";
@@ -50,6 +53,7 @@ function graph_list () {
 	$("#graphicals").append(graph_opt);
 	graph_opt = "<option class=\"Info\" value=\"" + "height" + "\">" + "Height"  + "</option>";
 	$("#graphicals").append(graph_opt);
+*/
 }
 
 function generator (i) {
