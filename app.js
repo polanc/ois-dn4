@@ -304,7 +304,7 @@ function displayInfo () {
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
-				var Pressure = "<p class=\"style_09\">" + res[x].diastolic + " || " + res[x].systolic + "</p>";
+				var Pressure = "<p class=\"style_09\">" + res[x].diastolic + " || " + res[x].systolic + " mm[Hg]" + "</p>";
 				$("#pressure").append(Pressure);
 			}
 		}
@@ -317,7 +317,7 @@ function displayInfo () {
 		},
 		success: function (res) {
 			for (var x = 0; x < 1; x++) {
-				var Oxydation = "<p span class=\"style_09\">" + res[x].spO2 + "</span> </p>";
+				var Oxydation = "<p span class=\"style_09\">" + res[x].spO2 + " %" + "</span> </p>";
 				$("#oxydation").append(Oxydation);
 			}
 		}
