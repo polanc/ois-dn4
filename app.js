@@ -105,11 +105,11 @@ function addData(i) {
 		for(var j = 1; j <= Period; j++){
 			BirthDate     = BirthDate.split("-");
 			var DateOfYear = parseInt(BirthDate[0]);
-			BirthDate[0] = (DateOfYear + j).toString();
+			BirthDate[0] = (DateOfYear + j + 20).toString();
 			BirthDate     = BirthDate.join("-");
 			var DateAndTime = BirthDate;
 			BirthDate     = BirthDate.split("-");
-			BirthDate [0] = BirthDate[0] - j;
+			BirthDate [0] = BirthDate[0] - j - 20;
 			BirthDate     = BirthDate.join("-");
 			var Temp = (Math.random() * 40);
 			var BodyTemp;
@@ -366,80 +366,84 @@ function clean_graph () {
 function displayGraphs (SID) {
 	clean_graph();
 			
+	var margin = {top: 20, right: 20, bottom: 30, left: 40},
+		width = 960 - margin.left - margin.right,
+		height = 500 - margin.top - margin.bottom;
+			
+	var x = d3.scale.ordinal()
+		.rangeRoundBands([0, width], .1);
+			
+	var y = d3.scale.linear()
+		.range([height, 0]);
+			
+	var xAxis = d3.svg.axis()
+		.scale(x)
+		.orient("bottom");
+			
+	var yAxis = d3.svg.axis()
+		.scale(y)
+		.orient("left")
+		.ticks(10, "%");
+			
+	var svg = d3.select("#graph").append("svg")
+		.attr("width", width + margin.left + margin.right)
+		.attr("height", height + margin.top + margin.bottom)
+		.append("g")
+		.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+			
+	var AQL = "select " +
+			"t/data[at0002]/events[at0003]/time/value as cas, " +
+			"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperatura_vrednost, " +
+			"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as temperatura_enota " +
+			"from EHR e[e/ehr_id/value='" + SID + "'] " +
+			"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
+			"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude<40 " +
+			"order by t/data[at0002]/events[at0003]/time/value desc " +
+			"limit 10";
 	$.ajax({
-	    url: baseUrl + "/view/" + SID + "/weight",
-	    type: 'GET',
-	    headers: {
-	        "Ehr-Session": sessionId
-	    },
-	    success: function (lineData) {
-	    			console.log(lineData);
-	    		 	var vis = d3.select("#graph"),
-					WIDTH = $("#graph").width(),
-					HEIGHT = 270,
-					MARGINS = {
-					  top: 20,
-					  right: 20,
-					  bottom: 20,
-					  left: 30
-					},
-					xRange = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([d3.min(lineData, function (d) {
-					    var datum = d.time.split("-");
-					    return parseInt(datum[0]);
-					  }),
-					  d3.max(lineData, function (d) {
-					  	var datum = d.time.split("-");
-					    return parseInt(datum[0]);
-					  })
-					]),
-
-					yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([d3.min(lineData, function (d) {
-					    return (d.weight - 2);
-					  }),
-					  d3.max(lineData, function (d) {
-					    return (d.weight + 2);
-					  })
-					]),
-
-					xAxis = d3.svg.axis()
-					  .scale(xRange)
-					  .tickSize(5)
-					  .tickSubdivide(true),
-
-					yAxis = d3.svg.axis()
-					  .scale(yRange)
-					  .tickSize(5)
-					  .orient("left")
-					  .tickSubdivide(true);
-
-
-					vis.append("svg:g")
-					.attr("class", "x axis")
-					.attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
-					.call(xAxis);
-
-					vis.append("svg:g")
-					.attr("class", "y axis")
-					.attr("transform", "translate(" + (MARGINS.left) + ",0)")
-					.call(yAxis);
-
-					var lineFunc = d3.svg.line()
-					.x(function (d) {
-						var datum = d.time.split("-");
-						return xRange(parseInt(datum[0]));
-					})
-					.y(function (d) {
-						return yRange(d.weight);
-					})
-					.interpolate('basis');
-
-					vis.append("svg:path")
-					.attr("d", lineFunc(lineData))
-					.attr("stroke", "#337ab7")
-					.attr("stroke-width", 3)
-					.attr("fill", "none");
+		url: baseUrl + "/query?" + $.param({"aql": AQL}),
+		type: 'GET',
+		headers: {"Ehr-Session": sessionId},
+		success: function (res) {
+			if (res) {
+				var jsonData = JSON.stringify(res);
+				console.log("Res: " + res);
+				console.log("JSONData: " + jsonData);
+				console.log("AQL: " + AQL);
+				x.domain(jsonData.map(function(d) { return d.cas; }));
+				y.domain([0, d3.max(jsonData, function(d) { return d.temperatura_vrednost; })]);
+					
+				svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis);
+					
+				svg.append("g")
+				.attr("class", "y axis")
+				.call(yAxis)
+				.append("text")
+				.attr("transform", "rotate(-90)")
+				.attr("y", 6)
+				.attr("dy", ".71em")
+				.style("text-anchor", "end")
+				.text("Temperature");
+					
+				svg.selectAll(".bar")
+				.data(res)
+				.enter().append("rect")
+				.attr("class", "bar")
+				.attr("x", function(d) { return x(d.cas); })
+				.attr("width", x.rangeBand())
+				.attr("y", function(d) { return y(d.temperatura_vrednost); })
+				.attr("height", function(d) { return height - y(d.temperatura_vrednost); });
+			}
 		}
 	});
+}
+
+function type (d) {
+	d.temperatura_vrednost = +d.temperatura_vrednost;
+	return d;
 }
 
 function channelVideo () {
