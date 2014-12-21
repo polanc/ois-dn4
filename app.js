@@ -436,8 +436,8 @@ function displayGraphs (SID) {
 		});
 		var ALL = "select " +
 				"t/data[at0002]/events[at0003]/time/value as time, " +
-				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperatura_vrednost, " +
-				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as temperatura_enota " +
+				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperature, " +
+				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as unit " +
 				"from EHR e[e/ehr_id/value='" + SID + "'] " +
 				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
 				"order by t/data[at0002]/events[at0003]/time/value desc ";
