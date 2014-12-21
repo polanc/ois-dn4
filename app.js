@@ -269,7 +269,7 @@ function displayInfo () {
 			$("#doc_loca").append(location);
 
 			displayLocation ();
-			displayGraphs(SID);
+			displayGraphs();
 		},
 		error: function(err) {
 			return;
