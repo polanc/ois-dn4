@@ -256,7 +256,7 @@ function displayInfo () {
 			$("#doc_loca").append(location);
 
 			displayLocation ();
-			displayGraphs ();
+			pieGraph() ();
 		},
 		error: function(err) {
 			return;
