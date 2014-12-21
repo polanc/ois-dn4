@@ -430,7 +430,7 @@ function displayGraphs (SID) {
 				var resultSet = res.resultSet;
 				if( resultSet.length >= 0){
 					$("#analithics").innerHTML = '';
-		    		var fever = "<p class=\"style_02\">Fever count: " + resultSet.length + " [37.0+]" + "</p>" ;
+		    		var fever = "<p class=\"style_04\">Fever Count = " + resultSet.length + " [37.0+]" + "</p>" ;
 		    		$("#analithics").append(fever);
 				}
 			}
@@ -447,11 +447,9 @@ function displayGraphs (SID) {
 			type: 'GET',
 			headers: {"Ehr-Session": sessionId},
 			success: function (res) {
-				var jsonData = JSON.stringify(res);
 				var resultSet = res.resultSet;
 				if (res) {
-					console.log("JSONData: " + jsonData);
-					x.domain(resultSet.map(function(d) { var date = d.time.split("-"); return d.time(parseInt(date[0])); }));
+					x.domain(resultSet.map(function(d) {  return d.time; }));
 					y.domain([0, d3.max(resultSet, function(d) { return d.temperature; })]);
 	
 					svg.append("g")
