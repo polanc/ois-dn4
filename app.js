@@ -422,7 +422,7 @@ function displayGraphs (SID) {
 				"from EHR e[e/ehr_id/value='" + SID + "'] " +
 				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
 				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude>37 " +
-				"order by t/data[at0002]/events[at0003]/time/value desc " +
+				"order by t/data[at0002]/events[at0003]/time/value desc ";
 		$.ajax({
 			url: baseUrl + "/query?" + $.param({"aql": AQL}),
 			type: 'GET',
@@ -442,7 +442,7 @@ function displayGraphs (SID) {
 				"from EHR e[e/ehr_id/value='" + SID + "'] " +
 				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
 				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude<35 " +
-				"order by t/data[at0002]/events[at0003]/time/value desc " +
+				"order by t/data[at0002]/events[at0003]/time/value desc ";
 		$.ajax({
 			url: baseUrl + "/query?" + $.param({"aql": UND}),
 			type: 'GET',
