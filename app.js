@@ -384,6 +384,7 @@ function clean_graph () {
 
 function displayGraphs (SID) {
 	clean_graph();
+	$("#analithics").innerHTML = '';
 	var LID = document.getElementById("graphicals");
 	var GID = LID.options[LID.selectedIndex].value;
 			
@@ -421,7 +422,7 @@ function displayGraphs (SID) {
 				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
 				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude>37 " +
 				"order by t/data[at0002]/events[at0003]/time/value desc " +
-				"limit 10";
+				"limit 15";
 		$.ajax({
 			url: baseUrl + "/query?" + $.param({"aql": AQL}),
 			type: 'GET',
@@ -429,9 +430,29 @@ function displayGraphs (SID) {
 			success: function (res) {
 				var resultSet = res.resultSet;
 				if( resultSet.length >= 0){
-					$("#analithics").innerHTML = '';
 		    		var fever = "<p class=\"style_04\">Fever Count = " + resultSet.length + " [37.0+]" + "</p>" ;
 		    		$("#analithics").append(fever);
+				}
+			}
+		});
+		var UND = "select " +
+				"t/data[at0002]/events[at0003]/time/value as time, " +
+				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude as temperature, " +
+				"t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/units as unit " +
+				"from EHR e[e/ehr_id/value='" + SID + "'] " +
+				"contains OBSERVATION t[openEHR-EHR-OBSERVATION.body_temperature.v1] " +
+				"where t/data[at0002]/events[at0003]/data[at0001]/items[at0004]/value/magnitude<35 " +
+				"order by t/data[at0002]/events[at0003]/time/value desc " +
+				"limit 15";
+		$.ajax({
+			url: baseUrl + "/query?" + $.param({"aql": UND}),
+			type: 'GET',
+			headers: {"Ehr-Session": sessionId},
+			success: function (res) {
+				var resultSet = res.resultSet;
+				if( resultSet.length >= 0){
+		    		var hypo = "<p class=\"style_04\">Hypothermia Count = " + resultSet.length + " [35.0-]" + "</p>" ;
+		    		$("#analithics").append(hypo);
 				}
 			}
 		});
