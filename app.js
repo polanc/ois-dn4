@@ -18,6 +18,11 @@ var Array_B = ["Burkhardt", "Setrakian", "Yamashiro"];
 var Array_C = ["1982-06-18T16:10", "1936-08-26T10:30", "1975-01-21T23:50"];
 var Array_D = ["MALE", "MALE", "MALE"];
 
+// Nick Burkhardt --> Condition: Good
+// Abraham Setrakian --> Condition: Good
+// Maseo Yamashiro --> Condition: Gaining Weight [Severe Problem]
+
+
 var sessionId;
 
 function getSessionId () {
@@ -109,6 +114,11 @@ function addData(i) {
 	var Height;
 	var Weight;
 	
+	if (i == 2) {
+		Height = (Math.random() * 10) + 173.3;
+		Weight = (Math.random() *  5) + 82.8;
+	}
+	
 	for(var j = 1; j <= Period; j++){
 		BirthDate     = BirthDate.split("-");
 		var DateOfYear = parseInt(BirthDate[0]);
@@ -138,12 +148,9 @@ function addData(i) {
 			Weight = Weight - (Math.random() * 2 );
 		}
 		else if (i == 2) {
-			Height = (Math.random() * 10) + 173.3;
-			Weight = (Math.random() *  5) + 72.8;
 			Height = Height + (Math.random() * 2 );
 			Height = Height - (Math.random() * 2 );
-			Weight = Weight + (Math.random() * 3 );
-			Weight = Weight - (Math.random() * 2 );
+			Weight = Weight + (Math.random() * (j / 2));
 		}
 			
 		if (j == Period) {
