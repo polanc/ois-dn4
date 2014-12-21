@@ -7,7 +7,6 @@ var element;
 
 var Patient_ID  = [0, 0, 0];
 var Patient_BMI = [0, 0, 0];
-var Patient_DR  = [0, 0, 0];
 
 var Doctor_Name = ['Grant', 'Kathleen', 'Kevin', 'Kenneth', 'Janice'];
 var Doctor_Surn = ['Anderson', 'Jones', 'Reynolds', 'Ross', 'Brown'];
