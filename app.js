@@ -126,7 +126,7 @@ function addData(i) {
 	
 	if (i == 2) {
 		Height = (Math.random() * 10) + 173.3;
-		Weight = (Math.random() *  5) + 82.8;
+		Weight = (Math.random() *  7) + 82.8;
 	}
 	
 	for(var j = 1; j <= Period; j++){
@@ -142,19 +142,19 @@ function addData(i) {
 		var BodyTemp;
 		
 		if (i === 0) {
-			Height = Height + (Math.random() * 2.01 );
+			Height = Height + (Math.random() * 2 );
 			Height = Height - (Math.random() * 2 );
 			Weight = Weight + (Math.random() * 2 );
-			Weight = Weight - (Math.random() * 2.5 );
+			Weight = Weight - (Math.random() * (260 / 10));
 		}
 		else if (i == 1) {
-			Height = Height + (Math.random() * 1.01 );
+			Height = Height + (Math.random() * 1 );
 			Height = Height - (Math.random() * 1 );
 			Weight = Weight - (Math.random() * (j / 30));
 		}
 		else if (i == 2) {
-			Height = Height + (Math.random() * 2 );
-			Height = Height - (Math.random() * 2.01 );
+			Height = Height + (Math.random() * 1 );
+			Height = Height - (Math.random() * 1 );
 			Weight = Weight + (Math.random() * (j / 3));
 		}
 			
