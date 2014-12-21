@@ -18,7 +18,7 @@ var Array_B = ["Burkhardt", "Setrakian", "Yamashiro"];
 var Array_C = ["1982-06-18T16:10", "1936-08-26T10:30", "1975-01-21T23:50"];
 var Array_D = ["MALE", "MALE", "MALE"];
 
-// Nick Burkhardt    --> Condition: OK                     --> BMI Last Range: 
+// Nick Burkhardt    --> Condition: OK                     --> BMI Last Range: 21-26
 // Abraham Setrakian --> Condition: Severe [Weight - Lose] --> BMI Last Range: 13-15
 // Maseo Yamashiro   --> Condition: Severe [Weight - Gain] --> BMI Last Range: 30-40
 
@@ -272,7 +272,7 @@ function displayInfo () {
 			$("#doc_loca").append(location);
 
 			displayLocation ();
-//			displayGraphs();
+			displayGraphs();
 		},
 		error: function(err) {
 			return;
@@ -381,7 +381,7 @@ function clean_graph () {
 	element.innerHTML = '';
 }
 
-/*
+
 function displayGraphs () {
 	clean_graph();
 	var LID = document.getElementById("graphicals");
@@ -428,11 +428,10 @@ function displayGraphs () {
 		success: function (res) {
 			if (res) {
 				var jsonData = JSON.stringify(res);
-				console.log("Res: " + res);
+				var resultSet = res.resultSet;
 				console.log("JSONData: " + jsonData);
-				console.log("AQL: " + AQL);
-				x.domain(jsonData.map(function(d) { return d.cas; }));
-				y.domain([0, d3.max(jsonData, function(d) { return d.temperatura_vrednost; })]);
+				x.domain(resultSet.map(function(d) { return d.cas; }));
+				y.domain([0, d3.max(resultSet, function(d) { return d.temperatura_vrednost; })]);
 					
 				svg.append("g")
 				.attr("class", "x axis")
@@ -450,7 +449,7 @@ function displayGraphs () {
 				.text("Temperature");
 					
 				svg.selectAll(".bar")
-				.data(res)
+				.data(resultSet)
 				.enter().append("rect")
 				.attr("class", "bar")
 				.attr("x", function(d) { return x(d.cas); })
@@ -466,7 +465,7 @@ function type (d) {
 	d.temperatura_vrednost = +d.temperatura_vrednost;
 	return d;
 }
-*/
+
 
 function channelVideo () {
 
